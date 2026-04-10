@@ -1,0 +1,3779 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="United Builders - Premium luxury real estate developer in Nashik, Maharashtra. 56 years of unbroken delivery, 100+ projects, zero disputes. Est. 1968."
+    />
+    <title>United Builders | The Gold Standard of Nashik Real Estate</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============================================================
+   CSS VARIABLES & RESET
+============================================================ */
+      :root {
+        --primary: #e8722a;
+        --dark: #121212;
+        --light: #f9f7f5;
+        --white: #ffffff;
+        --text-main: #2d2d2d;
+        --text-muted: #666666;
+        --font-serif: "Cormorant Garamond", serif;
+        --font-sans: "Montserrat", sans-serif;
+        --nav-h: 80px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: #fff;
+        color: var(--text-main);
+        font-family: var(--font-sans);
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+
+      /* ============================================================
+   LOADER
+============================================================ */
+      #ub-loader {
+        position: fixed;
+        inset: 0;
+        background: #1a1a1a;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 28px;
+        transition: opacity 0.6s ease-in-out;
+      }
+      .loader-text-wrap {
+        text-align: center;
+      }
+      .loader-welcome {
+        font-family: var(--font-serif);
+        font-size: clamp(3rem, 10vw, 6rem);
+        font-weight: 300;
+        color: transparent;
+        background: linear-gradient(
+          90deg,
+          #e8722a 0%,
+          #f5c99a 50%,
+          #e8722a 100%
+        );
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation:
+          shimmer 1.8s linear infinite,
+          fadeInUp 0.8s ease forwards;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+      }
+      .loader-sub {
+        font-family: var(--font-sans);
+        font-size: 0.65rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.35);
+        margin-top: 14px;
+        animation: fadeInUp 0.8s ease 0.3s both;
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: 200% center;
+        }
+        100% {
+          background-position: -200% center;
+        }
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .loader-bar-wrap {
+        width: 140px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+      }
+      .loader-bar {
+        height: 100%;
+        width: 0%;
+        background: var(--primary);
+        animation: barFill 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+      @keyframes barFill {
+        0% {
+          width: 0%;
+        }
+        60% {
+          width: 80%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+
+      /* ============================================================
+   NAVIGATION
+============================================================ */
+      #ub-topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: var(--nav-h);
+        padding: 0 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateY(-110%);
+        background: transparent;
+      }
+      #ub-topbar.visible {
+        transform: translateY(0);
+      }
+      #ub-topbar.scrolled {
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      }
+
+      /* Logo */
+      .nav-logo img {
+        height: 40px;
+        transition: all 0.4s ease;
+        display: block;
+      }
+      #ub-topbar:not(.scrolled) .nav-logo img {
+        filter: brightness(0) invert(1);
+      }
+      #ub-topbar.scrolled .nav-logo img {
+        filter: none;
+      }
+
+      /* Desktop nav links */
+      #ub-nav {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+      }
+      #ub-nav a {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 500;
+        font-size: 0.72rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        position: relative;
+        transition: color 0.3s;
+      }
+      #ub-nav a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: width 0.3s ease;
+      }
+      #ub-nav a:hover::after {
+        width: 100%;
+      }
+      #ub-topbar:not(.scrolled) #ub-nav a {
+        color: var(--white);
+      }
+      #ub-nav a:hover {
+        color: var(--primary);
+      }
+
+      /* Dropdown */
+      .nav-dropdown {
+        position: relative;
+      }
+      .nav-dropdown > a {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .dropdown-menu {
+        position: absolute;
+        top: calc(100% + 14px);
+        left: 0;
+        background: #fff;
+        min-width: 200px;
+        padding: 12px 0;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        border-top: 2px solid var(--primary);
+      }
+      .nav-dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown-menu a {
+        display: block !important;
+        padding: 10px 22px !important;
+        color: var(--dark) !important;
+        font-size: 0.68rem !important;
+        letter-spacing: 1.5px;
+        font-weight: 500;
+        transition:
+          color 0.2s,
+          padding-left 0.2s;
+      }
+      .dropdown-menu a::after {
+        display: none !important;
+      }
+      .dropdown-menu a:hover {
+        color: var(--primary) !important;
+        padding-left: 28px !important;
+      }
+
+      /* CTA button */
+      .inquiry-btn {
+        background: var(--primary);
+        color: #fff;
+        padding: 11px 28px;
+        border: none;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: var(--font-sans);
+        white-space: nowrap;
+      }
+      .inquiry-btn:hover {
+        background: var(--dark);
+      }
+
+      /* Hamburger */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 2px;
+        z-index: 1100;
+      }
+      .hamburger span {
+        display: block;
+        height: 2px;
+        border-radius: 2px;
+        transition: all 0.35s ease;
+        background: #fff;
+      }
+      #ub-topbar.scrolled .hamburger span {
+        background: var(--dark);
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+      #ub-topbar.scrolled .hamburger.open span {
+        background: var(--dark);
+      }
+
+      /* Mobile drawer */
+      #mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: min(320px, 85vw);
+        height: 100vh;
+        background: #fff;
+        z-index: 1050;
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        box-shadow: -8px 0 40px rgba(0, 0, 0, 0.12);
+      }
+      #mobile-menu.open {
+        right: 0;
+      }
+      .mm-header {
+        padding: 28px 24px 20px;
+        border-bottom: 1px solid #f0ede9;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .mm-header img {
+        height: 42px;
+      }
+      .mm-close {
+        background: none;
+        border: none;
+        font-size: 1.4rem;
+        cursor: pointer;
+        color: var(--dark);
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: background 0.2s;
+      }
+      .mm-close:hover {
+        background: #f0ede9;
+      }
+      .mm-links {
+        padding: 20px 0;
+        flex: 1;
+      }
+      .mm-link {
+        display: block;
+        padding: 14px 28px;
+        font-size: 0.78rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--dark);
+        text-decoration: none;
+        transition:
+          color 0.2s,
+          padding-left 0.25s;
+        border-bottom: 1px solid #f9f7f4;
+      }
+      .mm-link:hover {
+        color: var(--primary);
+        padding-left: 36px;
+      }
+
+      /* Mobile accordion */
+      .mm-accordion-btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 28px;
+        font-size: 0.78rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--dark);
+        background: none;
+        border: none;
+        border-bottom: 1px solid #f9f7f4;
+        cursor: pointer;
+        font-family: var(--font-sans);
+        transition: color 0.2s;
+      }
+      .mm-accordion-btn:hover {
+        color: var(--primary);
+      }
+      .mm-acc-arrow {
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s;
+        flex-shrink: 0;
+      }
+      .mm-accordion-btn.active {
+        color: var(--primary);
+      }
+      .mm-accordion-btn.active .mm-acc-arrow {
+        transform: rotate(180deg);
+      }
+      .mm-sub {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+        background: #faf9f7;
+      }
+      .mm-sub.open {
+        max-height: 300px;
+      }
+      .mm-sub a {
+        display: block;
+        padding: 11px 28px 11px 40px;
+        font-size: 0.72rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 500;
+        color: var(--text-muted);
+        text-decoration: none;
+        transition:
+          color 0.2s,
+          padding-left 0.2s;
+        border-bottom: 1px solid #f0ede9;
+      }
+      .mm-sub a:last-child {
+        border-bottom: none;
+      }
+      .mm-sub a:hover {
+        color: var(--primary);
+        padding-left: 48px;
+      }
+      .mm-sub a::before {
+        content: "— ";
+        opacity: 0.4;
+      }
+
+      .mm-footer {
+        padding: 24px;
+        border-top: 1px solid #f0ede9;
+      }
+      .mm-cta {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background: var(--primary);
+        color: #fff;
+        text-align: center;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+        font-family: var(--font-sans);
+        text-decoration: none;
+      }
+      .mm-contact-links {
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .mm-contact-links a {
+        font-size: 0.72rem;
+        color: var(--text-muted);
+        text-decoration: none;
+      }
+
+      /* Overlay backdrop */
+      #menu-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1040;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s;
+      }
+      #menu-backdrop.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      /* ============================================================
+   HERO
+============================================================ */
+      #hero {
+        height: 100vh;
+        width: 100%;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+          url("images/ubmid.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+        padding: 0 20px;
+      }
+      .hero-eyebrow {
+        font-size: 0.9rem;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+        margin-bottom: 25px;
+        font-weight: 300;
+      }
+      #hero h1 {
+        font-family: var(--font-serif);
+        font-size: clamp(3.5rem, 10vw, 7.5rem);
+        font-weight: 300;
+        line-height: 1;
+        margin-bottom: 30px;
+      }
+      .hero-sub {
+        font-size: 1.1rem;
+        letter-spacing: 4px;
+        font-weight: 200;
+        opacity: 0.9;
+      }
+      .hero-scroll-line {
+        margin-top: 50px;
+        width: 1px;
+        height: 80px;
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      /* ============================================================
+   SHARED SECTION STYLES
+============================================================ */
+      section {
+        padding: 120px 10%;
+        position: relative;
+      }
+      .section-tag {
+        font-size: 0.72rem;
+        letter-spacing: 4px;
+        color: var(--primary);
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        display: block;
+        font-weight: 700;
+      }
+      h2 {
+        font-family: var(--font-serif);
+        font-size: clamp(2.2rem, 4.5vw, 4rem);
+        color: var(--dark);
+        font-weight: 400;
+        line-height: 1.1;
+        margin-bottom: 40px;
+        display: inline-block;
+        position: relative;
+      }
+      h2::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--primary);
+        transition: width 0.4s ease;
+      }
+      h2:hover::after {
+        width: 100%;
+      }
+
+      /* ============================================================
+   ABOUT
+============================================================ */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .about-intro {
+        font-size: 1.15rem;
+        color: var(--text-muted);
+        font-weight: 300;
+        margin-bottom: 50px;
+      }
+      .logo-panel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        border-left: 1px solid #eee;
+      }
+      .logo-panel img {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+        object-fit: contain;
+      }
+      .stats-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 36px;
+        margin-top: 50px;
+      }
+      .stat-item h3 {
+        font-family: var(--font-serif);
+        font-size: 3.2rem;
+        color: var(--primary);
+        font-weight: 400;
+        margin-bottom: 4px;
+      }
+      .stat-item p {
+        font-size: 0.62rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+
+      /* ============================================================
+   FOUNDATION
+============================================================ */
+      #foundation-section {
+        background: #f8f7f4;
+        padding: 100px 6%;
+      }
+      #foundation-section .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+      #foundation-section h2 {
+        display: inline-block;
+      }
+      #foundation-section h2 span {
+        color: var(--primary);
+      }
+      #foundation-section .section-subtitle {
+        font-size: 0.88rem;
+        color: #888;
+        margin-top: 8px;
+      }
+
+      .foundation-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 20px;
+      }
+      .foundation-card {
+        background: #fff;
+        border-radius: 14px;
+        padding: 44px 38px 38px;
+        position: relative;
+        overflow: hidden;
+        transition:
+          box-shadow 0.3s,
+          transform 0.3s;
+        border: 1px solid #ede9e3;
+      }
+      .foundation-card:hover {
+        box-shadow: 0 8px 36px rgba(232, 114, 42, 0.08);
+        transform: translateY(-3px);
+      }
+      .foundation-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--primary);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+      }
+      .foundation-card:hover::before {
+        transform: scaleX(1);
+      }
+      .card-legacy {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      .card-trust-wrapper {
+        grid-column: 2;
+        grid-row: 1/3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .card-trust {
+        background: #1a1a1a;
+        border-color: #1a1a1a;
+        width: 85%;
+      }
+      .card-evolution {
+        grid-column: 1;
+        grid-row: 2;
+      }
+      .fc-number {
+        font-family: var(--font-serif);
+        font-size: 5rem;
+        font-weight: 700;
+        color: rgba(232, 114, 42, 0.07);
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        line-height: 1;
+        pointer-events: none;
+        user-select: none;
+      }
+      .card-trust .fc-number {
+        color: rgba(255, 255, 255, 0.05);
+      }
+      .fc-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #fff4ec;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        border: 1.5px solid #fcd9bf;
+      }
+      .card-trust .fc-icon {
+        background: rgba(232, 114, 42, 0.15);
+        border-color: rgba(232, 114, 42, 0.3);
+      }
+      .foundation-card h3 {
+        font-family: var(--font-serif);
+        font-size: 1.7rem;
+        font-weight: 400;
+        color: #1a1a1a;
+        margin: 0 0 8px;
+      }
+      .card-trust h3 {
+        color: #f5ede0;
+      }
+      .fc-sub {
+        font-size: 0.7rem;
+        color: var(--primary);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 14px;
+        font-style: italic;
+      }
+      .foundation-card p {
+        font-size: 0.875rem;
+        color: #666;
+        line-height: 1.85;
+        margin: 0;
+      }
+      .card-trust p {
+        color: rgba(255, 255, 255, 0.55);
+      }
+      .fc-stat {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid #f0ede9;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.76rem;
+        color: #bbb;
+      }
+      .card-trust .fc-stat {
+        border-top-color: rgba(255, 255, 255, 0.08);
+      }
+      .fc-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--primary);
+        flex-shrink: 0;
+      }
+
+      /* ============================================================
+   PORTFOLIO
+============================================================ */
+      #portfolio-section {
+        padding: 0;
+        overflow: hidden;
+        background: #111;
+      }
+      .portfolio-sticky-wrap {
+        position: relative;
+      }
+      .portfolio-sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-bottom: 5vh;
+      }
+      .portfolio-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 52px 7% 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        z-index: 10;
+      }
+      .portfolio-header-left {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .portfolio-header .section-tag {
+        display: inline-flex;
+        align-items: center;
+        padding-left: 28px;
+        position: relative;
+        margin-bottom: 0;
+      }
+      .portfolio-header .section-tag::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 18px;
+        height: 1px;
+        background: var(--primary);
+      }
+      .portfolio-header h2 {
+        color: #fff;
+        font-size: clamp(1.8rem, 3vw, 3rem);
+        margin: 0;
+        white-space: nowrap;
+      }
+      .portfolio-header h2::after {
+        display: none;
+      }
+      .portfolio-progress {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+        padding-top: 14px;
+      }
+      .pf-scroll-hint {
+        font-size: 0.58rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.25);
+      }
+      .pf-progress-bar {
+        width: 140px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.08);
+        position: relative;
+      }
+      .pf-progress-fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: var(--primary);
+        width: 0;
+        transition: width 0.08s linear;
+      }
+      .pf-counter {
+        font-size: 0.66rem;
+        letter-spacing: 2px;
+        color: rgba(255, 255, 255, 0.25);
+      }
+      .portfolio-track {
+        display: flex;
+        align-items: flex-end;
+        gap: 60px;
+        padding: 0 7%;
+        will-change: transform;
+      }
+      .pf-card {
+        flex: 0 0 560px;
+        height: 68vh;
+        background: #1c1c1c;
+        border-radius: 22px;
+        overflow: hidden;
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .pf-card:hover {
+        transform: translateY(-6px);
+      }
+      .pf-card-img {
+        flex: 1 1 0;
+        position: relative;
+        overflow: hidden;
+        background: #2a2a2a;
+        min-height: 0;
+      }
+      .pf-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .pf-card:hover .pf-card-img img {
+        transform: scale(1.06);
+      }
+      .pf-img-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.15) 45%,
+          transparent 70%
+        );
+        z-index: 1;
+      }
+      .pf-card-num {
+        position: absolute;
+        top: 20px;
+        left: 24px;
+        font-family: var(--font-serif);
+        font-size: 5rem;
+        color: rgba(255, 255, 255, 0.06);
+        line-height: 1;
+        z-index: 2;
+        pointer-events: none;
+        font-weight: 700;
+      }
+      .pf-card-badge {
+        position: absolute;
+        bottom: 24px;
+        left: 24px;
+        font-size: 9px;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: var(--primary);
+        background: rgba(232, 114, 42, 0.1);
+        border: 1px solid rgba(232, 114, 42, 0.28);
+        padding: 5px 14px;
+        border-radius: 20px;
+        z-index: 2;
+        font-weight: 600;
+        backdrop-filter: blur(4px);
+      }
+      .pf-card-body {
+        padding: 26px 30px 30px;
+        background: #181818;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        flex-shrink: 0;
+      }
+      .pf-card-body h3 {
+        font-family: var(--font-serif);
+        font-size: 1.9rem;
+        color: #fff;
+        font-weight: 400;
+        margin: 0 0 8px;
+      }
+      .pf-card-body h3::after {
+        display: none;
+      }
+      .pf-card-body p {
+        font-size: 0.76rem;
+        color: rgba(255, 255, 255, 0.38);
+        line-height: 1.8;
+        margin: 0 0 20px;
+      }
+      .pf-view-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.66rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 700;
+        border-bottom: 1px solid rgba(232, 114, 42, 0.28);
+        padding-bottom: 4px;
+        transition:
+          gap 0.3s,
+          border-color 0.3s;
+      }
+      .pf-view-btn:hover {
+        gap: 16px;
+        border-color: var(--primary);
+      }
+
+      /* ============================================================
+   LEADERSHIP
+============================================================ */
+      #leadership-section {
+        background: #fff;
+      }
+      .leaders-zigzag {
+        display: flex;
+        flex-direction: column;
+        gap: 70px;
+        margin-top: 60px;
+      }
+      .lz-card {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 60px;
+        align-items: center;
+        padding-bottom: 70px;
+        border-bottom: 1px solid #eee;
+        position: relative;
+      }
+      .lz-card:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .lz-card:nth-child(even) {
+        grid-template-columns: 1fr 280px;
+      }
+      .lz-card:nth-child(even) .lz-img {
+        order: 2;
+      }
+      .lz-card:nth-child(even) .lz-info {
+        order: 1;
+      }
+      .lz-img {
+        position: relative;
+      }
+      .lz-img-frame {
+        width: 100%;
+        aspect-ratio: 3/4;
+        overflow: hidden;
+      }
+      .lz-img-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+        display: block;
+      }
+      .lz-img::before {
+        content: "";
+        position: absolute;
+        bottom: -12px;
+        right: -12px;
+        width: 70%;
+        height: 70%;
+        border: 2px solid var(--primary);
+        z-index: -1;
+        opacity: 0;
+        transition:
+          opacity 0.5s,
+          transform 0.5s;
+        transform: translate(-5px, -5px);
+      }
+      .lz-card:hover .lz-img::before {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+      .lz-card:nth-child(even) .lz-img::before {
+        right: auto;
+        left: -12px;
+      }
+      .lz-info {
+        padding: 20px 0;
+      }
+      .lz-num {
+        font-family: var(--font-serif);
+        font-size: 5rem;
+        color: rgba(0, 0, 0, 0.04);
+        line-height: 1;
+        margin-bottom: -10px;
+        display: block;
+      }
+      .lz-info h4 {
+        font-family: var(--font-serif);
+        font-size: 2.6rem;
+        color: var(--dark);
+        font-weight: 500;
+        margin-bottom: 6px;
+        display: inline-block;
+        position: relative;
+      }
+      .lz-info h4::after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: width 0.4s ease;
+      }
+      .lz-card:hover .lz-info h4::after {
+        width: 100%;
+      }
+      .lz-title {
+        color: var(--primary);
+        font-size: 0.62rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 22px;
+      }
+      .lz-bar {
+        width: 40px;
+        height: 2px;
+        background: var(--primary);
+        margin-bottom: 22px;
+        transition: width 0.5s;
+      }
+      .lz-card:hover .lz-bar {
+        width: 80px;
+      }
+      .lz-desc {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        line-height: 1.85;
+        max-width: 480px;
+      }
+
+      /* ============================================================
+   CONTACT CTA
+============================================================ */
+      #contact-cta {
+        background: #fdf8f4;
+        padding: 120px 10%;
+      }
+      .contact-intro {
+        text-align: center;
+        margin-bottom: 70px;
+      }
+      .contact-intro h2 {
+        color: #1a1a1a;
+        display: block;
+      }
+      .contact-intro p {
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 1rem;
+        max-width: 520px;
+        margin: 0 auto;
+        font-weight: 300;
+      }
+      .contact-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .contact-card {
+        background: #fff;
+        border-radius: 14px;
+        padding: 46px 36px 42px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        cursor: pointer;
+        transition:
+          box-shadow 0.3s,
+          transform 0.3s;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid #ede9e3;
+      }
+      .contact-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--primary);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+      }
+      .contact-card:hover::before {
+        transform: scaleX(1);
+      }
+      .contact-card:hover {
+        box-shadow: 0 8px 36px rgba(232, 114, 42, 0.08);
+        transform: translateY(-4px);
+        background: #fffaf7;
+      }
+      .cc-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: #fff4ec;
+        border: 1.5px solid #fcd9bf;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        transition:
+          border-color 0.3s,
+          background 0.3s;
+      }
+      .contact-card:hover .cc-icon {
+        border-color: var(--primary);
+        background: rgba(232, 114, 42, 0.1);
+      }
+      .cc-label {
+        font-size: 0.62rem;
+        letter-spacing: 3px;
+        color: var(--primary);
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+      .cc-title {
+        font-family: var(--font-serif);
+        font-size: 1.55rem;
+        color: #1a1a1a;
+        font-weight: 400;
+        line-height: 1.2;
+      }
+      .cc-desc {
+        font-size: 0.78rem;
+        color: #888;
+        line-height: 1.75;
+      }
+      .cc-btn {
+        margin-top: 8px;
+        padding: 10px 24px;
+        border: 1px solid rgba(232, 114, 42, 0.4);
+        color: var(--primary);
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        background: transparent;
+        cursor: pointer;
+        transition: 0.3s;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 4px;
+        font-family: var(--font-sans);
+      }
+      .cc-btn:hover {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+      }
+
+      /* ============================================================
+   FOOTER
+============================================================ */
+      .footer-skyline-wrap {
+        background: #fdf8f4;
+        line-height: 0;
+        overflow: hidden;
+      }
+      .footer-skyline-wrap img {
+        width: 100%;
+        display: block;
+        filter: brightness(0.55) sepia(0.1);
+        max-height: 200px;
+        object-fit: cover;
+        object-position: bottom;
+      }
+      #ub-footer {
+        background: #242323;
+        color: rgba(255, 255, 255, 0.6);
+        padding: 80px 10% 40px;
+      }
+      .footer-inner {
+        display: grid;
+        grid-template-columns: 1.8fr 1fr 0.8fr 1fr 1.2fr;
+        gap: 36px;
+        margin-bottom: 72px;
+      }
+      .footer-col h5 {
+        color: white;
+        margin-bottom: 28px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+      }
+      .footer-col a {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+        margin-bottom: 13px;
+        font-size: 0.88rem;
+        transition: color 0.3s;
+      }
+      .footer-col a:hover {
+        color: var(--primary);
+      }
+      .footer-col p {
+        font-size: 0.88rem;
+        line-height: 1.8;
+        margin-bottom: 10px;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 36px;
+        text-align: center;
+        font-size: 0.68rem;
+        letter-spacing: 2px;
+      }
+
+      /* ============================================================
+   INQUIRY OVERLAYS
+============================================================ */
+      .overlay-bg {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(10px);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .overlay-bg.active {
+        display: flex;
+        opacity: 1;
+      }
+      .popup-box {
+        background: #fff;
+        width: 90%;
+        max-width: 500px;
+        padding: 50px;
+        position: relative;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+      }
+      .popup-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        border: none;
+        background: none;
+        font-size: 1.4rem;
+        cursor: pointer;
+        color: var(--dark);
+      }
+      .popup-box h3 {
+        font-family: var(--font-serif);
+        font-size: 2rem;
+        margin-bottom: 25px;
+        text-align: center;
+      }
+      .choice-btns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .choice-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 28px;
+        background: var(--light);
+        text-decoration: none;
+        color: var(--dark);
+        border: 1px solid transparent;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      .choice-card:hover {
+        border-color: var(--primary);
+        background: #fff;
+      }
+      .choice-icon {
+        font-size: 2rem;
+        margin-bottom: 8px;
+      }
+      .inquiry-form input,
+      .inquiry-form select,
+      .inquiry-form textarea {
+        width: 100%;
+        padding: 14px 0;
+        margin-bottom: 18px;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        font-family: var(--font-sans);
+        outline: none;
+        background: transparent;
+        font-size: 0.88rem;
+      }
+      .inquiry-form input:focus,
+      .inquiry-form select:focus,
+      .inquiry-form textarea:focus {
+        border-bottom-color: var(--primary);
+      }
+      .inquiry-form button {
+        width: 100%;
+        padding: 16px;
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        font-weight: 700;
+        letter-spacing: 2px;
+        cursor: pointer;
+        font-family: var(--font-sans);
+      }
+
+      /* ============================================================
+   SCROLL FADE-IN
+============================================================ */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(36px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ============================================================
+   RESPONSIVE
+============================================================ */
+      @media (max-width: 1024px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+        .logo-panel {
+          border-left: none;
+          border-top: 1px solid #eee;
+          padding: 36px 0;
+        }
+        section {
+          padding: 80px 6%;
+        }
+        .pf-dots {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          padding-top: 20px;
+          background: #111;
+        }
+        .pf-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.2);
+          transition:
+            background 0.3s,
+            transform 0.3s;
+        }
+        .pf-dot.active {
+          background: var(--primary);
+          transform: scale(1.3);
+        }
+        .stats-container {
+          grid-template-columns: 1fr 1fr;
+        }
+        .footer-inner {
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+        }
+        .contact-cards {
+          grid-template-columns: 1fr;
+        }
+        #foundation-section {
+          padding: 80px 5%;
+        }
+        #contact-cta {
+          padding: 80px 6%;
+        }
+        .lz-card,
+        .lz-card:nth-child(even) {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .lz-card:nth-child(even) .lz-img,
+        .lz-card:nth-child(even) .lz-info {
+          order: unset;
+        }
+        .lz-img-frame {
+          max-width: 260px;
+        }
+      }
+      /* ============================================================
+       RESPONSIVE — MOBILE (≤768px)
+    ============================================================ */
+      /* ============================================================
+        RESPONSIVE — MOBILE (≤768px)
+      ============================================================ */
+      @media (max-width: 768px) {
+        /* Hero - Bottom Side Text Placement */
+        #hero {
+          display: flex !important;
+          flex-direction: column !important;
+          /* Force it to take the full visible height of the phone screen */
+          height: 100dvh !important;
+          width: 100% !important;
+
+          /* Background Image */
+          background-image:
+            linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.85)),
+            url("images/ubmob3.png") !important;
+          background-attachment: fixed !important;
+          background-position: center center !important;
+          background-size: cover !important;
+
+          /* Alignment Logic */
+          justify-content: flex-end !important; /* Pushes text to the bottom */
+          align-items: center !important; /* Centers text horizontally */
+          text-align: center !important;
+
+          /* Distance from the very bottom edge */
+          padding-bottom: 80px !important;
+        }
+
+        #hero h1 {
+          font-size: clamp(2.2rem, 10vw, 2.8rem) !important;
+          line-height: 1.1 !important;
+          margin-bottom: 12px !important;
+          order: 2; /* "Building Nashik" */
+        }
+
+        .hero-eyebrow {
+          font-size: 0.65rem !important;
+          letter-spacing: 5px !important;
+          margin-bottom: 8px !important;
+          order: 1; /* "Nashik, Maharashtra" */
+        }
+
+        .hero-sub {
+          font-size: 0.82rem !important;
+          letter-spacing: 2px !important;
+          max-width: 280px !important;
+          margin: 0 auto !important;
+          order: 3; /* "Three generations..." */
+        }
+
+        /* Hide the scroll line on mobile to keep the bottom clean */
+        .hero-scroll-line,
+        .hero-line {
+          display: none !important;
+        }
+        /* ============================================================
+   ADD THESE RULES inside your existing @media (max-width: 768px) block
+============================================================ */
+
+        /* Hide desktop nav links and inquiry button on mobile */
+        #ub-nav {
+          display: none !important;
+        }
+
+        .inquiry-btn {
+          display: none !important;
+        }
+
+        /* Show the hamburger on mobile */
+        .hamburger {
+          display: flex !important;
+        }
+
+        /* About */
+        .stats-container {
+          grid-template-columns: 1fr 1fr;
+          gap: 24px;
+        }
+        .stat-item h3 {
+          font-size: 2.6rem;
+        }
+        .logo-panel img {
+          max-width: 200px;
+        }
+
+        /* Foundation */
+        #foundation-section {
+          padding: 60px 5%;
+        }
+        .foundation-layout {
+          grid-template-columns: 1fr;
+          gap: 14px;
+        }
+        .card-legacy,
+        .card-evolution,
+        .card-trust-wrapper {
+          grid-column: 1 !important;
+          grid-row: auto !important;
+        }
+        .card-trust-wrapper {
+          display: block;
+        }
+        .card-trust {
+          width: 100% !important;
+        }
+        .foundation-card {
+          padding: 34px 26px 28px;
+        }
+
+        /* Portfolio — mobile cinematic swipe cards */
+        #portfolio-section {
+          padding: 60px 0 80px !important;
+          background: #111 !important;
+        }
+        .portfolio-sticky-wrap {
+          height: auto !important;
+        }
+        .portfolio-sticky {
+          position: relative !important;
+          height: auto !important;
+          overflow: visible !important;
+          padding-bottom: 0 !important;
+          justify-content: flex-start !important;
+        }
+        .portfolio-header {
+          position: relative !important;
+          padding: 0 5% 36px !important;
+          flex-direction: column !important;
+          gap: 6px !important;
+        }
+        .portfolio-header h2 {
+          font-size: 2rem !important;
+        }
+        .pf-progress-bar,
+        .pf-scroll-hint,
+        .pf-counter {
+          display: none !important;
+        }
+
+        /* Horizontal snap scroll track */
+        .portfolio-track {
+          display: flex !important;
+          flex-direction: row !important;
+          gap: 16px !important;
+          padding: 0 5% 24px !important;
+          transform: none !important;
+          overflow-x: auto !important;
+          overflow-y: hidden !important;
+          scroll-snap-type: x mandatory !important;
+          -webkit-overflow-scrolling: touch !important;
+          scrollbar-width: none !important;
+        }
+        .portfolio-track::-webkit-scrollbar {
+          display: none !important;
+        }
+
+        /* Each card snaps into place */
+        .pf-card {
+          flex: 0 0 80vw !important;
+          max-width: 320px !important;
+          height: 72vw !important;
+          max-height: 400px !important;
+          border-radius: 16px !important;
+          scroll-snap-align: start !important;
+          position: relative !important;
+          overflow: hidden !important;
+          display: block !important;
+          transform: none !important;
+          border: none !important;
+        }
+
+        /* Image fills full card */
+        .pf-card-img {
+          position: absolute !important;
+          inset: 0 !important;
+          height: 100% !important;
+          flex: none !important;
+        }
+        .pf-card-img img {
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover !important;
+          filter: brightness(0.45) !important;
+        }
+        .pf-img-overlay {
+          background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.95) 0%,
+            rgba(0, 0, 0, 0.3) 50%,
+            transparent 100%
+          ) !important;
+        }
+
+        /* Card body floats over image */
+        .pf-card-body {
+          position: absolute !important;
+          bottom: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          padding: 20px 20px 22px !important;
+          background: transparent !important;
+          border-top: none !important;
+          z-index: 3 !important;
+        }
+        .pf-card-body h3 {
+          font-size: 1.6rem !important;
+          margin-bottom: 6px !important;
+          color: #fff !important;
+        }
+        .pf-card-body p {
+          font-size: 0.72rem !important;
+          color: rgba(255, 255, 255, 0.5) !important;
+          margin-bottom: 12px !important;
+          display: -webkit-box !important;
+          -webkit-line-clamp: 2 !important;
+          -webkit-box-orient: vertical !important;
+          overflow: hidden !important;
+        }
+        .pf-card-badge {
+          bottom: auto !important;
+          top: 16px !important;
+          left: 16px !important;
+        }
+        .pf-card-num {
+          font-size: 4rem !important;
+          top: 10px !important;
+          left: auto !important;
+          right: 16px !important;
+          color: rgba(255, 255, 255, 0.07) !important;
+        }
+
+        /* Dot indicators below the track */
+        .portfolio-track::after {
+          content: "" !important;
+          flex: 0 0 1px !important;
+          align-self: stretch !important;
+        }
+
+        /* Scroll hint label */
+        .pf-scroll-hint {
+          display: block !important;
+          font-size: 0.55rem !important;
+          letter-spacing: 2.5px !important;
+          color: rgba(255, 255, 255, 0.2) !important;
+          text-transform: uppercase !important;
+          text-align: right !important;
+          padding-right: 5% !important;
+          margin-bottom: 16px !important;
+        }
+
+        /* Leadership */
+        /* Leadership — mobile card format */
+        #leadership-section {
+          padding: 60px 0;
+        }
+        #leadership-section > .section-tag,
+        #leadership-section > h2,
+        #leadership-section > p {
+          padding: 0 5%;
+        }
+        .leaders-zigzag {
+          gap: 0;
+          margin-top: 40px;
+        }
+        .lz-card {
+          display: block !important;
+          padding: 0 !important;
+          border-bottom: none !important;
+          margin-bottom: 0 !important;
+          position: relative;
+          overflow: hidden;
+        }
+        .lz-img {
+          width: 100%;
+          position: relative;
+        }
+        .lz-img::before {
+          display: none;
+        }
+        .lz-img-frame {
+          width: 100%;
+          max-width: 100%;
+          aspect-ratio: 4/5;
+          max-height: 480px;
+          position: relative;
+        }
+        .lz-img-frame img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: top center;
+          display: block;
+          filter: brightness(0.55);
+        }
+        .lz-info {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding: 28px 24px 32px;
+          background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.92) 0%,
+            rgba(0, 0, 0, 0.6) 60%,
+            transparent 100%
+          );
+          z-index: 2;
+        }
+        .lz-num {
+          font-family: var(--font-serif);
+          font-size: 3.5rem;
+          color: rgba(255, 255, 255, 0.08);
+          line-height: 1;
+          margin-bottom: -6px;
+          display: block;
+        }
+        .lz-info h4 {
+          font-family: var(--font-serif);
+          font-size: 2.2rem;
+          color: #ffffff;
+          font-weight: 500;
+          margin-bottom: 4px;
+          display: block;
+        }
+        .lz-info h4::after {
+          display: none;
+        }
+        .lz-title {
+          color: var(--primary);
+          font-size: 0.6rem;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          font-weight: 700;
+          display: block;
+          margin-bottom: 12px;
+        }
+        .lz-bar {
+          width: 30px;
+          height: 1px;
+          background: var(--primary);
+          margin-bottom: 12px;
+        }
+        .lz-desc {
+          font-size: 0.78rem;
+          color: rgba(255, 255, 255, 0.6);
+          line-height: 1.75;
+          max-width: 100%;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        /* Contact */
+        #contact-cta {
+          padding: 70px 5%;
+        }
+        .contact-card {
+          padding: 34px 26px;
+        }
+        /* Footer */
+        #ub-footer {
+          padding: 56px 5% 28px;
+        }
+        .footer-inner {
+          grid-template-columns: 1fr 1fr;
+          gap: 32px 24px;
+          margin-bottom: 44px;
+        }
+        .footer-bottom {
+          font-size: 0.6rem;
+          letter-spacing: 1px;
+        }
+        .footer-inner .footer-col:first-child {
+          grid-column: 1 / -1;
+        }
+
+        /* Popup */
+        .popup-box {
+          padding: 36px 24px;
+          width: 94%;
+        }
+        .choice-btns {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- LOADER -->
+    <div id="ub-loader">
+      <div class="loader-text-wrap">
+        <h1 class="loader-welcome">Welcome</h1>
+        <p class="loader-sub">United Builders · Est. 1968</p>
+      </div>
+      <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+    </div>
+
+    <!-- BACKDROP -->
+    <div id="menu-backdrop"></div>
+
+    <!-- HEADER -->
+    <header id="ub-topbar">
+      <div class="nav-logo">
+        <img src="images/UB-LOGO-GRAY.svg" alt="United Builders" />
+      </div>
+
+      <!-- Desktop nav -->
+      <nav id="ub-nav">
+        <a href="index.html">Home</a>
+        <div class="nav-dropdown">
+          <a href="#">Projects ▾</a>
+          <div class="dropdown-menu">
+            <a href="#">Residential</a>
+            <a href="#">Commercial</a>
+            <a href="#">Plots</a>
+            <a href="#">Villas</a>
+          </div>
+        </div>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <button class="inquiry-btn" id="openInquiry">Inquiry</button>
+
+      <!-- Hamburger -->
+      <button
+        class="hamburger"
+        id="hamburgerBtn"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- MOBILE MENU DRAWER -->
+    <nav id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <div class="mm-header">
+        <img src="images/UB-LOGO-GRAY.svg" alt="United Builders" />
+        <button class="mm-close" id="menuClose" aria-label="Close menu">
+          ✕
+        </button>
+      </div>
+      <div class="mm-links">
+        <a href="index.html" class="mm-link">Home</a>
+
+        <button
+          class="mm-accordion-btn"
+          id="projectsAccBtn"
+          aria-expanded="false"
+        >
+          Projects
+          <span class="mm-acc-arrow">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path
+                d="M2 4l4 4 4-4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+        </button>
+        <div class="mm-sub" id="projectsSub">
+          <a href="#">Residential</a>
+          <a href="#">Commercial</a>
+          <a href="#">Plots</a>
+          <a href="#">Villas</a>
+        </div>
+
+        <a href="about.html" class="mm-link">About Us</a>
+        <a href="contact.html" class="mm-link">Contact</a>
+      </div>
+      <div class="mm-footer">
+        <button class="mm-cta" id="mobileInquiryBtn">Send Inquiry</button>
+        <div class="mm-contact-links">
+          <a href="tel:+91XXXXXXXXXX">📞 +91 XXXXXXXXXX</a>
+          <a href="mailto:hello@unitedbuilders.in">✉ hello@unitedbuilders.in</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <!-- HERO -->
+      <section id="hero">
+        <p class="hero-eyebrow">Nashik, Maharashtra</p>
+        <h1>Building Nashik<br />Since 1968</h1>
+        <p class="hero-sub">Three generations. One standard. No compromise.</p>
+        <div class="hero-scroll-line"></div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about-section">
+        <div class="about-grid">
+          <div>
+            <span class="section-tag fade-in-up">Our Story</span>
+            <h2 class="fade-in-up">About United Builders</h2>
+            <p class="about-intro fade-in-up">
+              United Builders is a premium real estate developer based in
+              Nashik, Maharashtra, founded in 1968. The firm specializes in
+              high-end, curated developments and is known for:
+            </p>
+            <div class="stats-container">
+              <div class="stat-item fade-in-up">
+                <h3>
+                  <span class="counter" data-target="5" data-suffix="+">0</span>
+                </h3>
+                <p>Decades of Unbroken Delivery</p>
+              </div>
+              <div class="stat-item fade-in-up">
+                <h3>
+                  <span class="counter" data-target="100" data-suffix="+"
+                    >0</span
+                  >
+                </h3>
+                <p>Completed Projects</p>
+              </div>
+              <div class="stat-item fade-in-up">
+                <h3>
+                  <span class="counter" data-target="0" data-suffix="">0</span>
+                </h3>
+                <p>Disputes in 56 Years</p>
+              </div>
+              <div class="stat-item fade-in-up">
+                <h3>
+                  <span class="counter" data-target="70" data-suffix="%"
+                    >0</span
+                  >
+                </h3>
+                <p>Repeat Customers</p>
+              </div>
+              <div class="stat-item fade-in-up">
+                <h3>
+                  <span class="counter" data-target="3" data-suffix="">0</span>
+                </h3>
+                <p>Generations of Family</p>
+              </div>
+            </div>
+          </div>
+          <div class="logo-panel fade-in-up">
+            <img src="images/UB-LOGO-GRAY.svg" alt="United Builders Legacy" />
+          </div>
+        </div>
+      </section>
+
+      <!-- FOUNDATION -->
+      <section id="foundation-section">
+        <div class="section-header">
+          <span class="section-tag">Who We Are</span>
+          <h2>Our <span>Foundation</span></h2>
+          <p class="section-subtitle">
+            Three principles. Three generations. One standard.
+          </p>
+        </div>
+        <div class="foundation-layout">
+          <div class="foundation-card card-legacy fade-in-up">
+            <div class="fc-number">01</div>
+            <div class="fc-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#e8722a"
+                stroke-width="1.5"
+                width="18"
+                height="18"
+              >
+                <path d="M3 21h18M5 21V7l7-4 7 4v14" />
+                <path d="M9 21v-6h6v6" />
+              </svg>
+            </div>
+            <span class="fc-sub">Three generations, one standard</span>
+            <h3>Legacy</h3>
+            <p>
+              United Builders is not simply a company that has been around for a
+              long time. We are a family that has built Nashik across three
+              generations — a continuity of purpose that shapes every decision.
+            </p>
+            <div class="fc-stat">
+              <div class="fc-dot"></div>
+              Est. 1968 · Nashik
+            </div>
+          </div>
+          <div class="card-trust-wrapper">
+            <div class="foundation-card card-trust fade-in-up">
+              <div class="fc-number">02</div>
+              <div class="fc-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#e8722a"
+                  stroke-width="1.5"
+                  width="18"
+                  height="18"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <span class="fc-sub">Earned through practice, not ads</span>
+              <h3>Trust</h3>
+              <p>
+                We sold on carpet area before it was mandatory. We offered
+                construction warranties before they were regulated. Zero
+                disputes. Seventy percent repeat customers. Not statistics — a
+                record of performance.
+              </p>
+              <div class="fc-stat">
+                <div class="fc-dot"></div>
+                70% repeat customers · Zero disputes
+              </div>
+            </div>
+          </div>
+          <div class="foundation-card card-evolution fade-in-up">
+            <div class="fc-number">03</div>
+            <div class="fc-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#e8722a"
+                stroke-width="1.5"
+                width="18"
+                height="18"
+              >
+                <path
+                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                />
+              </svg>
+            </div>
+            <span class="fc-sub">Growth guided by intention</span>
+            <h3>Evolution</h3>
+            <p>
+              We have moved from volume to vision — from standard residential to
+              curated developments for buyers who understand that quality is an
+              investment. Picasso. Istana. Earth One. Infinity.
+            </p>
+            <div class="fc-stat">
+              <div class="fc-dot"></div>
+              4 landmark projects
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PORTFOLIO -->
+      <section id="portfolio-section">
+        <div class="portfolio-sticky-wrap" id="portfolioStickyWrap">
+          <div class="portfolio-sticky" id="portfolioSticky">
+            <div class="portfolio-header">
+              <div class="portfolio-header-left">
+                <span class="section-tag">Our Portfolio</span>
+                <h2>Current Projects</h2>
+              </div>
+              <div class="portfolio-progress">
+                <span class="pf-scroll-hint">Scroll to explore →</span>
+                <div class="pf-progress-bar">
+                  <div class="pf-progress-fill" id="pfProgressFill"></div>
+                </div>
+                <span class="pf-counter" id="pfCounter">01 / 04</span>
+              </div>
+            </div>
+            <div class="portfolio-track" id="portfolioTrack">
+              <div class="pf-card">
+                <div class="pf-card-img">
+                  <img src="images/picasso.png" alt="United Picasso" />
+                  <div class="pf-img-overlay"></div>
+                  <div class="pf-card-num">01</div>
+                  <span class="pf-card-badge">Residential · Premium</span>
+                </div>
+                <div class="pf-card-body">
+                  <h3>United Picasso</h3>
+                  <p>
+                    A canvas of contemporary living. Where art meets
+                    architecture in Nashik's most discerning address.
+                  </p>
+                  <a href="#" class="pf-view-btn">View Details &#8594;</a>
+                </div>
+              </div>
+              <div class="pf-card">
+                <div class="pf-card-img">
+                  <img src="images/istana.jpg" alt="Istana" />
+                  <div class="pf-img-overlay"></div>
+                  <div class="pf-card-num">02</div>
+                  <span class="pf-card-badge">Luxury Residences</span>
+                </div>
+                <div class="pf-card-body">
+                  <h3>Istana</h3>
+                  <p>
+                    Istana — meaning palace in Malay — is a residence of quiet
+                    grandeur. Premium finishes, considered spaces.
+                  </p>
+                  <a href="#" class="pf-view-btn">View Details &#8594;</a>
+                </div>
+              </div>
+              <div class="pf-card">
+                <div class="pf-card-img">
+                  <img src="images/maingate.jpeg" alt="Earth One" />
+                  <div class="pf-img-overlay"></div>
+                  <div class="pf-card-num">03</div>
+                  <span class="pf-card-badge">Sustainable Living</span>
+                </div>
+                <div class="pf-card-body">
+                  <h3>Earth One</h3>
+                  <p>
+                    A return to what matters. Earth One is for those who seek
+                    harmony — sustainable design, open spaces, human scale.
+                  </p>
+                  <a href="#" class="pf-view-btn">View Details &#8594;</a>
+                </div>
+              </div>
+              <div class="pf-card">
+                <div class="pf-card-img">
+                  <img src="images/infinity.jpg" alt="United Infinity" />
+                  <div class="pf-img-overlay"></div>
+                  <div class="pf-card-num">04</div>
+                  <span class="pf-card-badge">Ultra Premium</span>
+                </div>
+                <div class="pf-card-body">
+                  <h3>United Infinity</h3>
+                  <p>
+                    No horizon. No ceiling. United Infinity is an elevation of
+                    the premium residential standard.
+                  </p>
+                  <a href="#" class="pf-view-btn">View Details &#8594;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pf-dots" id="pfDots">
+          <span class="pf-dot active"></span>
+          <span class="pf-dot"></span>
+          <span class="pf-dot"></span>
+          <span class="pf-dot"></span>
+        </div>
+      </section>
+
+      <!-- LEADERSHIP -->
+      <section id="leadership-section">
+        <span class="section-tag fade-in-up">The People</span>
+        <h2 class="fade-in-up">Stewards of the Legacy</h2>
+        <p
+          style="
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            max-width: 600px;
+            font-weight: 300;
+          "
+          class="fade-in-up"
+        >
+          Three generations. One family. One standard.
+        </p>
+        <div class="leaders-zigzag">
+          <div class="lz-card fade-in-up">
+            <div class="lz-img">
+              <div class="lz-img-frame">
+                <img src="images/rajanDaryani.jpg" alt="Rajan Dariyani" />
+              </div>
+            </div>
+            <div class="lz-info">
+              <span class="lz-num">01</span>
+              <h4>Rajan Dariyani</h4>
+              <span class="lz-title">Founder &amp; Chairman</span>
+              <div class="lz-bar"></div>
+              <p class="lz-desc">
+                The architect of United Builders' legacy. Rajan Dariyani laid
+                the foundation — not just in bricks, but in values that have
+                endured for over five decades.
+              </p>
+            </div>
+          </div>
+          <div class="lz-card fade-in-up">
+            <div class="lz-img">
+              <div class="lz-img-frame">
+                <img src="images/PramodDaryani.jpg" alt="Pramod Dariyani" />
+              </div>
+            </div>
+            <div class="lz-info">
+              <span class="lz-num">02</span>
+              <h4>Pramod Dariyani</h4>
+              <span class="lz-title">Managing Director</span>
+              <div class="lz-bar"></div>
+              <p class="lz-desc">
+                The bridge between legacy and evolution. Pramod Dariyani has
+                steered the firm from volume into curated excellence while
+                ensuring not a single founding principle was compromised.
+              </p>
+            </div>
+          </div>
+          <div class="lz-card fade-in-up">
+            <div class="lz-img">
+              <div class="lz-img-frame">
+                <img src="images/KaranDaryani.jpg" alt="Karan Dariyani" />
+              </div>
+            </div>
+            <div class="lz-info">
+              <span class="lz-num">03</span>
+              <h4>Karan Dariyani</h4>
+              <span class="lz-title">Director – Projects</span>
+              <div class="lz-bar"></div>
+              <p class="lz-desc">
+                The new chapter. Bringing precision, contemporary
+                design-thinking, and a rigorous eye for detail to each
+                development.
+              </p>
+            </div>
+          </div>
+          <div class="lz-card fade-in-up">
+            <div class="lz-img">
+              <div class="lz-img-frame">
+                <img src="images/riya-dariyani.jpg" alt="Riya Dariyani" />
+              </div>
+            </div>
+            <div class="lz-info">
+              <span class="lz-num">04</span>
+              <h4>Riya Dariyani</h4>
+              <span class="lz-title">Director – Marketing</span>
+              <div class="lz-bar"></div>
+              <p class="lz-desc">
+                The voice of the brand. Riya Dariyani ensures that the United
+                identity reflects the standard it has always delivered —
+                authentic, refined, and deeply trustworthy.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT CTA -->
+      <section id="contact-cta">
+        <div class="contact-intro">
+          <span class="section-tag">Connect With Us</span>
+          <h2>Get in Touch</h2>
+          <p>
+            Every remarkable journey begins with a conversation. Tell us what
+            you're looking for.
+          </p>
+        </div>
+        <div class="contact-cards">
+          <div class="contact-card fade-in-up" id="ccCard1">
+            <div class="cc-icon">🏠</div>
+            <span class="cc-label">Interested In</span>
+            <div class="cc-title">Our Projects?</div>
+            <p class="cc-desc">
+              Explore our curated portfolio of premium residences. Let us help
+              you find the home that reflects your standard.
+            </p>
+            <span class="cc-btn">Enquire Now</span>
+          </div>
+          <div
+            class="contact-card fade-in-up"
+            style="transition-delay: 0.1s"
+            id="ccCard2"
+          >
+            <div class="cc-icon">🤝</div>
+            <span class="cc-label">Channel Partner</span>
+            <div class="cc-title">Opportunities?</div>
+            <p class="cc-desc">
+              Join Nashik's most trusted real estate network. We believe in
+              partnerships built on integrity and mutual growth.
+            </p>
+            <span class="cc-btn">Partner With Us</span>
+          </div>
+          <div
+            class="contact-card fade-in-up"
+            style="transition-delay: 0.2s"
+            id="ccCard3"
+          >
+            <div class="cc-icon">💼</div>
+            <span class="cc-label">Business &amp; Corporate</span>
+            <div class="cc-title">Inquiries?</div>
+            <p class="cc-desc">
+              For institutional, corporate, or strategic conversations — our
+              leadership team is ready to engage.
+            </p>
+            <span class="cc-btn">Contact Us</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <div class="footer-skyline-wrap">
+      <img src="images/ft1.png" alt="Nashik Skyline" />
+    </div>
+    <footer id="ub-footer">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <img
+            src="images/UB-Logo-white.svg"
+            style="height: 46px; margin-bottom: 28px"
+            alt="United Builders"
+          />
+          <p>Building Nashik since 1968. Three generations. One standard.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Navigate</h5>
+          <a href="index.html">Home</a>
+          <a href="about.html">Our Story</a>
+          <a href="#">Projects</a>
+          <a href="#">The Legacy</a>
+          <a href="#">Media</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Follow Us</h5>
+          <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="#" target="_blank" rel="noopener">Instagram</a>
+          <a href="#" target="_blank" rel="noopener">YouTube</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <a href="#">RERA Registration</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Disclaimer</a>
+          <a href="#">Cancellation Policy</a>
+        </div>
+
+        <div class="footer-col">
+          <h5>Get In Touch</h5>
+          <p>Parijat Nagar, Nashik<br />Maharashtra 422009</p>
+          <p style="margin-top: 14px">hello@unitedbuilders.in</p>
+          <p>+91 XXXXXXXXXX</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        &copy; 1968-2025 United Builders. All rights reserved. Design for
+        Impact. Built to Last
+      </div>
+    </footer>
+
+    <!-- INQUIRY OVERLAYS -->
+    <div id="choice-overlay" class="overlay-bg">
+      <div class="popup-box">
+        <button class="popup-close" id="closeChoice">✕</button>
+        <h3>Connect With Us</h3>
+        <div class="choice-btns">
+          <a href="tel:+91XXXXXXXXXX" class="choice-card">
+            <span class="choice-icon">📞</span>
+            <span style="font-weight: 600; letter-spacing: 1px">Call Us</span>
+          </a>
+          <div class="choice-card" id="showFormTrigger">
+            <span class="choice-icon">✉</span>
+            <span style="font-weight: 600; letter-spacing: 1px"
+              >Inquiry Form</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="form-overlay" class="overlay-bg">
+      <div class="popup-box">
+        <button class="popup-close" id="closeForm">✕</button>
+        <h3>Send an Inquiry</h3>
+        <form
+          class="inquiry-form"
+          action="https://formsubmit.co/hello@unitedbuilders.in"
+          method="POST"
+        >
+          <input name="Full Name" placeholder="Full Name" required />
+          <input
+            name="Email"
+            type="email"
+            placeholder="Email Address"
+            required
+          />
+          <input
+            name="Mobile"
+            type="tel"
+            placeholder="Mobile Number"
+            required
+          />
+          <select name="Reason" required>
+            <option value="">Select Reason</option>
+            <option>Project Inquiry</option>
+            <option>Partnership</option>
+            <option>General Support</option>
+          </select>
+          <textarea
+            name="Message"
+            placeholder="How can we help?"
+            rows="3"
+            required
+          ></textarea>
+          <button type="submit">SUBMIT INQUIRY</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+      (function () {
+        "use strict";
+
+        /* ---- Loader ---- */
+        window.addEventListener("load", function () {
+          var loader = document.getElementById("ub-loader");
+          setTimeout(function () {
+            loader.style.opacity = "0";
+            setTimeout(function () {
+              loader.style.display = "none";
+            }, 800);
+          }, 1800);
+        });
+
+        /* ---- Navbar: show after hero, scrolled style ---- */
+        var header = document.getElementById("ub-topbar");
+        var heroEl = document.getElementById("hero");
+        function onScroll() {
+          var heroH = heroEl ? heroEl.offsetHeight : window.innerHeight;
+          if (window.scrollY > heroH * 0.85) {
+            header.classList.add("visible");
+          } else {
+            header.classList.remove("visible");
+          }
+          header.classList.toggle("scrolled", window.scrollY > heroH * 0.85);
+        }
+        window.addEventListener("scroll", onScroll, { passive: true });
+
+        /* ---- Mobile menu ---- */
+        var hamburger = document.getElementById("hamburgerBtn");
+        var mobileMenu = document.getElementById("mobile-menu");
+        var backdrop = document.getElementById("menu-backdrop");
+        var menuClose = document.getElementById("menuClose");
+
+        function openMenu() {
+          mobileMenu.classList.add("open");
+          backdrop.classList.add("active");
+          hamburger.classList.add("open");
+          hamburger.setAttribute("aria-expanded", "true");
+          document.body.style.overflow = "hidden";
+        }
+        function closeMenu() {
+          mobileMenu.classList.remove("open");
+          backdrop.classList.remove("active");
+          hamburger.classList.remove("open");
+          hamburger.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        }
+
+        hamburger.addEventListener("click", function () {
+          mobileMenu.classList.contains("open") ? closeMenu() : openMenu();
+        });
+        menuClose.addEventListener("click", closeMenu);
+        backdrop.addEventListener("click", closeMenu);
+
+        /* ---- Projects accordion ---- */
+        var accBtn = document.getElementById("projectsAccBtn");
+        var accSub = document.getElementById("projectsSub");
+        accBtn.addEventListener("click", function () {
+          var isOpen = accSub.classList.contains("open");
+          accSub.classList.toggle("open", !isOpen);
+          accBtn.classList.toggle("active", !isOpen);
+          accBtn.setAttribute("aria-expanded", String(!isOpen));
+        });
+
+        /* ---- Inquiry overlays ---- */
+        var choiceOverlay = document.getElementById("choice-overlay");
+        var formOverlay = document.getElementById("form-overlay");
+
+        function openInquiry() {
+          closeMenu();
+          choiceOverlay.classList.add("active");
+        }
+        document
+          .getElementById("openInquiry")
+          .addEventListener("click", openInquiry);
+        document
+          .getElementById("mobileInquiryBtn")
+          .addEventListener("click", openInquiry);
+
+        document
+          .getElementById("closeChoice")
+          .addEventListener("click", function () {
+            choiceOverlay.classList.remove("active");
+          });
+        document
+          .getElementById("showFormTrigger")
+          .addEventListener("click", function () {
+            choiceOverlay.classList.remove("active");
+            formOverlay.classList.add("active");
+          });
+        document
+          .getElementById("closeForm")
+          .addEventListener("click", function () {
+            formOverlay.classList.remove("active");
+          });
+
+        window.addEventListener("click", function (e) {
+          if (e.target === choiceOverlay)
+            choiceOverlay.classList.remove("active");
+          if (e.target === formOverlay) formOverlay.classList.remove("active");
+        });
+
+        /* Contact cards trigger inquiry */
+        ["ccCard1", "ccCard2", "ccCard3"].forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el) el.addEventListener("click", openInquiry);
+        });
+
+        /* ---- Scroll fade-in ---- */
+        var fadeEls = document.querySelectorAll(".fade-in-up");
+        var fadeObs = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("visible");
+                fadeObs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
+        fadeEls.forEach(function (el) {
+          fadeObs.observe(el);
+        });
+
+        /* ---- Counters ---- */
+        function animateCounter(el) {
+          const target = parseInt(el.dataset.target);
+          const suffix = el.dataset.suffix || "";
+
+          // Cancel any animation already running on this element
+          if (el._rafId) cancelAnimationFrame(el._rafId);
+
+          if (target === 0) {
+            el.textContent = "0" + suffix;
+            return;
+          }
+
+          const duration = 1800;
+          const start = performance.now();
+
+          function update(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(eased * target) + suffix;
+            if (progress < 1) {
+              el._rafId = requestAnimationFrame(update);
+            } else {
+              el._rafId = null;
+            }
+          }
+
+          el._rafId = requestAnimationFrame(update);
+        }
+
+        const counterObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                // Reset to 0 visually before re-animating
+                e.target.textContent = "0" + (e.target.dataset.suffix || "");
+                animateCounter(e.target);
+                // ❌ Do NOT unobserve — keeps watching so it replays every time
+              } else {
+                // When element leaves viewport, cancel any running animation
+                if (e.target._rafId) {
+                  cancelAnimationFrame(e.target._rafId);
+                  e.target._rafId = null;
+                }
+              }
+            });
+          },
+          {
+            threshold: 0.3, // starts when 30% of the counter is visible
+            rootMargin: "0px", // no extra offset
+          },
+        );
+
+        document
+          .querySelectorAll(".counter")
+          .forEach((el) => counterObserver.observe(el));
+
+        /* ---- GSAP Portfolio Horizontal Scroll ---- */
+        if (
+          typeof gsap !== "undefined" &&
+          typeof ScrollTrigger !== "undefined"
+        ) {
+          gsap.registerPlugin(ScrollTrigger);
+
+          function initPortfolio() {
+            ScrollTrigger.getAll().forEach(function (t) {
+              t.kill();
+            });
+            var wrap = document.getElementById("portfolioStickyWrap");
+            var sticky = document.getElementById("portfolioSticky");
+            var track = document.getElementById("portfolioTrack");
+            if (!wrap || !track) return;
+            if (window.innerWidth <= 768) {
+              wrap.style.height = "";
+              track.style.transform = "";
+              return;
+            }
+            var cards = Array.from(track.querySelectorAll(".pf-card"));
+            var fill = document.getElementById("pfProgressFill");
+            var counter = document.getElementById("pfCounter");
+            var total = cards.length;
+            var cardW = cards[0].offsetWidth;
+            var gap = 60;
+            var scrollDist = (cardW + gap) * (total - 1);
+            wrap.style.height = scrollDist + window.innerHeight + "px";
+            gsap.to(track, {
+              x: -scrollDist,
+              ease: "none",
+              scrollTrigger: {
+                trigger: wrap,
+                start: "top top",
+                end: function () {
+                  return "+=" + scrollDist;
+                },
+                scrub: 1.2,
+                pin: sticky,
+                pinSpacing: false,
+                anticipatePin: 1,
+                onUpdate: function (self) {
+                  if (fill) fill.style.width = self.progress * 100 + "%";
+                  var idx = Math.min(
+                    Math.round(self.progress * (total - 1)),
+                    total - 1,
+                  );
+                  if (counter)
+                    counter.textContent = "0" + (idx + 1) + " / 0" + total;
+                },
+              },
+            });
+          }
+          initPortfolio();
+          var resizeTimer;
+          window.addEventListener("resize", function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(initPortfolio, 300);
+          });
+        }
+        /* ---- Mobile portfolio dot indicators ---- */
+        var track = document.getElementById("portfolioTrack");
+        var dots = document.querySelectorAll(".pf-dot");
+        if (track && dots.length) {
+          track.addEventListener(
+            "scroll",
+            function () {
+              var idx = Math.round(
+                track.scrollLeft / (track.offsetWidth * 0.8),
+              );
+              dots.forEach(function (d, i) {
+                d.classList.toggle("active", i === idx);
+              });
+            },
+            { passive: true },
+          );
+        }
+      })();
+    </script>
+    <!-- ===================== UB CHATBOT ===================== -->
+
+    <style>
+      /* ---- Launcher Button ---- */
+      #ub-chat-launcher {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: var(--primary);
+        border: none;
+        cursor: pointer;
+        z-index: 3000;
+        box-shadow: 0 6px 24px rgba(232, 114, 42, 0.45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+      #ub-chat-launcher:hover {
+        transform: translateY(-3px) scale(1.06);
+        box-shadow: 0 10px 32px rgba(232, 114, 42, 0.55);
+      }
+      #ub-chat-launcher svg {
+        pointer-events: none;
+      }
+
+      /* Unread dot */
+      #ub-chat-launcher::after {
+        content: "";
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #fff;
+        border: 2px solid var(--primary);
+        display: none;
+      }
+      #ub-chat-launcher.has-notif::after {
+        display: block;
+      }
+
+      /* ---- Chat Window ---- */
+      #ub-chatbot {
+        position: fixed;
+        bottom: 102px;
+        right: 28px;
+        width: 360px;
+        max-height: 560px;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+        z-index: 3000;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(18px) scale(0.97);
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease;
+      }
+      #ub-chatbot.open {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(0) scale(1);
+      }
+
+      /* Header */
+      .cb-header {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        padding: 16px 18px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+      }
+      .cb-avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 1.1rem;
+      }
+      .cb-header-info {
+        flex: 1;
+      }
+      .cb-header-name {
+        font-family: var(--font-serif);
+        font-size: 1rem;
+        color: #fff;
+        font-weight: 500;
+        line-height: 1.2;
+      }
+      .cb-header-status {
+        font-size: 0.62rem;
+        color: rgba(255, 255, 255, 0.45);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+      .cb-close-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: rgba(255, 255, 255, 0.5);
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .cb-close-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+      }
+
+      /* Messages area */
+      .cb-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 18px 16px 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        scroll-behavior: smooth;
+      }
+      .cb-messages::-webkit-scrollbar {
+        width: 4px;
+      }
+      .cb-messages::-webkit-scrollbar-thumb {
+        background: #e0dbd5;
+        border-radius: 4px;
+      }
+
+      /* Bubbles */
+      .cb-bubble {
+        max-width: 82%;
+        padding: 11px 15px;
+        border-radius: 14px;
+        font-size: 0.84rem;
+        line-height: 1.6;
+        animation: cbFadeUp 0.25s ease forwards;
+      }
+      @keyframes cbFadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .cb-bubble.bot {
+        background: #f5f1ec;
+        color: #2d2d2d;
+        border-bottom-left-radius: 4px;
+        align-self: flex-start;
+      }
+      .cb-bubble.user {
+        background: var(--primary);
+        color: #fff;
+        border-bottom-right-radius: 4px;
+        align-self: flex-end;
+      }
+      .cb-bubble a {
+        color: var(--primary);
+        font-weight: 600;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(232, 114, 42, 0.35);
+      }
+      .cb-bubble.bot a {
+        color: var(--primary);
+      }
+      .cb-bubble.user a {
+        color: #fff;
+        border-bottom-color: rgba(255, 255, 255, 0.4);
+      }
+
+      /* Option chips */
+      .cb-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 4px 16px 12px;
+        flex-shrink: 0;
+      }
+      .cb-option-btn {
+        padding: 8px 16px;
+        border-radius: 20px;
+        border: 1.5px solid var(--primary);
+        background: #fff;
+        color: var(--primary);
+        font-size: 0.75rem;
+        font-weight: 600;
+        font-family: var(--font-sans);
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          color 0.2s,
+          transform 0.15s;
+        letter-spacing: 0.5px;
+      }
+      .cb-option-btn:hover {
+        background: var(--primary);
+        color: #fff;
+        transform: translateY(-1px);
+      }
+      .cb-option-btn.secondary {
+        border-color: #ccc;
+        color: #888;
+        font-size: 0.68rem;
+      }
+      .cb-option-btn.secondary:hover {
+        background: #f5f1ec;
+        color: #444;
+        border-color: #bbb;
+      }
+
+      /* Footer nav row */
+      .cb-nav-row {
+        display: flex;
+        gap: 6px;
+        padding: 0 16px 14px;
+        flex-shrink: 0;
+      }
+
+      /* ---- Project Pop-up (fullscreen overlay) ---- */
+      #ub-project-popup {
+        position: fixed;
+        inset: 0;
+        z-index: 4000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s ease;
+      }
+      #ub-project-popup.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .pp-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(12px);
+      }
+      .pp-card {
+        position: relative;
+        background: #fff;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 520px;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+        animation: ppSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes ppSlideIn {
+        from {
+          transform: translateY(30px) scale(0.96);
+        }
+        to {
+          transform: translateY(0) scale(1);
+        }
+      }
+      .pp-close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.55);
+        border: none;
+        cursor: pointer;
+        color: #fff;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        transition: background 0.2s;
+      }
+      .pp-close:hover {
+        background: rgba(0, 0, 0, 0.8);
+      }
+      .pp-img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 20px 20px 0 0;
+        display: block;
+      }
+      .pp-body {
+        padding: 26px 28px 28px;
+      }
+      .pp-tag {
+        font-size: 0.6rem;
+        letter-spacing: 3px;
+        color: var(--primary);
+        text-transform: uppercase;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 8px;
+      }
+      .pp-title {
+        font-family: var(--font-serif);
+        font-size: 2rem;
+        font-weight: 400;
+        color: #1a1a1a;
+        margin: 0 0 14px;
+      }
+      .pp-desc {
+        font-size: 0.875rem;
+        color: #666;
+        line-height: 1.85;
+        margin-bottom: 22px;
+      }
+      .pp-details {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 26px;
+      }
+      .pp-detail-item {
+        background: #f8f5f1;
+        border-radius: 10px;
+        padding: 12px 14px;
+      }
+      .pp-detail-label {
+        font-size: 0.6rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #aaa;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 4px;
+      }
+      .pp-detail-val {
+        font-size: 0.88rem;
+        color: #1a1a1a;
+        font-weight: 600;
+      }
+      .pp-actions {
+        display: flex;
+        gap: 12px;
+      }
+      .pp-btn {
+        flex: 1;
+        padding: 14px;
+        border-radius: 8px;
+        border: none;
+        font-family: var(--font-sans);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .pp-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      }
+      .pp-btn-primary {
+        background: var(--primary);
+        color: #fff;
+      }
+      .pp-btn-outline {
+        background: #fff;
+        color: #1a1a1a;
+        border: 1.5px solid #ddd;
+      }
+
+      /* Enquiry sub-options */
+      .pp-enquiry-row {
+        display: flex;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .pp-enquiry-row .pp-btn {
+        flex: 1;
+      }
+
+      /* Mobile */
+      @media (max-width: 480px) {
+        #ub-chatbot {
+          width: calc(100vw - 28px);
+          right: 14px;
+          bottom: 90px;
+        }
+        #ub-chat-launcher {
+          right: 14px;
+          bottom: 14px;
+        }
+        .pp-card {
+          border-radius: 16px;
+        }
+      }
+
+      #ub-chat-tooltip {
+        position: fixed;
+        bottom: 36px;
+        right: 96px; /* sits to the left of the launcher */
+        background: #ffffff;
+        color: #000000;
+        padding: 10px 16px;
+        border-radius: 20px 20px 20px 4px; /* tail points bottom-right toward icon */
+        font-size: 0.82rem;
+        font-weight: 500;
+        font-family: var(--font-sans);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+        z-index: 2999;
+        white-space: nowrap;
+        opacity: 0;
+        transform: translateX(20px) scale(0.85);
+        transform-origin: right center; /* grows FROM the icon side */
+        pointer-events: none;
+        transition:
+          opacity 0.35s ease,
+          transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      #ub-chat-tooltip.show {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+      #ub-chat-tooltip.hide {
+        opacity: 0;
+        transform: translateX(20px) scale(0.85);
+      }
+      @media (max-width: 480px) {
+        #ub-chat-tooltip {
+          right: 82px;
+          bottom: 22px;
+        }
+      }
+    </style>
+    <div id="ub-chat-tooltip">May I Help You? 👋</div>
+    <!-- Launcher -->
+    <button id="ub-chat-launcher" aria-label="Open Chat Assistant">
+      <svg
+        width="26"
+        height="26"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#fff"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+        />
+        <line x1="9" y1="10" x2="9" y2="10" />
+        <line x1="12" y1="10" x2="12" y2="10" />
+        <line x1="15" y1="10" x2="15" y2="10" />
+      </svg>
+    </button>
+
+    <!-- Chat Window -->
+    <div id="ub-chatbot" role="dialog" aria-label="UB Chat Assistant">
+      <div class="cb-header">
+        <div class="cb-avatar">🏛️</div>
+        <div class="cb-header-info">
+          <div class="cb-header-name">UB Assistant</div>
+          <div class="cb-header-status">United Builders · Est. 1968</div>
+        </div>
+        <button class="cb-close-btn" id="cb-close-btn" aria-label="Close chat">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+      <div class="cb-messages" id="cb-messages"></div>
+      <div class="cb-options" id="cb-options"></div>
+      <div class="cb-nav-row" id="cb-nav-row"></div>
+    </div>
+
+    <!-- Project Pop-up -->
+    <div id="ub-project-popup">
+      <div class="pp-backdrop" id="pp-backdrop"></div>
+      <div class="pp-card" id="pp-card">
+        <button class="pp-close" id="pp-close">✕</button>
+        <img class="pp-img" id="pp-img" src="" alt="" />
+        <div class="pp-body">
+          <span class="pp-tag" id="pp-tag"></span>
+          <h2 class="pp-title" id="pp-title"></h2>
+          <p class="pp-desc" id="pp-desc"></p>
+          <div class="pp-details" id="pp-details"></div>
+          <div class="pp-actions">
+            <a class="pp-btn pp-btn-outline" id="pp-visit-btn" href="#"
+              >🔗 Visit Page</a
+            >
+            <button class="pp-btn pp-btn-primary" id="pp-enquire-btn">
+              📩 Enquire
+            </button>
+          </div>
+          <div class="pp-enquiry-row" id="pp-enquiry-row" style="display: none">
+            <a class="pp-btn pp-btn-primary" href="tel:+91XXXXXXXXXX"
+              >📞 Call Now</a
+            >
+            <button class="pp-btn pp-btn-outline" id="pp-form-btn">
+              ✉ Inquiry Form
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        /* ============================================================
+     DATA
+  ============================================================ */
+        const PROJECTS = {
+          residential: [
+            {
+              id: "picasso",
+              name: "United Picasso",
+              tag: "Nashik's Most Valuable residential address.",
+
+              img: "images/picasso.png",
+              desc: "A canvas of contemporary living. Where art meets architecture in Nashik's most discerning address. Designed for those who believe home is the truest expression of self.",
+              details: [
+                { label: "Type", val: "Residential" },
+                { label: "Location", val: "Godavari Riverfront, Nashik" },
+                { label: "Status", val: "Sold Out" },
+                { label: "Category", val: "Premium" },
+              ],
+              page: "#",
+            },
+          ],
+          commercial: [
+            {
+              id: "shalimar",
+              name: "United Shalimar",
+              tag: "Commercial · Retail & Office",
+              img: "images/unitedshalimar.jpg",
+              desc: "A premium commercial development designed for businesses that demand presence. Prime Nashik location with modern amenities and timeless design.",
+              details: [
+                { label: "Type", val: "Commercial" },
+                { label: "Location", val: "Nashik, MH" },
+                { label: "Status", val: "Ongoing" },
+                { label: "Category", val: "Retail & Office" },
+              ],
+              page: "#",
+            },
+          ],
+          villas: [
+            {
+              id: "istana",
+              name: "Istana",
+              tag: "A Gated Community of Balinese villas",
+              img: "images/istana.jpg",
+              desc: "Istana — meaning palace in Malay — is a residence of quiet grandeur. Premium finishes, considered spaces, and an address that commands respect without announcing itself.",
+              details: [
+                { label: "Type", val: "Villa" },
+                { label: "Location", val: "Gangapur Dam Backwaters" },
+                { label: "Status", val: "Ongoing" },
+                { label: "Category", val: "Luxury" },
+              ],
+              page: "#",
+            },
+            {
+              id: "infinity",
+              name: "United Infinity",
+              tag: "Coming Soon",
+              img: "images/infinity.jpg",
+              desc: "No horizon. No ceiling. United Infinity is an elevation of the premium residential standard — designed for buyers who understand that the finest investment is built to last.",
+              details: [
+                { label: "Type", val: "Villa" },
+                {
+                  label: "Location",
+                  val: "Adjacent to Sula Vineyards, Nashik",
+                },
+                { label: "Status", val: "Ongoing" },
+                { label: "Category", val: "Ultra Premium" },
+              ],
+              page: "#",
+            },
+          ],
+          plots: [
+            {
+              id: "earthone",
+              name: "Earth One",
+              tag: "Land that grows in value. By design.",
+              img: "images/maingate.jpeg",
+              desc: "A return to what matters. Earth One is for those who seek not just a home, but a harmony — where sustainable design, open spaces, and human scale come together.",
+              details: [
+                { label: "Type", val: "Plots" },
+                { label: "Location", val: "Igatpuri Hills" },
+                { label: "Status", val: "Ongoing" },
+                { label: "Category", val: "NA Plots" },
+              ],
+              page: "#",
+            },
+          ],
+        };
+
+        const ABOUT_TEXT = `United Builders is a premium real estate developer based in <strong>Nashik, Maharashtra, founded in 1968</strong>. Three generations of family stewardship have shaped a legacy of uncompromising quality and absolute trust.<br><br>🏆 <strong>56+ Years</strong> of unbroken delivery<br>🏗️ <strong>100+ Projects</strong> completed<br>✅ <strong>Zero disputes</strong> in 56 years<br>🔁 <strong>70% repeat customers</strong>`;
+
+        const CONTACT_TEXT = `We'd love to hear from you.<br><br>📍 <strong>Parijat Nagar, Nashik</strong><br>Maharashtra 422009<br><br>📧 <strong>hello@unitedbuilders.in</strong><br>📞 <strong>+91 XXXXXXXXXX</strong>`;
+
+        /* ============================================================
+     STATE
+  ============================================================ */
+        let history = []; // breadcrumb stack: array of step names
+        // step names: 'main' | 'projects' | 'residential' | 'commercial' | 'villas' | 'plots'
+
+        /* ============================================================
+     DOM
+  ============================================================ */
+        const launcher = document.getElementById("ub-chat-launcher");
+        const chatbot = document.getElementById("ub-chatbot");
+        const closeBtn = document.getElementById("cb-close-btn");
+        const msgArea = document.getElementById("cb-messages");
+        const optionsArea = document.getElementById("cb-options");
+        const navRow = document.getElementById("cb-nav-row");
+        const popup = document.getElementById("ub-project-popup");
+        const ppBackdrop = document.getElementById("pp-backdrop");
+        const ppClose = document.getElementById("pp-close");
+        const ppEnquireBtn = document.getElementById("pp-enquire-btn");
+        const ppEnquiryRow = document.getElementById("pp-enquiry-row");
+        const ppFormBtn = document.getElementById("pp-form-btn");
+
+        /* ============================================================
+     HELPERS
+  ============================================================ */
+        function addMsg(text, who) {
+          const b = document.createElement("div");
+          b.className = `cb-bubble ${who}`;
+          b.innerHTML = text;
+          msgArea.appendChild(b);
+          msgArea.scrollTop = msgArea.scrollHeight;
+        }
+
+        function setOptions(items) {
+          optionsArea.innerHTML = "";
+          items.forEach((item) => {
+            const btn = document.createElement("button");
+            btn.className = "cb-option-btn";
+            btn.innerHTML = item.label;
+            btn.addEventListener("click", () => item.action());
+            optionsArea.appendChild(btn);
+          });
+        }
+
+        function setNav(showBack, showMain) {
+          navRow.innerHTML = "";
+          if (showBack && history.length > 0) {
+            const b = document.createElement("button");
+            b.className = "cb-option-btn secondary";
+            b.textContent = "← Previous";
+            b.addEventListener("click", goBack);
+            navRow.appendChild(b);
+          }
+          if (showMain && history.length > 0) {
+            const b = document.createElement("button");
+            b.className = "cb-option-btn secondary";
+            b.textContent = "⌂ Main Menu";
+            b.addEventListener("click", goMain);
+            navRow.appendChild(b);
+          }
+        }
+
+        function goBack() {
+          history.pop();
+          const prev = history[history.length - 1] || "main";
+          history = history.slice(0, -1); // pop the step we're about to show
+          navigate(prev);
+        }
+
+        function goMain() {
+          history = [];
+          navigate("main");
+        }
+
+        function navigate(step) {
+          history.push(step);
+          switch (step) {
+            case "main":
+              showMain();
+              break;
+            case "projects":
+              showProjects();
+              break;
+            case "residential":
+              showProjectList("residential");
+              break;
+            case "commercial":
+              showProjectList("commercial");
+              break;
+            case "villas":
+              showProjectList("villas");
+              break;
+            case "plots":
+              showProjectList("plots");
+              break;
+          }
+        }
+
+        /* ============================================================
+     SCREENS
+  ============================================================ */
+        function showMain() {
+          msgArea.innerHTML = "";
+          history = ["main"];
+          setTimeout(
+            () =>
+              addMsg(
+                "Hello! Welcome to <strong>United Builders</strong>.<br>How can I help you today?",
+                "bot",
+              ),
+            100,
+          );
+          setTimeout(
+            () =>
+              setOptions([
+                {
+                  label: "🏛️ About United Builders",
+                  action: () => {
+                    addMsg("About United Builders", "user");
+                    showAbout();
+                  },
+                },
+                {
+                  label: "🏗️ Projects",
+                  action: () => {
+                    addMsg("Projects", "user");
+                    navigate("projects");
+                  },
+                },
+                {
+                  label: "📞 Contact Us",
+                  action: () => {
+                    addMsg("Contact Us", "user");
+                    showContact();
+                  },
+                },
+              ]),
+            300,
+          );
+          navRow.innerHTML = "";
+        }
+
+        function showAbout() {
+          history.push("about");
+          optionsArea.innerHTML = "";
+          setTimeout(() => {
+            addMsg(ABOUT_TEXT, "bot");
+            setTimeout(() => {
+              setOptions([
+                {
+                  label: "→ Visit About Us Page",
+                  action: () => (window.location.href = "about.html"),
+                },
+              ]);
+              setNav(true, true);
+            }, 400);
+          }, 350);
+        }
+
+        function showContact() {
+          history.push("contact");
+          optionsArea.innerHTML = "";
+          setTimeout(() => {
+            addMsg(CONTACT_TEXT, "bot");
+            setTimeout(() => {
+              setOptions([
+                {
+                  label: "→ Visit Contact Page",
+                  action: () => (window.location.href = "contact.html"),
+                },
+                {
+                  label: "📞 Call Now",
+                  action: () => (window.location.href = "tel:+91XXXXXXXXXX"),
+                },
+                {
+                  label: "✉ Inquiry Form",
+                  action: () => {
+                    closeChat();
+                    openInquiryModal();
+                  },
+                },
+              ]);
+              setNav(true, true);
+            }, 400);
+          }, 350);
+        }
+
+        function showProjects() {
+          optionsArea.innerHTML = "";
+          setTimeout(
+            () => addMsg("What type of property are you looking for?", "bot"),
+            200,
+          );
+          setTimeout(() => {
+            setOptions([
+              {
+                label: "🏠 Residential",
+                action: () => {
+                  addMsg("Residential", "user");
+                  navigate("residential");
+                },
+              },
+              {
+                label: "🏢 Commercial",
+                action: () => {
+                  addMsg("Commercial", "user");
+                  navigate("commercial");
+                },
+              },
+              {
+                label: "🏡 Villas",
+                action: () => {
+                  addMsg("Villas", "user");
+                  navigate("villas");
+                },
+              },
+              {
+                label: "🌿 Plots",
+                action: () => {
+                  addMsg("Plots", "user");
+                  navigate("plots");
+                },
+              },
+            ]);
+            setNav(true, true);
+          }, 400);
+        }
+
+        function showProjectList(type) {
+          optionsArea.innerHTML = "";
+          const list = PROJECTS[type];
+          const label = type.charAt(0).toUpperCase() + type.slice(1);
+          setTimeout(
+            () =>
+              addMsg(
+                `Here are our <strong>${label}</strong> projects. Click to explore:`,
+                "bot",
+              ),
+            200,
+          );
+          setTimeout(() => {
+            setOptions(
+              list.map((p) => ({
+                label: p.name,
+                action: () => {
+                  addMsg(p.name, "user");
+                  openProjectPopup(p);
+                },
+              })),
+            );
+            setNav(true, true);
+          }, 400);
+        }
+
+        /* ============================================================
+     PROJECT POPUP
+  ============================================================ */
+        function openProjectPopup(project) {
+          document.getElementById("pp-img").src = project.img;
+          document.getElementById("pp-img").alt = project.name;
+          document.getElementById("pp-tag").textContent = project.tag;
+          document.getElementById("pp-title").textContent = project.name;
+          document.getElementById("pp-desc").textContent = project.desc;
+          document.getElementById("pp-visit-btn").href = project.page;
+
+          // Details grid
+          const det = document.getElementById("pp-details");
+          det.innerHTML = project.details
+            .map(
+              (d) =>
+                `<div class="pp-detail-item">
+         <span class="pp-detail-label">${d.label}</span>
+         <span class="pp-detail-val">${d.val}</span>
+       </div>`,
+            )
+            .join("");
+
+          ppEnquiryRow.style.display = "none";
+          ppEnquireBtn.style.display = "";
+          popup.classList.add("open");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeProjectPopup() {
+          popup.classList.remove("open");
+          document.body.style.overflow = "";
+          ppEnquiryRow.style.display = "none";
+          ppEnquireBtn.style.display = "";
+        }
+
+        ppClose.addEventListener("click", closeProjectPopup);
+        ppBackdrop.addEventListener("click", closeProjectPopup);
+
+        ppEnquireBtn.addEventListener("click", () => {
+          ppEnquireBtn.style.display = "none";
+          ppEnquiryRow.style.display = "flex";
+        });
+
+        ppFormBtn.addEventListener("click", () => {
+          closeProjectPopup();
+          closeChat();
+          openInquiryModal();
+        });
+
+        /* ============================================================
+     CHAT OPEN / CLOSE
+  ============================================================ */
+        let isOpen = false;
+
+        function openChat() {
+          isOpen = true;
+          chatbot.classList.add("open");
+          launcher.classList.remove("has-notif");
+          if (msgArea.children.length === 0) showMain();
+        }
+
+        function closeChat() {
+          isOpen = false;
+          chatbot.classList.remove("open");
+        }
+
+        launcher.addEventListener("click", () =>
+          isOpen ? closeChat() : openChat(),
+        );
+        closeBtn.addEventListener("click", closeChat);
+
+        // Show notif dot after 3s to invite interaction
+        setTimeout(() => {
+          if (!isOpen) launcher.classList.add("has-notif");
+        }, 3000);
+
+        /* ============================================================
+     ESCAPE KEY
+  ============================================================ */
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            closeProjectPopup();
+            closeChat();
+          }
+        });
+        /* ============================================================
+   FIRST-LOAD TOOLTIP (every visit)
+============================================================ */
+        (function () {
+          const tooltip = document.getElementById("ub-chat-tooltip");
+
+          function hideTooltip() {
+            tooltip.classList.remove("show");
+            tooltip.classList.add("hide");
+            setTimeout(function () {
+              tooltip.style.display = "none";
+            }, 350);
+          }
+
+          // Show after brief delay
+          setTimeout(function () {
+            tooltip.classList.add("show");
+
+            // Auto-hide after 3 seconds
+            setTimeout(hideTooltip, 3000);
+          }, 3000);
+
+          // Hide instantly if user clicks launcher
+          launcher.addEventListener("click", hideTooltip, { once: true });
+        })();
+      })();
+    </script>
+    <!-- ===================== END UB CHATBOT ===================== -->
+  </body>
+</html>
