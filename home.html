@@ -1,0 +1,1343 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>United Builders - Building Nashik since 1968</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Futura+PT:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-orange: #e8722a;
+        --charcoal: #2c2c2c;
+        --dark-grey: #3f3f3f;
+        --light-grey: #7f7f7f;
+        --off-white: #f5f5f5;
+        --white: #ffffff;
+        --darker-orange: #d45f1f;
+      }
+
+      body {
+        font-family: "Futura PT", "Neue Haas Grotesk", sans-serif;
+        color: var(--charcoal);
+        line-height: 1.6;
+        background-color: var(--white);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Typography */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 400;
+        line-height: 1.3;
+      }
+
+      h1 {
+        font-size: 3.5rem;
+        letter-spacing: -0.02em;
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size: 2.2rem;
+        letter-spacing: -0.01em;
+        font-weight: 400;
+      }
+
+      h3 {
+        font-size: 1.8rem;
+        font-weight: 400;
+      }
+
+      h4 {
+        font-size: 1.4rem;
+        font-weight: 400;
+      }
+
+      /* Navigation & Header */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background-color: transparent;
+        z-index: 1000;
+      }
+
+      .logo {
+        width: 250px;
+        height: auto;
+      }
+
+      .enquire-btn {
+        background-color: var(--primary-orange);
+        color: var(--white);
+        border: none;
+        padding: 12px 20px;
+        font-family: "Futura PT", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      .enquire-btn:hover {
+        background-color: var(--darker-orange);
+      }
+
+      .enquire-btn:active {
+        background-color: #b84a15;
+        opacity: 0.95;
+      }
+
+      /* SECTION 1: HERO */
+      .hero {
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 80px;
+        color: var(--white);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        color: var(--white);
+        font-weight: 300;
+        letter-spacing: 0.02em;
+      }
+
+      /* SECTION 2: THE RECORD */
+      .record {
+        background-color: var(--white);
+        padding: 100px 40px;
+        text-align: center;
+      }
+
+      .record-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .stat {
+        text-align: center;
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .stat-number {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 4.5rem;
+        color: var(--charcoal);
+        line-height: 1;
+        margin-bottom: 15px;
+        font-weight: 300;
+      }
+
+      .stat-label {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.2rem;
+        color: var(--charcoal);
+        font-weight: 400;
+      }
+
+      /* SECTION 3: OUR FOUNDATION */
+      .foundation {
+        background-color: var(--off-white);
+        padding: 100px 40px;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+        font-size: 2.2rem;
+        color: var(--charcoal);
+      }
+
+      .pillars-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .pillar {
+        background-color: #f0f0f0;
+        min-height: 220px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 40px 30px;
+        border-radius: 2px;
+      }
+
+      .pillar h3 {
+        font-size: 2.2rem;
+        color: var(--charcoal);
+      }
+
+      /* SECTION 4: OUR CURRENT PORTFOLIO */
+      .portfolio {
+        background-color: var(--white);
+        padding: 100px 40px;
+      }
+
+      .portfolio-title {
+        text-align: center;
+        margin-bottom: 60px;
+        font-size: 1.6rem;
+        color: var(--charcoal);
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .project-card {
+        position: relative;
+        height: 450px;
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+        cursor: pointer;
+        border-radius: 2px;
+      }
+
+      .project-card::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 150px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        z-index: 1;
+        transition: opacity 0.3s ease;
+      }
+
+      .project-card:hover::before {
+        opacity: 0.8;
+      }
+
+      .project-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 25px;
+        color: var(--white);
+        z-index: 2;
+      }
+
+      .project-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+        color: var(--white);
+        font-weight: 400;
+      }
+
+      .project-location {
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+        color: var(--white);
+      }
+
+      .project-tagline {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 0.95rem;
+        font-style: italic;
+        margin-bottom: 15px;
+        color: var(--white);
+      }
+
+      .project-cta {
+        color: var(--primary-orange);
+        font-size: 0.85rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        font-weight: 600;
+      }
+
+      .project-card:hover .project-cta {
+        opacity: 1;
+      }
+
+      /* SECTION 5: THE LEADERSHIP */
+      .leadership {
+        background-color: var(--off-white);
+        padding: 100px 40px;
+      }
+
+      .leadership-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto 80px;
+      }
+
+      .leader {
+        text-align: center;
+      }
+
+      .leader-portrait {
+        width: 100%;
+        aspect-ratio: 1;
+        background-color: #e0e0e0;
+        border-radius: 2px;
+        margin-bottom: 20px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .leader-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.2rem;
+        color: var(--charcoal);
+        font-weight: 400;
+      }
+
+      .leadership-statement {
+        text-align: center;
+        font-size: 0.95rem;
+        color: var(--light-grey);
+        max-width: 80%;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      /* SECTION 6: GET IN TOUCH */
+      .get-in-touch {
+        background-color: var(--white);
+        padding: 100px 40px;
+      }
+
+      .get-in-touch-title {
+        text-align: center;
+        margin-bottom: 80px;
+        font-size: 2.2rem;
+        color: var(--charcoal);
+      }
+
+      .touch-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 60px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .touch-column {
+        text-align: center;
+      }
+
+      .touch-heading {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.4rem;
+        color: var(--charcoal);
+        margin-bottom: 30px;
+        font-weight: 400;
+      }
+
+      .touch-btn {
+        background-color: var(--primary-orange);
+        color: var(--white);
+        border: none;
+        padding: 12px 20px;
+        font-family: "Futura PT", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      .touch-btn:hover {
+        background-color: var(--darker-orange);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .touch-btn:active {
+        background-color: #b84a15;
+        opacity: 0.95;
+      }
+
+      /* SECTION 7: FOOTER */
+      footer {
+        background-color: var(--dark-grey);
+        color: var(--white);
+        padding: 60px 40px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 60px;
+        max-width: 1400px;
+        margin: 0 auto 60px;
+      }
+
+      .footer-column h4 {
+        color: var(--white);
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        font-family: "Futura PT", sans-serif;
+      }
+
+      .footer-column a,
+      .footer-column p {
+        font-size: 0.85rem;
+        color: #bfbfbf;
+        text-decoration: none;
+        line-height: 1.8;
+        transition: color 0.3s ease;
+        font-family: "Futura PT", sans-serif;
+      }
+
+      .footer-column a:hover {
+        color: var(--primary-orange);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 40px;
+        border-top: 1px solid #555;
+        font-size: 0.8rem;
+        color: #7f7f7f;
+      }
+
+      .project-overlay {
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.7) 0%,
+          rgba(0, 0, 0, 0.2) 60%,
+          transparent 100%
+        );
+      }
+
+      .project-name {
+        text-shadow:
+          0 2px 8px rgba(0, 0, 0, 0.8),
+          0 1px 3px rgba(0, 0, 0, 0.6);
+      }
+
+      .project-location {
+        text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+      }
+
+      .project-tagline {
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+      }
+
+      .project-cta {
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+        /* Or if it's a button: */
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      /* ENQUIRY MODAL */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      .modal {
+        background: var(--white);
+        width: 90%;
+        max-width: 480px;
+        border-radius: 2px;
+        padding: 48px 44px 44px;
+        position: relative;
+        animation: modalIn 0.25s ease;
+      }
+
+      @keyframes modalIn {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 1.4rem;
+        color: var(--light-grey);
+        cursor: pointer;
+        line-height: 1;
+        font-family: "Futura PT", sans-serif;
+      }
+
+      .modal-close:hover {
+        color: var(--charcoal);
+      }
+
+      .modal-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.9rem;
+        font-weight: 400;
+        color: var(--charcoal);
+        margin-bottom: 10px;
+        letter-spacing: -0.01em;
+      }
+
+      .modal-subtitle {
+        font-family: "Futura PT", sans-serif;
+        font-size: 0.82rem;
+        color: var(--light-grey);
+        margin-bottom: 32px;
+        letter-spacing: 0.03em;
+      }
+
+      /* Choice screen */
+      .modal-choices {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .choice-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 28px 20px;
+        border: 1.5px solid #e0e0e0;
+        border-radius: 2px;
+        background: none;
+        cursor: pointer;
+        font-family: "Futura PT", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--charcoal);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        transition: all 0.25s ease;
+        text-decoration: none;
+      }
+
+      .choice-btn:hover {
+        border-color: var(--primary-orange);
+        color: var(--primary-orange);
+        background: #fff8f4;
+      }
+
+      .choice-btn svg {
+        width: 28px;
+        height: 28px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      /* Enquiry form */
+      .modal-form {
+        display: none;
+      }
+      .modal-form.active {
+        display: block;
+      }
+      .modal-choices-wrap.hidden {
+        display: none;
+      }
+
+      .modal-back {
+        background: none;
+        border: none;
+        font-family: "Futura PT", sans-serif;
+        font-size: 0.78rem;
+        color: var(--light-grey);
+        cursor: pointer;
+        padding: 0;
+        margin-bottom: 28px;
+        letter-spacing: 0.04em;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .modal-back:hover {
+        color: var(--charcoal);
+      }
+
+      .form-group {
+        margin-bottom: 18px;
+      }
+
+      .form-group label {
+        display: block;
+        font-family: "Futura PT", sans-serif;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--light-grey);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 7px;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        font-family: "Futura PT", sans-serif;
+        font-size: 0.9rem;
+        color: var(--charcoal);
+        background: var(--off-white);
+        border: 1.5px solid #e0e0e0;
+        border-radius: 2px;
+        padding: 11px 14px;
+        outline: none;
+        transition: border-color 0.2s ease;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+        color: #b0b0b0;
+        font-weight: 400;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--primary-orange);
+        background: var(--white);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 90px;
+      }
+
+      .select-wrap {
+        position: relative;
+      }
+
+      .select-wrap::after {
+        content: "▾";
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: var(--light-grey);
+        font-size: 0.85rem;
+      }
+
+      .form-submit {
+        width: 100%;
+        background-color: var(--primary-orange);
+        color: var(--white);
+        border: none;
+        padding: 13px 20px;
+        font-family: "Futura PT", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        cursor: pointer;
+        border-radius: 2px;
+        margin-top: 8px;
+        transition: background-color 0.3s ease;
+        text-transform: uppercase;
+      }
+
+      .form-submit:hover {
+        background-color: var(--darker-orange);
+      }
+      .form-submit:active {
+        background-color: #b84a15;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .projects-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .leadership-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          padding: 15px 20px;
+        }
+
+        h1 {
+          font-size: 2.2rem;
+        }
+
+        h2 {
+          font-size: 1.6rem;
+        }
+
+        h4 {
+          font-size: 1.2rem;
+        }
+
+        /* Record Section */
+        .record {
+          padding: 60px 20px;
+        }
+
+        .record-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .stat-number {
+          font-size: 3rem;
+        }
+
+        /* Foundation Section */
+        .foundation {
+          padding: 60px 20px;
+        }
+
+        .pillars-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 15px;
+        }
+
+        .pillar {
+          min-height: 150px;
+          padding: 20px 15px;
+        }
+
+        .pillar h3 {
+          font-size: 1.6rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+          padding: 60px 20px;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .project-card {
+          height: 350px;
+        }
+
+        /* Leadership Section */
+        .leadership {
+          padding: 60px 20px;
+        }
+
+        .leadership-grid {
+          grid-template-columns: 1fr;
+        }
+
+        /* Get in Touch Section */
+        .get-in-touch {
+          padding: 60px 20px;
+        }
+
+        .touch-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .touch-btn {
+          width: 100%;
+          min-height: 44px;
+        }
+
+        /* Footer */
+        footer {
+          padding: 40px 20px;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
+
+      /* Center the entire section */
+      .foundation {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Horizontal centering */
+        justify-content: center; /* Vertical centering (if height is defined) */
+        text-align: center; /* Centers the text inside the elements */
+        padding: 60px 20px;
+        min-height: 100vh; /* Makes the section take up the full screen height */
+      }
+
+      /* Style the main title */
+      .section-title {
+        margin-bottom: 40px;
+        font-size: 2.5rem;
+      }
+
+      /* Align the pillars in a row, centered */
+      .pillars-grid {
+        display: flex;
+        gap: 30px;
+        justify-content: center; /* Centers the pillars horizontally */
+        flex-wrap: wrap; /* Ensures it looks good on mobile */
+        max-width: 1200px;
+      }
+
+      /* Individual pillar styling */
+      .pillar {
+        flex: 1;
+        min-width: 250px;
+        max-width: 350px;
+        padding: 20px;
+        transition:
+          background-color 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .pillar h3 {
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVIGATION -->
+    <nav>
+      <div class="logo">
+        <img
+          src="gallery/UB-LOGO-GRAY.svg"
+          alt="United Builders Logo"
+          style="width: 100%; height: auto"
+        />
+      </div>
+      <button class="enquire-btn">ENQUIRE NOW</button>
+    </nav>
+
+    <!-- SECTION 1: HERO -->
+    <section
+      class="hero"
+      id="home"
+      style="background-image: url(&quot;gallery/nashikes.jpg&quot;)"
+    >
+      <div class="hero-content">
+        <h1>Building Nashik since 1968.</h1>
+      </div>
+    </section>
+
+    <!-- SECTION 2: THE RECORD -->
+    <section class="record" id="record">
+      <div class="record-grid">
+        <div class="stat">
+          <div class="stat-number" data-count="5">0</div>
+          <div class="stat-label">Decades</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-count="100">0</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-count="1000">0</div>
+          <div class="stat-label">Happy Families</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: OUR FOUNDATION -->
+    <section class="foundation" id="foundation">
+      <h2 class="section-title">Our Foundation</h2>
+
+      <div class="pillars-grid">
+        <div class="pillar">
+          <h3>Legacy</h3>
+        </div>
+        <div class="pillar">
+          <h3>Trust</h3>
+        </div>
+        <div class="pillar">
+          <h3>Evolution</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: OUR CURRENT PORTFOLIO -->
+    <section class="portfolio" id="projects">
+      <h2 class="portfolio-title">Our Current Portfolio</h2>
+      <div class="projects-grid">
+        <!-- Project 1: United Picasso -->
+        <div
+          class="project-card"
+          style="background-image: url(&quot;gallery/picasso.png&quot;)"
+        >
+          <div class="project-overlay">
+            <div class="project-name">United Picasso</div>
+            <div class="project-location">Godavari Riverfront, Nashik</div>
+            <div class="project-tagline">
+              Nashik's most valuable residential address.
+            </div>
+            <div class="project-cta">View Project →</div>
+          </div>
+        </div>
+
+        <!-- Project 2: Istana -->
+        <div
+          class="project-card"
+          style="background-image: url(&quot;gallery/istana.jpg&quot;)"
+        >
+          <div class="project-overlay">
+            <div class="project-name">Istana</div>
+            <div class="project-location">Gangapur Dam Backwaters</div>
+            <div class="project-tagline">
+              A gated community of Balinese villas.
+            </div>
+            <div class="project-cta">View Project →</div>
+          </div>
+        </div>
+
+        <!-- Project 3: Earth One -->
+        <a
+          href="https://earthdevelopers.in"
+          target="_blank"
+          class="project-link"
+        >
+          <div
+            class="project-card"
+            style="background-image: url(&quot;gallery/maingate.jpeg&quot;)"
+          >
+            <div class="project-overlay">
+              <div class="project-name">Earth One</div>
+              <div class="project-location">Igatpuri Hills</div>
+              <div class="project-tagline">
+                Land that grows in value. By design.
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Project 4: United Infinity -->
+        <div
+          class="project-card"
+          style="background-image: url(&quot;gallery/infinity.jpg&quot;)"
+        >
+          <div class="project-overlay">
+            <div class="project-name">United Infinity</div>
+            <div class="project-location">
+              Adjacent to Sula Vineyards, Nashik
+            </div>
+            <div class="project-tagline">The next chapter. Coming soon.</div>
+            <div class="project-cta">Register Interest →</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: THE LEADERSHIP -->
+    <section class="leadership" id="leadership">
+      <div class="leadership-grid">
+        <div class="leader">
+          <div
+            class="leader-portrait"
+            style="background-image: url(&quot;gallery/rajanDaryani.jpg&quot;)"
+          ></div>
+          <div class="leader-name">Mr. Rajan Daryani</div>
+        </div>
+        <div class="leader">
+          <div
+            class="leader-portrait"
+            style="background-image: url(&quot;gallery/PramodDaryani.jpg&quot;)"
+          ></div>
+          <div class="leader-name">Mr. Pramod Daryani</div>
+        </div>
+        <div class="leader">
+          <div
+            class="leader-portrait"
+            style="background-image: url(&quot;gallery/KaranDaryani.jpg&quot;)"
+          ></div>
+          <div class="leader-name">Mr. Karan Daryani</div>
+        </div>
+        <div class="leader">
+          <div
+            class="leader-portrait"
+            style="background-image: url(&quot;[INSERT-RIYA-PORTRAIT]&quot;)"
+          ></div>
+          <div class="leader-name">Mrs. Riya Daryani</div>
+        </div>
+      </div>
+      <div class="leadership-statement">
+        <p>
+          Three generations of family stewardship since 1968.<br />Building on
+          principle. Evolving with intent.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 6: GET IN TOUCH -->
+    <section class="get-in-touch" id="contact">
+      <h2 class="get-in-touch-title">Get in Touch</h2>
+      <div class="touch-grid">
+        <div class="touch-column">
+          <h4 class="touch-heading">Interested in Our Projects?</h4>
+          <button class="touch-btn">Enquire Now</button>
+        </div>
+        <div class="touch-column">
+          <h4 class="touch-heading">Channel Partner Opportunities?</h4>
+          <button class="touch-btn">Partner with Us</button>
+        </div>
+        <div class="touch-column">
+          <h4 class="touch-heading">Business & Corporate Inquiries?</h4>
+          <button class="touch-btn">Contact Us</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: FOOTER -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-column">
+          <h4>Navigate</h4>
+          <a href="#home">Home</a><br />
+          <a href="#story">Our Story</a><br />
+          <a href="#projects">Projects</a><br />
+          <a href="#legacy">The Legacy</a><br />
+          <a href="#media">Media</a><br />
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-column">
+          <h4>Follow Us</h4>
+          <a
+            href="https://www.linkedin.com/company/united-builders"
+            target="_blank"
+            >LinkedIn</a
+          ><br />
+          <a href="https://www.instagram.com/unitedbuilders" target="_blank"
+            >Instagram</a
+          ><br />
+          <a href="https://www.youtube.com/c/unitedbuilders" target="_blank"
+            >YouTube</a
+          >
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <a href="#rera">RERA Registration</a><br />
+          <a href="#privacy">Privacy Policy</a><br />
+          <a href="#terms">Terms & Conditions</a><br />
+          <a href="#disclaimer">Disclaimer</a><br />
+          <a href="#cancellation">Cancellation Policy</a>
+        </div>
+        <div class="footer-column">
+          <h4>Get in Touch</h4>
+          <p>
+            United Builders<br />Parijat Nagar, Nashik<br />Maharashtra
+            422009<br /><br />
+            <a href="tel:+91XXXXXXXXXX">Phone: +91 XXXXXXXXXX</a><br />
+            <a href="mailto:hello@unitedbuilders.in">hello@unitedbuilders.in</a
+            ><br /><br />
+            Mon–Fri: 9:00 AM – 6:00 PM IST<br />
+            Sat: 10:00 AM – 4:00 PM IST
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          ©️ 1968–2025 United Builders. All rights reserved. | Designed for
+          impact. Built to last.
+        </p>
+      </div>
+    </footer>
+
+    <!-- ENQUIRY MODAL -->
+    <div class="modal-overlay" id="enquiryModal">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <button class="modal-close" id="modalClose" aria-label="Close">
+          &times;
+        </button>
+
+        <!-- Step 1: Choices -->
+        <div class="modal-choices-wrap" id="modalChoices">
+          <div class="modal-title" id="modalTitle">Connect with Us</div>
+          <div class="modal-subtitle">HOW WOULD YOU LIKE TO REACH US?</div>
+          <div class="modal-choices">
+            <a class="choice-btn" href="tel:9999999999">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                />
+              </svg>
+              Call Us
+            </a>
+            <button class="choice-btn" id="showFormBtn">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                />
+              </svg>
+              Enquiry Form
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Enquiry Form -->
+        <div class="modal-form" id="modalForm">
+          <button class="modal-back" id="backToChoices">&#8592; Back</button>
+          <div class="modal-title">Send an Enquiry</div>
+          <div class="modal-subtitle">WE'LL GET BACK TO YOU SHORTLY</div>
+          <form id="enquiryFormEl" novalidate>
+            <div class="form-group">
+              <label for="fname">Full Name</label>
+              <input
+                type="text"
+                id="fname"
+                name="name"
+                placeholder="Your full name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="fphone">Phone Number</label>
+              <input
+                type="tel"
+                id="fphone"
+                name="phone"
+                placeholder="+91 XXXXX XXXXX"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="femail">Email Address</label>
+              <input
+                type="email"
+                id="femail"
+                name="email"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="freason">Reason to Connect</label>
+              <div class="select-wrap">
+                <select id="freason" name="reason" required>
+                  <option value="" disabled selected>Select a reason</option>
+                  <option value="project">Project Related</option>
+                  <option value="business">Business Related</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="fmessage">Your Message</label>
+              <textarea
+                id="fmessage"
+                name="message"
+                placeholder="Tell us what you have in mind…"
+              ></textarea>
+            </div>
+            <button type="submit" class="form-submit">Send Enquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Counter animation
+      const animateCounters = () => {
+        const counters = document.querySelectorAll(".stat-number");
+
+        const observerOptions = {
+          threshold: 0.5,
+          rootMargin: "0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (
+              entry.isIntersecting &&
+              !entry.target.classList.contains("animated")
+            ) {
+              entry.target.classList.add("animated");
+              const target = parseInt(entry.target.getAttribute("data-count"));
+              const duration = 2000;
+              const increment = target / (duration / 50);
+              let current = 0;
+
+              const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                  entry.target.textContent = target + "+";
+                  clearInterval(timer);
+                } else {
+                  entry.target.textContent = Math.floor(current) + "+";
+                }
+              }, 50);
+            }
+          });
+        }, observerOptions);
+
+        counters.forEach((counter) => {
+          observer.observe(counter);
+        });
+      };
+
+      // Smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", animateCounters);
+
+      // Enquiry Modal
+      (function () {
+        const overlay = document.getElementById("enquiryModal");
+        const choices = document.getElementById("modalChoices");
+        const form = document.getElementById("modalForm");
+        const closeBtn = document.getElementById("modalClose");
+        const showForm = document.getElementById("showFormBtn");
+        const backBtn = document.getElementById("backToChoices");
+
+        function openModal() {
+          overlay.classList.add("active");
+          choices.classList.remove("hidden");
+          form.classList.remove("active");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+          overlay.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+
+        // Trigger on nav ENQUIRE NOW and all touch-btn buttons
+        document
+          .querySelector(".enquire-btn")
+          .addEventListener("click", openModal);
+        document.querySelectorAll(".touch-btn").forEach(function (btn) {
+          btn.addEventListener("click", openModal);
+        });
+
+        closeBtn.addEventListener("click", closeModal);
+        overlay.addEventListener("click", function (e) {
+          if (e.target === overlay) closeModal();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") closeModal();
+        });
+
+        showForm.addEventListener("click", function () {
+          choices.classList.add("hidden");
+          form.classList.add("active");
+        });
+
+        backBtn.addEventListener("click", function () {
+          form.classList.remove("active");
+          choices.classList.remove("hidden");
+        });
+
+        document
+          .getElementById("enquiryFormEl")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+            closeModal();
+            // Form submission logic can be wired here
+          });
+      })();
+    </script>
+  </body>
+</html>
