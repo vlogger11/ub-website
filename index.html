@@ -543,7 +543,7 @@
         min-height: 600px;
         background:
           linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-          url("images/ubmid.jpg");
+          url("images/ubmid.jpg"); 
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
@@ -582,6 +582,50 @@
         height: 80px;
         background: rgba(255, 255, 255, 0.3);
       }
+      /* 1. Position the video to cover the section */
+#hero {
+  position: relative;
+  overflow: hidden;
+  background: #000; /* Fallback color */
+}
+
+#hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* 2. Ensure hero content sits above the video */
+#hero .hero-eyebrow, 
+#hero h1, 
+#hero .hero-sub, 
+#hero .hero-line {
+  position: relative;
+  z-index: 2;
+}
+
+/* 3. Add an overlay to the video for text readability */
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45); /* Same darkness as your previous image hero */
+  z-index: 1;
+}
+
+/* 4. Hide video on mobile to save data/battery (uses your existing mobile img) */
+@media (max-width: 1024px) {
+  #hero-video {
+    display: none;
+  }
+}
 
       /* ============================================================
        SHARED SECTION STYLES
@@ -1947,6 +1991,83 @@
           gap: 12px;
         }
       }
+
+/* ---- Read More Feature ---- */
+.lz-desc-wrapper {
+  position: relative;
+}
+
+.more-text {
+  display: none; /* Hidden by default */
+}
+
+.read-more-btn {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  padding: 10px 0;
+  display: none; /* Hidden on desktop */
+}
+
+/* Show 'Read More' only on Mobile */
+@media (max-width: 768px) {
+  .read-more-btn {
+    display: inline-block;
+  }
+  
+  .lz-desc-wrapper.expanded .more-text {
+    display: inline;
+  }
+  
+  .lz-desc-wrapper.expanded .read-more-btn {
+    display: none; /* Hide button once expanded */
+  }
+
+  /* Reset line clamping on mobile so it expands naturally */
+  .lz-desc {
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+  }
+}
+
+/* Ensure Zig-Zag is enforced on desktop */
+/* Ensure Zig-Zag is enforced on desktop */
+@media (min-width: 1025px) {
+  /* This swaps the columns for cards 2 and 4 */
+  .lz-card:nth-child(even) {
+    grid-template-columns: 1fr 280px !important;
+  }
+  
+  /* Puts image in the 2nd column */
+  .lz-card:nth-child(even) .lz-img {
+    order: 2 !important;
+  }
+  
+  /* Puts info in the 1st column */
+  .lz-card:nth-child(even) .lz-info {
+    order: 1 !important;
+    text-align: left; /* Keeps text easy to read from left-to-right */
+    padding-right: 60px; /* Adds space between text and image */
+    padding-left: 0;
+  }
+
+  /* Resetting the accent bars to stay on the left */
+  .lz-card:nth-child(even) .lz-info h4::after {
+    left: 0;
+    right: auto;
+  }
+  
+  /* Show all text on desktop */
+  .more-text {
+    display: inline;
+  }
+}
+
     </style>
   </head>
   <body>
@@ -2069,11 +2190,15 @@
     <main>
       <!-- ===================== HERO ===================== -->
       <section id="hero">
-        <p class="hero-eyebrow">Nashik, Maharashtra</p>
-        <h1>Building Nashik<br />Since 1968</h1>
-        <p class="hero-sub">Three generations. One standard. No compromise.</p>
-        <div class="hero-line"></div>
-      </section>
+  <video autoplay muted loop playsinline id="hero-video">
+    <source src="images/nskvidRotate.mp4" type="video/mp4" />
+  </video>
+  
+  <p class="hero-eyebrow">Nashik, Maharashtra</p>
+  <h1>Building Nashik<br />Since 1968</h1>
+  <p class="hero-sub">Three generations. One standard. No compromise.</p>
+  <div class="hero-line"></div>
+</section>
 
       <!-- ===================== ABOUT ===================== -->
       <section id="about-section">
@@ -2340,91 +2465,106 @@
 
       <!-- ===================== LEADERSHIP ===================== -->
       <section id="leadership-section">
-        <span class="section-tag fade-in-up">Team</span>
-        <h2 class="fade-in-up">The Leadership</h2>
-        <p
-          style="
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            max-width: 600px;
-            font-weight: 300;
-          "
-          class="fade-in-up"
-        >
-          Three generations. One family. One standard. The leadership team
-          ensuring the United vision remains untarnished.
-        </p>
+  <span class="section-tag fade-in-up">Team</span>
+  <h2 class="fade-in-up">The Leadership</h2>
+  <p style="color: var(--text-muted); margin-bottom: 20px; max-width: 600px; font-weight: 300;" class="fade-in-up">
+    Three generations. One family. One standard. The leadership team ensuring the United vision remains untarnished.
+  </p>
 
-        <div class="leaders-zigzag">
-          <div class="lz-card fade-in-up">
-            <div class="lz-img">
-              <div class="lz-img-frame">
-                <img src="images/rajanDaryani.jpg" alt="Rajan Dariyani" />
-              </div>
-            </div>
-            <div class="lz-info">
-              <span class="lz-num">01</span>
-              <h4>Rajan Dariyani</h4>
-              <span class="lz-title">Post</span>
-              <div class="lz-bar"></div>
-              <p class="lz-desc">
-                Three generation of family stewardship since 1968. <br> Building on principal, Evalving with intent.
-              </p>
-            </div>
-          </div>
-
-          <div class="lz-card fade-in-up">
-            <div class="lz-img">
-              <div class="lz-img-frame">
-                <img src="images/PramodDaryani.jpg" alt="Pramod Dariyani" />
-              </div>
-            </div>
-            <div class="lz-info">
-              <span class="lz-num">02</span>
-              <h4>Pramod Dariyani</h4>
-              <span class="lz-title">Post</span>
-              <div class="lz-bar"></div>
-              <p class="lz-desc">
-                Three generation of family stewardship since 1968. <br> Building on principal, Evalving with intent.
-              </p>
-            </div>
-          </div>
-
-          <div class="lz-card fade-in-up">
-            <div class="lz-img">
-              <div class="lz-img-frame">
-                <img src="images/KaranDaryani.jpg" alt="Karan Dariyani" />
-              </div>
-            </div>
-            <div class="lz-info">
-              <span class="lz-num">03</span>
-              <h4>Karan Dariyani</h4>
-              <span class="lz-title">Post</span>
-              <div class="lz-bar"></div>
-              <p class="lz-desc">
-                Three generation of family stewardship since 1968. <br> Building on principal, Evalving with intent.
-              </p>
-            </div>
-          </div>
-
-          <div class="lz-card fade-in-up">
-            <div class="lz-img">
-              <div class="lz-img-frame">
-                <img src="images/riya-dariyani.jpg" alt="Riya Dariyani" />
-              </div>
-            </div>
-            <div class="lz-info">
-              <span class="lz-num">04</span>
-              <h4>Riya Dariyani</h4>
-              <span class="lz-title">Post</span>
-              <div class="lz-bar"></div>
-              <p class="lz-desc">
-                Three generation of family stewardship since 1968. <br> Building on principal, Evalving with intent.
-              </p>
-            </div>
-          </div>
+  <div class="leaders-zigzag">
+    <div class="lz-card fade-in-up">
+      <div class="lz-img">
+        <div class="lz-img-frame">
+          <img src="images/rajanDaryani.jpg" alt="Mr. Rajan Daryani" />
         </div>
-      </section>
+      </div>
+      <div class="lz-info">
+        <span class="lz-num">01</span>
+        <h4>Mr. Rajan Daryani</h4>
+        <span class="lz-title">Partner, United Builders</span>
+        <div class="lz-bar"></div>
+        <div class="lz-desc-wrapper">
+          <p class="lz-desc">
+            An engineer by education (B.E. Computer, Bangalore) with an MBA in Finance, Mr. Rajan Daryani leads United Builders with a rare blend of technical precision and management acumen.
+            <span class="more-text">
+              <br><br>For over four decades, he has meticulously driven residential, commercial, and plotted developments across Nashik. Renowned for his financial discipline and methodical planning, his leadership ensures that every project balances thoughtful design, functionality, and long-term value, cementing his role in Nashik’s real estate legacy.
+            </span>
+          </p>
+          <button class="read-more-btn">Read More</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="lz-card fade-in-up">
+      <div class="lz-img">
+        <div class="lz-img-frame">
+          <img src="images/PramodDaryani.jpg" alt="Mr. Pramod Daryani" />
+        </div>
+      </div>
+      <div class="lz-info">
+        <span class="lz-num">02</span>
+        <h4>Mr. Pramod Daryani</h4>
+        <span class="lz-title">Partner, United Builders</span>
+        <div class="lz-bar"></div>
+        <div class="lz-desc-wrapper">
+          <p class="lz-desc">
+            A Civil Engineer by education, Mr. Pramod Daryani is a key second-generation leader who strengthens the organization's execution capabilities. He combines a strong technical foundation with a progressive mindset.
+            <span class="more-text">
+              <br><br>He is constantly exploring contemporary design and future-ready development practices. With a hands-on approach to operations, he maintains rigorous control over project timelines and delivery frameworks, ensuring execution excellence established by the founding leadership.
+            </span>
+          </p>
+          <button class="read-more-btn">Read More</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="lz-card fade-in-up">
+      <div class="lz-img">
+        <div class="lz-img-frame">
+          <img src="images/KaranDaryani.jpg" alt="Mr. Karan Daryani" />
+        </div>
+      </div>
+      <div class="lz-info">
+        <span class="lz-num">03</span>
+        <h4>Mr. Karan Daryani</h4>
+        <span class="lz-title">Partner, United Builders</span>
+        <div class="lz-bar"></div>
+        <div class="lz-desc-wrapper">
+          <p class="lz-desc">
+            Representing the third generation, Mr. Karan Daryani brings a global perspective. He holds a degree in Architecture Engineering & Design Management (UK) and a Masters in Project & Enterprise Management (UCL).
+            <span class="more-text">
+              <br><br>Blending design thinking with structured execution, he is passionate about creating lifestyle-centric communities. By introducing innovative formats, Karan ensures every square foot is responsibly developed, future-ready, and meticulously planned.
+            </span>
+          </p>
+          <button class="read-more-btn">Read More</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="lz-card fade-in-up">
+      <div class="lz-img">
+        <div class="lz-img-frame">
+          <img src="images/riya-dariyani.jpg" alt="Mrs. Riya Daryani" />
+        </div>
+      </div>
+      <div class="lz-info">
+        <span class="lz-num">04</span>
+        <h4>Mrs. Riya Daryani</h4>
+        <span class="lz-title">Marketing Head, United Builders</span>
+        <div class="lz-bar"></div>
+        <div class="lz-desc-wrapper">
+          <p class="lz-desc">
+            Educated in Business Administration across India and New York, Mrs. Riya Daryani is the decisive force behind the brand’s evolution. She has shifted the perception of the firm toward a design-forward luxury brand.
+            <span class="more-text">
+              <br><br>Beyond marketing, Riya plays a formative role in interior design and styling. She ensures an uncompromising coherence between the brand's global aesthetic and the physical living spaces, oversee-ing every finish to deliver a vision that truly reflects the brand.
+            </span>
+          </p>
+          <button class="read-more-btn">Read More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       <!-- ===================== GET IN TOUCH ===================== -->
       <section id="contact-cta">
@@ -2608,13 +2748,17 @@
     <!-- ===================== SCRIPTS ===================== -->
     <script>
       /* ---- Loader ---- */
-      window.addEventListener("load", () => {
-        const loader = document.getElementById("ub-loader");
-        setTimeout(() => {
-          loader.style.opacity = "0";
-          setTimeout(() => (loader.style.display = "none"), 800);
-        }, 1800);
-      });
+      /* Inside your window 'load' listener */
+window.addEventListener("load", () => {
+  const loader = document.getElementById("ub-loader");
+  const video = document.getElementById("hero-video"); // Grab the video
+  
+  setTimeout(() => {
+    loader.style.opacity = "0";
+    if(video) video.play(); // Start playing after loader fades
+    setTimeout(() => (loader.style.display = "none"), 800);
+  }, 1800);
+});
 
       /* ---- Header scroll state ---- */
       const header = document.getElementById("ub-topbar");
@@ -3791,7 +3935,16 @@
             closeChat();
           }
         });
-
+/* ============================================================
+     Read More (placeholder)
+  ============================================================ */
+        /* ---- Leadership Read More ---- */
+document.querySelectorAll('.read-more-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const wrapper = this.closest('.lz-desc-wrapper');
+    wrapper.classList.add('expanded');
+  });
+});
         /* ============================================================
    FIRST-LOAD TOOLTIP (every visit)
 ============================================================ */
