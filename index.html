@@ -1548,43 +1548,72 @@
         /* Hero */
         /* Hero - Mobile Bottom Center Alignment */
         #hero {
-          background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)), 
-                            url("images/ubmob3.png") !important;
-          background-attachment: fixed;
-          
-          /* Pushes content to the bottom */
-          justify-content: flex-end; 
-          /* Keeps content centered horizontally */
-          align-items: center;      
-          text-align: center;
-          
-          /* Space from the bottom edge of the screen */
-          padding-bottom: 80px; 
-        }
+    /* 1. Dramatic Dark Overlay: Strongest at the bottom for text legibility */
+    background-image: 
+      linear-gradient(
+        to top, 
+        rgba(0, 0, 0, 0.95) 0%, 
+        rgba(0, 0, 0, 0.5) 50%, 
+        rgba(0, 0, 0, 0.2) 100%
+      ), 
+      url("images/ubmob3.png") !important;
+    
+    /* 2. Performance Fix: 'fixed' is buggy on mobile, 'scroll' is smoother */
+    background-attachment: scroll; 
+    background-position: center;
+    background-size: cover;
+    
+    /* 3. Cool Visual Effect: Slight desaturation and contrast boost */
+    filter: brightness(0.9) contrast(1.1) saturate(0.9);
 
-        #hero h1 {
-          font-size: clamp(2.2rem, 10vw, 3rem);
-          line-height: 1.1;
-          margin-bottom: 15px;
-        }
+    /* 4. Layout: Pushes content to bottom center */
+    justify-content: flex-end; 
+    align-items: center;      
+    text-align: center;
+    padding-bottom: 80px; 
+    
+    /* 5. Entrance Animation: Soft zoom out + focus */
+    animation: heroFocus 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
 
-        .hero-eyebrow {
-          font-size: 0.65rem;
-          letter-spacing: 5px;
-          margin-bottom: 10px;
-        }
+  @keyframes heroFocus {
+    from { 
+      filter: brightness(0.3) blur(8px); 
+      transform: scale(1.1); 
+    }
+    to { 
+      filter: brightness(0.9) contrast(1.1) saturate(0.9) blur(0); 
+      transform: scale(1); 
+    }
+  }
 
-        .hero-sub {
-          font-size: 0.82rem;
-          letter-spacing: 2px;
-          max-width: 280px; /* Keeps the subtext from stretching too wide */
-          margin: 0 auto;
-        }
+  #hero h1 {
+    font-size: clamp(2.2rem, 10vw, 3rem);
+    line-height: 1.1;
+    margin-bottom: 15px;
+    /* Adds depth to ensure text is readable against the background */
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
 
-        /* Hide the vertical line on mobile to keep the focus on the bottom text */
-        .hero-line {
-          display: none;
-        }
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+    color: var(--primary); /* Makes the location pop slightly more */
+  }
+
+  .hero-sub {
+    font-size: 0.82rem;
+    letter-spacing: 2px;
+    max-width: 280px;
+    margin: 0 auto;
+    opacity: 0.8;
+  }
+
+  .hero-line {
+    display: none;
+  }
+
         /* About */
         .stats-container {
           grid-template-columns: 1fr 1fr;
