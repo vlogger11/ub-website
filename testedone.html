@@ -1269,18 +1269,27 @@
       /* ============================================================
    FOOTER
 ============================================================ */
+      /* ============================================================
+       FOOTER SKYLINE
+    ============================================================ */
       .footer-skyline-wrap {
         background: #fdf8f4;
         line-height: 0;
+        font-size: 0;
         overflow: hidden;
+        margin-bottom: -1px;
       }
-      .footer-skyline-wrap img {
-        width: 100%;
+
+      /* Desktop: show SVG, hide PNG */
+      .footer-skyline-wrap .skyline-desktop {
         display: block;
-        filter: brightness(0.55) sepia(0.1);
-        max-height: 200px;
-        object-fit: cover;
-        object-position: bottom;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .footer-skyline-wrap .skyline-mobile {
+        display: none;
       }
       #ub-footer {
         background: #242323;
@@ -1920,6 +1929,37 @@
           grid-template-columns: 1fr;
           gap: 12px;
         }
+
+        .footer-skyline-wrap .skyline-mobile {
+          display: block;
+          width: 100%;
+          height: 90px; /* adjust this to your liking */
+          object-fit: cover;
+          object-position: bottom;
+          filter: brightness(0.55) sepia(0.1);
+          margin: 0;
+          padding: 0;
+        }
+
+        /* Footer */
+        #ub-footer {
+          padding: 56px 5% 28px;
+        }
+        .footer-inner {
+          grid-template-columns: 1fr 1fr;
+          gap: 32px 24px;
+          margin-bottom: 44px;
+        }
+        .footer-bottom {
+          font-size: 0.6rem;
+          letter-spacing: 1px;
+        }
+        .footer-inner .footer-col:first-child {
+          grid-column: 1 / -1;
+        }
+      }
+      .footer-skyline-wrap .skyline-desktop {
+        display: none;
       }
     </style>
   </head>
@@ -1948,10 +1988,11 @@
         <div class="nav-dropdown">
           <a href="#">Projects ▾</a>
           <div class="dropdown-menu">
-            <a href="#">Residential</a>
-            <a href="#">Commercial</a>
-            <a href="#">Plots</a>
-            <a href="#">Villas</a>
+            <a href="../projects/index.html">All Projects</a>
+            <a href="../projects/residential.html">Residential</a>
+            <a href="../projects/commercial.html">Commercial</a>
+            <a href="../projects/plots.html">Plots</a>
+            <a href="../projects/villas.html">Villas</a>
           </div>
         </div>
         <a href="about.html">About Us</a>
@@ -2001,10 +2042,11 @@
           </span>
         </button>
         <div class="mm-sub" id="projectsSub">
-          <a href="#">Residential</a>
-          <a href="#">Commercial</a>
-          <a href="#">Plots</a>
-          <a href="#">Villas</a>
+          <a href="../projects/index.html">All Projects</a>
+          <a href="../projects/residential.html">Residential</a>
+          <a href="../projects/commercial.html">Commercial</a>
+          <a href="../projects/plots.html">Plots</a>
+          <a href="../projects/villas.html">Villas</a>
         </div>
 
         <a href="about.html" class="mm-link">About Us</a>
@@ -2210,7 +2252,11 @@
                     A canvas of contemporary living. Where art meets
                     architecture in Nashik's most discerning address.
                   </p>
-                  <a href="#" class="pf-view-btn">View Details &#8594;</a>
+                  <a
+                    href="projects/residential.html#picasso"
+                    class="pf-view-btn"
+                    >View Project &#8594;</a
+                  >
                 </div>
               </div>
               <div class="pf-card">
@@ -2226,7 +2272,9 @@
                     Istana — meaning palace in Malay — is a residence of quiet
                     grandeur. Premium finishes, considered spaces.
                   </p>
-                  <a href="#" class="pf-view-btn">View Details &#8594;</a>
+                  <a href="projects/villas.html#istana" class="pf-view-btn"
+                    >View Project &#8594;</a
+                  >
                 </div>
               </div>
               <div class="pf-card">
@@ -2242,7 +2290,9 @@
                     A return to what matters. Earth One is for those who seek
                     harmony — sustainable design, open spaces, human scale.
                   </p>
-                  <a href="#" class="pf-view-btn">View Details &#8594;</a>
+                  <a href="projects/plots.html#earthone" class="pf-view-btn"
+                    >View Project &#8594;</a
+                  >
                 </div>
               </div>
               <div class="pf-card">
@@ -2258,7 +2308,11 @@
                     No horizon. No ceiling. United Infinity is an elevation of
                     the premium residential standard.
                   </p>
-                  <a href="#" class="pf-view-btn">View Details &#8594;</a>
+                  <a
+                    href="projects/villas.html#unityinfinity"
+                    class="pf-view-btn"
+                    >View Project &#8594;</a
+                  >
                 </div>
               </div>
             </div>
@@ -2300,9 +2354,9 @@
               <span class="lz-title">Post</span>
               <div class="lz-bar"></div>
               <p class="lz-desc">
-                The architect of United Builders' legacy. Rajan Daryani laid
-                the foundation — not just in bricks, but in values that have
-                endured for over five decades.
+                The architect of United Builders' legacy. Rajan Daryani laid the
+                foundation — not just in bricks, but in values that have endured
+                for over five decades.
               </p>
             </div>
           </div>
@@ -2345,7 +2399,7 @@
           <div class="lz-card fade-in-up">
             <div class="lz-img">
               <div class="lz-img-frame">
-                <img src="images/riya-Daryani.jpg" alt="Riya Daryani" />
+                <img src="images/riya-daryani.jpg" alt="Riya Daryani" />
               </div>
             </div>
             <div class="lz-info">
@@ -2418,8 +2472,10 @@
 
     <!-- FOOTER -->
     <div class="footer-skyline-wrap">
-      <img src="images/ft1.png" alt="Nashik Skyline" />
+      <img class="skyline-desktop" src="images/try1.svg" alt="Nashik Skyline" />
+      <img class="skyline-mobile" src="images/ft1.png" alt="Nashik Skyline" />
     </div>
+
     <footer id="ub-footer">
       <div class="footer-inner">
         <div class="footer-col">
