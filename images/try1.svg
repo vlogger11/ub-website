@@ -1,0 +1,272 @@
+<svg width="100%" viewBox="0 0 1440 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Nashik city skyline</title>
+
+<path fill="#242323" d="
+M 0 220
+L 0 180
+L 0 55
+L 14 55
+L 14 42
+L 38 42
+L 38 55
+L 52 55
+L 52 180    
+L 52 168
+L 75 168
+L 75 180
+L 88 180
+L 88 158
+L 108 158
+L 108 145
+L 132 145
+L 132 158
+L 155 158
+L 155 180
+L 155 180
+L 155 58
+L 168 58
+L 168 44
+L 195 44
+L 195 58
+L 210 58
+L 210 180
+L 210 180
+L 210 148
+L 232 148
+L 232 135
+L 258 135
+L 258 148
+L 275 148
+L 275 65
+L 288 65
+L 288 52
+L 312 52
+L 312 65
+L 328 65
+L 328 180
+L 328 165
+L 352 165
+L 352 180
+L 375 180
+L 375 180
+L 375 78
+L 390 78
+L 390 62
+L 415 62
+L 415 48
+L 448 48
+L 448 62
+L 472 62
+L 472 78
+L 488 78
+L 488 180
+L 488 180
+L 488 155
+L 510 155
+L 510 140
+L 535 140
+L 535 155
+L 548 155
+L 548 62
+L 562 62
+L 562 48
+L 586 48
+L 586 62
+L 600 62
+L 600 180
+L 600 165
+L 622 165
+L 622 180
+L 622 90
+L 635 90
+L 635 75
+L 658 75
+L 658 90
+L 672 90
+L 672 180
+L 672 180
+L 672 142
+L 695 142
+L 695 128
+L 718 128
+L 718 142
+L 732 142
+L 732 70
+L 746 70
+L 746 56
+L 768 56
+L 768 70
+L 782 70
+L 782 180
+L 782 158
+L 808 158
+L 808 180
+L 840 180
+L 840 180
+L 840 52
+L 855 52
+L 855 38
+L 878 38
+L 878 24
+L 908 24
+L 908 38
+L 932 38
+L 932 52
+L 948 52
+L 948 180
+L 948 180
+L 948 148
+L 970 148
+L 970 132
+L 995 132
+L 995 148
+L 1010 148
+L 1010 68
+L 1024 68
+L 1024 54
+L 1048 54
+L 1048 68
+L 1062 68
+L 1062 180
+L 1062 160
+L 1090 160
+L 1090 180
+L 1118 180
+L 1118 180
+L 1118 70
+L 1132 70
+L 1132 55
+L 1155 55
+L 1155 42
+L 1182 42
+L 1182 55
+L 1205 55
+L 1205 70
+L 1220 70
+L 1220 180
+L 1220 180
+L 1220 142
+L 1242 142
+L 1242 128
+L 1266 128
+L 1266 142
+L 1280 142
+L 1280 72
+L 1294 72
+L 1294 58
+L 1316 58
+L 1316 72
+L 1332 72
+L 1332 180
+L 1332 162
+L 1358 162
+L 1358 180
+L 1382 180
+L 1382 180
+L 1382 88
+L 1395 88
+L 1395 74
+L 1418 74
+L 1418 88
+L 1440 88
+L 1440 220
+Z
+"/>
+
+<g fill="#f0c060" opacity="0.48">
+
+  <!-- Tall tower 1 (x155, narrow) -->
+  <rect x="158" y="68" width="3" height="5"/> <rect x="168" y="68" width="3" height="5"/> <rect x="180" y="68" width="3" height="5"/> <rect x="192" y="68" width="3" height="5"/> <rect x="202" y="68" width="3" height="5"/>
+  <rect x="158" y="84" width="3" height="5"/> <rect x="180" y="84" width="3" height="5"/> <rect x="202" y="84" width="3" height="5"/>
+  <rect x="168" y="100" width="3" height="5"/> <rect x="192" y="100" width="3" height="5"/>
+  <rect x="158" y="116" width="3" height="5"/> <rect x="180" y="116" width="3" height="5"/> <rect x="202" y="116" width="3" height="5"/>
+  <rect x="168" y="132" width="3" height="5"/> <rect x="192" y="132" width="3" height="5"/>
+  <rect x="158" y="148" width="3" height="5"/> <rect x="202" y="148" width="3" height="5"/>
+  <rect x="168" y="164" width="3" height="5"/> <rect x="192" y="164" width="3" height="5"/>
+
+  <!-- Tall tower 2 (x375, wide landmark) -->
+  <rect x="378" y="88" width="4" height="6"/> <rect x="392" y="88" width="4" height="6"/> <rect x="410" y="88" width="4" height="6"/> <rect x="430" y="88" width="4" height="6"/> <rect x="448" y="88" width="4" height="6"/> <rect x="462" y="88" width="4" height="6"/> <rect x="478" y="88" width="4" height="6"/>
+  <rect x="378" y="106" width="4" height="6"/> <rect x="410" y="106" width="4" height="6"/> <rect x="448" y="106" width="4" height="6"/> <rect x="478" y="106" width="4" height="6"/>
+  <rect x="392" y="124" width="4" height="6"/> <rect x="430" y="124" width="4" height="6"/> <rect x="462" y="124" width="4" height="6"/>
+  <rect x="378" y="142" width="4" height="6"/> <rect x="410" y="142" width="4" height="6"/> <rect x="448" y="142" width="4" height="6"/> <rect x="478" y="142" width="4" height="6"/>
+  <rect x="392" y="160" width="4" height="6"/> <rect x="430" y="160" width="4" height="6"/> <rect x="462" y="160" width="4" height="6"/>
+
+  <!-- Slender tower (x622) -->
+  <rect x="624" y="100" width="3" height="5"/> <rect x="635" y="100" width="3" height="5"/> <rect x="648" y="100" width="3" height="5"/> <rect x="660" y="100" width="3" height="5"/>
+  <rect x="624" y="116" width="3" height="5"/> <rect x="660" y="116" width="3" height="5"/>
+  <rect x="635" y="132" width="3" height="5"/> <rect x="648" y="132" width="3" height="5"/>
+  <rect x="624" y="148" width="3" height="5"/> <rect x="660" y="148" width="3" height="5"/>
+  <rect x="635" y="164" width="3" height="5"/>
+
+  <!-- Tallest tower (x840) -->
+  <rect x="843" y="44" width="4" height="6"/> <rect x="858" y="44" width="4" height="6"/> <rect x="878" y="44" width="4" height="6"/> <rect x="900" y="44" width="4" height="6"/> <rect x="920" y="44" width="4" height="6"/> <rect x="936" y="44" width="4" height="6"/>
+  <rect x="843" y="62" width="4" height="6"/> <rect x="878" y="62" width="4" height="6"/> <rect x="920" y="62" width="4" height="6"/>
+  <rect x="858" y="80" width="4" height="6"/> <rect x="900" y="80" width="4" height="6"/> <rect x="936" y="80" width="4" height="6"/>
+  <rect x="843" y="98" width="4" height="6"/> <rect x="878" y="98" width="4" height="6"/> <rect x="920" y="98" width="4" height="6"/>
+  <rect x="858" y="116" width="4" height="6"/> <rect x="900" y="116" width="4" height="6"/> <rect x="936" y="116" width="4" height="6"/>
+  <rect x="843" y="134" width="4" height="6"/> <rect x="878" y="134" width="4" height="6"/> <rect x="920" y="134" width="4" height="6"/>
+  <rect x="858" y="152" width="4" height="6"/> <rect x="900" y="152" width="4" height="6"/>
+  <rect x="843" y="168" width="4" height="6"/> <rect x="920" y="168" width="4" height="6"/>
+
+  <!-- Tower 5 (x1118) -->
+  <rect x="1122" y="80" width="4" height="6"/> <rect x="1136" y="80" width="4" height="6"/> <rect x="1158" y="80" width="4" height="6"/> <rect x="1176" y="80" width="4" height="6"/> <rect x="1196" y="80" width="4" height="6"/> <rect x="1210" y="80" width="4" height="6"/>
+  <rect x="1122" y="98" width="4" height="6"/> <rect x="1158" y="98" width="4" height="6"/> <rect x="1196" y="98" width="4" height="6"/>
+  <rect x="1136" y="116" width="4" height="6"/> <rect x="1176" y="116" width="4" height="6"/> <rect x="1210" y="116" width="4" height="6"/>
+  <rect x="1122" y="134" width="4" height="6"/> <rect x="1158" y="134" width="4" height="6"/> <rect x="1196" y="134" width="4" height="6"/>
+  <rect x="1136" y="152" width="4" height="6"/> <rect x="1176" y="152" width="4" height="6"/>
+  <rect x="1122" y="168" width="4" height="6"/> <rect x="1196" y="168" width="4" height="6"/>
+
+  <!-- Right tower (x1382) -->
+  <rect x="1384" y="98" width="3" height="5"/> <rect x="1395" y="98" width="3" height="5"/> <rect x="1408" y="98" width="3" height="5"/> <rect x="1422" y="98" width="3" height="5"/>
+  <rect x="1384" y="114" width="3" height="5"/> <rect x="1422" y="114" width="3" height="5"/>
+  <rect x="1395" y="130" width="3" height="5"/> <rect x="1408" y="130" width="3" height="5"/>
+  <rect x="1384" y="146" width="3" height="5"/> <rect x="1422" y="146" width="3" height="5"/>
+  <rect x="1395" y="162" width="3" height="5"/>
+
+  <!-- New tower 1 (x275) -->
+  <rect x="278" y="72" width="3" height="5"/> <rect x="288" y="72" width="3" height="5"/> <rect x="300" y="72" width="3" height="5"/> <rect x="312" y="72" width="3" height="5"/> <rect x="322" y="72" width="3" height="5"/>
+  <rect x="278" y="88" width="3" height="5"/> <rect x="312" y="88" width="3" height="5"/>
+  <rect x="288" y="104" width="3" height="5"/> <rect x="300" y="104" width="3" height="5"/> <rect x="322" y="104" width="3" height="5"/>
+  <rect x="278" y="120" width="3" height="5"/> <rect x="312" y="120" width="3" height="5"/>
+  <rect x="288" y="136" width="3" height="5"/> <rect x="300" y="136" width="3" height="5"/> <rect x="322" y="136" width="3" height="5"/>
+  <rect x="278" y="152" width="3" height="5"/> <rect x="312" y="152" width="3" height="5"/>
+  <rect x="288" y="168" width="3" height="5"/> <rect x="300" y="168" width="3" height="5"/>
+
+  <!-- New tower 2 (x548) -->
+  <rect x="551" y="68" width="3" height="5"/> <rect x="562" y="68" width="3" height="5"/> <rect x="574" y="68" width="3" height="5"/> <rect x="586" y="68" width="3" height="5"/> <rect x="596" y="68" width="3" height="5"/>
+  <rect x="551" y="84" width="3" height="5"/> <rect x="574" y="84" width="3" height="5"/> <rect x="596" y="84" width="3" height="5"/>
+  <rect x="562" y="100" width="3" height="5"/> <rect x="586" y="100" width="3" height="5"/>
+  <rect x="551" y="116" width="3" height="5"/> <rect x="574" y="116" width="3" height="5"/> <rect x="596" y="116" width="3" height="5"/>
+  <rect x="562" y="132" width="3" height="5"/> <rect x="586" y="132" width="3" height="5"/>
+  <rect x="551" y="148" width="3" height="5"/> <rect x="596" y="148" width="3" height="5"/>
+  <rect x="562" y="164" width="3" height="5"/> <rect x="574" y="164" width="3" height="5"/>
+
+  <!-- New tower 3 (x732) -->
+  <rect x="735" y="78" width="3" height="5"/> <rect x="746" y="78" width="3" height="5"/> <rect x="758" y="78" width="3" height="5"/> <rect x="770" y="78" width="3" height="5"/> <rect x="779" y="78" width="3" height="5"/>
+  <rect x="735" y="94" width="3" height="5"/> <rect x="758" y="94" width="3" height="5"/> <rect x="779" y="94" width="3" height="5"/>
+  <rect x="746" y="110" width="3" height="5"/> <rect x="770" y="110" width="3" height="5"/>
+  <rect x="735" y="126" width="3" height="5"/> <rect x="758" y="126" width="3" height="5"/> <rect x="779" y="126" width="3" height="5"/>
+  <rect x="746" y="142" width="3" height="5"/> <rect x="770" y="142" width="3" height="5"/>
+  <rect x="735" y="158" width="3" height="5"/> <rect x="779" y="158" width="3" height="5"/>
+
+  <!-- New tower 4 (x1010) -->
+  <rect x="1013" y="74" width="3" height="5"/> <rect x="1024" y="74" width="3" height="5"/> <rect x="1036" y="74" width="3" height="5"/> <rect x="1048" y="74" width="3" height="5"/> <rect x="1058" y="74" width="3" height="5"/>
+  <rect x="1013" y="90" width="3" height="5"/> <rect x="1036" y="90" width="3" height="5"/> <rect x="1058" y="90" width="3" height="5"/>
+  <rect x="1024" y="106" width="3" height="5"/> <rect x="1048" y="106" width="3" height="5"/>
+  <rect x="1013" y="122" width="3" height="5"/> <rect x="1036" y="122" width="3" height="5"/> <rect x="1058" y="122" width="3" height="5"/>
+  <rect x="1024" y="138" width="3" height="5"/> <rect x="1048" y="138" width="3" height="5"/>
+  <rect x="1013" y="154" width="3" height="5"/> <rect x="1058" y="154" width="3" height="5"/>
+  <rect x="1024" y="170" width="3" height="5"/> <rect x="1036" y="170" width="3" height="5"/>
+
+  <!-- New tower 5 (x1280) -->
+  <rect x="1283" y="78" width="3" height="5"/> <rect x="1294" y="78" width="3" height="5"/> <rect x="1306" y="78" width="3" height="5"/> <rect x="1316" y="78" width="3" height="5"/> <rect x="1328" y="78" width="3" height="5"/>
+  <rect x="1283" y="94" width="3" height="5"/> <rect x="1306" y="94" width="3" height="5"/> <rect x="1328" y="94" width="3" height="5"/>
+  <rect x="1294" y="110" width="3" height="5"/> <rect x="1316" y="110" width="3" height="5"/>
+  <rect x="1283" y="126" width="3" height="5"/> <rect x="1306" y="126" width="3" height="5"/> <rect x="1328" y="126" width="3" height="5"/>
+  <rect x="1294" y="142" width="3" height="5"/> <rect x="1316" y="142" width="3" height="5"/>
+  <rect x="1283" y="158" width="3" height="5"/> <rect x="1328" y="158" width="3" height="5"/>
+  <rect x="1294" y="174" width="3" height="5"/> <rect x="1306" y="174" width="3" height="5"/>
+
+</g>
+
+</svg>
