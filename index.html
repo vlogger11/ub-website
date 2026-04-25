@@ -2157,6 +2157,7 @@
             </svg>
           </button>
           <div class="mob-dropdown-panel">
+            <a href="../projects/indexPcopy.html">All Projects</a>
             <a href="../projects/residential.html">Residential</a>
             <a href="../projects/commercial.html">Commercial</a>
             <a href="../projects/plots.html">Plots</a>
@@ -2176,7 +2177,7 @@
     <!-- ===================== HEADER ===================== -->
     <header id="ub-topbar">
       <a href="index.html" class="logo">
-        <img src="images/UB-LOGO-GRAY.svg" alt="United Builders" />
+        <img src="images/ubnewlogo.png" alt="United Builders" />
       </a>
 
       <!-- Desktop Nav -->
@@ -2199,6 +2200,7 @@
             </svg>
           </a>
           <div class="dropdown-menu">
+            <a href="../projects/indexPcopy.html">All Projects</a>
             <a href="../projects/residential.html">Residential</a>
             <a href="../projects/commercial.html">Commercial</a>
             <a href="../projects/plots.html">Plots</a>
@@ -2306,7 +2308,7 @@
             </div>
           </div>
           <div class="logo-panel fade-in-up">
-            <img src="images/UB-LOGO-GRAY.svg" alt="United Builders Legacy" />
+            <img src="images/ubnewlogo.png" alt="United Builders Legacy" />
           </div>
         </div>
       </section>
@@ -2482,7 +2484,7 @@
 
           <div class="pz-row fade-in-up">
             <div class="pz-img-panel">
-              <img src="images/infinity.jpg" alt="United Infinity" />
+              <img src="images/unitedINFINITY.png" alt="United Infinity" />
               <div class="pz-num-overlay">04</div>
             </div>
             <div class="pz-text-panel">
@@ -2581,7 +2583,7 @@
     <div class="lz-card fade-in-up">
       <div class="lz-img">
         <div class="lz-img-frame">
-          <img src="images/riya-Daryani.jpg" alt="Mrs. Riya Daryani" />
+          <img src="images/riya-daryani.jpg" alt="Mrs. Riya Daryani" />
         </div>
       </div>
       <div class="lz-info">
@@ -3427,9 +3429,11 @@ window.addEventListener("load", () => {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
   }
-  .pp-btn-primary { background: var(--primary); color: #fff; }
+  .pp-btn-primary { background: var(--primary); color: #ffffff; }
   .pp-btn-outline { background: #fff; color: #1a1a1a; border: 1.5px solid #ddd; }
-
+  .pp-btn-dark { background: #3b3737; color: #fff; }
+  
+  .pp-btn-dark:hover { background:var(--primary); color: #ffffff; }
   /* Mobile */
   @media (max-width: 600px) {
     #ub-project-popup { padding: 0; align-items: flex-end; }
@@ -3552,7 +3556,7 @@ window.addEventListener("load", () => {
 
           <!-- STATE 1: Default — Visit Page + Enquire -->
           <div class="pp-default-btns" id="pp-default-btns">
-            <a class="pp-btn pp-btn-outline" id="pp-visit-btn" href="#">🔗 Visit Page</a>
+            <a class="pp-btn pp-btn-outline pp-btn-dark" id="pp-visit-btn" href="#">🔗 Visit Page</a>
             <button class="pp-btn pp-btn-primary" id="pp-enquire-btn">📩 Enquire</button>
           </div>
 
