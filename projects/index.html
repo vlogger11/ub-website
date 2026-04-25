@@ -1,0 +1,3734 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Projects — United Builders</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #e8722a;
+        --dark: #121212;
+        --light: #f9f7f5;
+        --white: #ffffff;
+        --text-main: #2d2d2d;
+        --text-muted: #666666;
+        --font-serif: "Cormorant Garamond", serif;
+        --font-sans: "Montserrat", sans-serif;
+        --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+        --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --nav-height: 70px;
+        --footer-bg: #242323;
+      }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--white);
+        color: var(--text-main);
+        font-family: var(--font-sans);
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+
+      /* ── SCROLL PROGRESS ── */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 2px;
+        width: 0%;
+        background: linear-gradient(90deg, var(--primary), #f5c99a);
+        z-index: 9997;
+        transition: width 0.1s linear;
+        box-shadow: 0 0 10px rgba(232, 114, 42, 0.6);
+      }
+
+      /* ── LOADER ── */
+      #ub-loader {
+        position: fixed;
+        inset: 0;
+        background: #1a1a1a;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 28px;
+        transition:
+          opacity 0.8s ease-in-out,
+          transform 0.8s var(--ease);
+        overflow: hidden;
+      }
+      #ub-loader::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(232, 114, 42, 0.08) 0%,
+          transparent 60%
+        );
+        animation: loaderGlow 2s ease-in-out infinite alternate;
+      }
+      @keyframes loaderGlow {
+        from {
+          opacity: 0.5;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1.05);
+        }
+      }
+      #ub-loader.exit {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      .loader-text-wrap {
+        text-align: center;
+        position: relative;
+        z-index: 2;
+      }
+      .loader-welcome {
+        font-family: var(--font-serif);
+        font-size: clamp(3rem, 10vw, 5rem);
+        font-weight: 300;
+        color: transparent;
+        background: linear-gradient(
+          90deg,
+          #e8722a 0%,
+          #f5c99a 50%,
+          #e8722a 100%
+        );
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation:
+          shimmer 1.8s linear infinite,
+          fadeInUp 0.8s ease forwards;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+      }
+      .loader-sub {
+        font-family: var(--font-sans);
+        font-size: 0.65rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.35);
+        margin-top: 14px;
+        animation: fadeInUp 0.8s ease 0.3s both;
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: 200% center;
+        }
+        100% {
+          background-position: -200% center;
+        }
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .loader-bar-wrap {
+        width: 140px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        position: relative;
+        z-index: 2;
+      }
+      .loader-bar {
+        height: 100%;
+        width: 0%;
+        background: var(--primary);
+        animation: barFill 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        box-shadow: 0 0 8px var(--primary);
+      }
+      @keyframes barFill {
+        0% {
+          width: 0%;
+        }
+        60% {
+          width: 80%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+
+      /* ── DESKTOP NAV ── */
+      .nav-desktop {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        height: var(--nav-height);
+        display: flex;
+        align-items: center;
+        padding: 0 40px;
+        justify-content: space-between;
+        transform: translateY(-100%);
+        animation: navSlideDown 0.8s var(--ease) 0.3s forwards;
+      }
+      @keyframes navSlideDown {
+        to {
+          transform: translateY(0);
+        }
+      }
+      .nav-back {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--text-muted);
+        font-size: 0.7rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-weight: 600;
+        transition: color 0.3s;
+        flex-shrink: 0;
+        position: relative;
+      }
+      .nav-back:hover {
+        color: var(--primary);
+      }
+      .nav-back-arrow {
+        width: 28px;
+        height: 28px;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s var(--ease);
+        font-size: 14px;
+        overflow: hidden;
+        position: relative;
+      }
+      .nav-back-arrow::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--primary);
+        transform: scale(0);
+        border-radius: 50%;
+        transition: transform 0.4s var(--ease);
+        z-index: -1;
+      }
+      .nav-back:hover .nav-back-arrow {
+        border-color: var(--primary);
+        color: white;
+        transform: translateX(-4px);
+      }
+      .nav-back:hover .nav-back-arrow::before {
+        transform: scale(1);
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .nav-logo img {
+        height: 44px;
+        width: auto;
+        object-fit: contain;
+        transition: transform 0.4s var(--ease);
+      }
+      .nav-logo:hover img {
+        transform: scale(1.05);
+      }
+      .nav-right {
+        font-size: 0.65rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        flex-shrink: 0;
+      }
+
+      /* ── MOBILE NAV ── */
+      .nav-mobile {
+        display: none;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 16px 18px;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+      .nav-mobile-back {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: var(--dark);
+        font-size: 0.65rem;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        font-weight: 700;
+        transition: color 0.3s;
+      }
+      .nav-mobile-back:hover {
+        color: var(--primary);
+      }
+      .nav-mobile-arrow {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        transition: all 0.4s var(--ease);
+        flex-shrink: 0;
+      }
+      .nav-mobile-back:active .nav-mobile-arrow {
+        transform: scale(0.92);
+      }
+      .nav-mobile-back:hover .nav-mobile-arrow {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+        transform: translateX(-3px);
+      }
+
+      /* ── HERO ── */
+      .projects-hero {
+        padding: 80px 40px 60px;
+        text-align: center;
+        background: var(--light);
+        position: relative;
+        overflow: hidden;
+      }
+      .projects-hero::before {
+        content: "";
+        position: absolute;
+        top: -80px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(232, 114, 42, 0.06) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+        animation: heroOrb 8s ease-in-out infinite alternate;
+      }
+      @keyframes heroOrb {
+        0% {
+          transform: translateX(-50%) scale(1) rotate(0deg);
+          opacity: 0.6;
+        }
+        100% {
+          transform: translateX(-50%) scale(1.15) rotate(45deg);
+          opacity: 1;
+        }
+      }
+      .projects-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(232, 114, 42, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(232, 114, 42, 0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+        mask-image: radial-gradient(
+          ellipse at center,
+          black 30%,
+          transparent 75%
+        );
+        -webkit-mask-image: radial-gradient(
+          ellipse at center,
+          black 30%,
+          transparent 75%
+        );
+        pointer-events: none;
+      }
+      .hero-eyebrow {
+        font-size: 0.62rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--primary);
+        font-weight: 700;
+        margin-bottom: 16px;
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: revealUp 0.9s var(--ease) 0.6s forwards;
+        position: relative;
+        z-index: 2;
+      }
+      .hero-eyebrow::before,
+      .hero-eyebrow::after {
+        content: "";
+        display: inline-block;
+        width: 30px;
+        height: 1px;
+        background: var(--primary);
+        vertical-align: middle;
+        margin: 0 12px;
+        transform: scaleX(0);
+        animation: lineGrow 0.8s var(--ease) 1.2s forwards;
+        transform-origin: left;
+      }
+      .hero-eyebrow::after {
+        transform-origin: right;
+      }
+      @keyframes lineGrow {
+        to {
+          transform: scaleX(1);
+        }
+      }
+      .projects-hero h1 {
+        font-family: var(--font-serif);
+        font-size: clamp(2.8rem, 6vw, 5.5rem);
+        font-weight: 300;
+        color: white;
+        line-height: 1.05;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 2;
+      }
+      .hero-word {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(40px) rotateX(-30deg);
+        animation: wordReveal 0.9s var(--ease) forwards;
+        transform-origin: bottom;
+      }
+      @keyframes wordReveal {
+        to {
+          opacity: 1;
+          transform: translateY(0) rotateX(0);
+        }
+      }
+      .hero-italic {
+        font-style: italic;
+        color: var(--primary);
+        position: relative;
+      }
+      .hero-italic::after {
+        content: "";
+        position: absolute;
+        bottom: 0.05em;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        animation: underlineGrow 0.8s var(--ease) 1.8s forwards;
+      }
+      @keyframes underlineGrow {
+        to {
+          width: 100%;
+        }
+      }
+      .projects-hero p {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        font-weight: 300;
+        max-width: 500px;
+        margin: 0 auto;
+        letter-spacing: 0.5px;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: revealUp 0.9s var(--ease) 1.4s forwards;
+        position: relative;
+        z-index: 2;
+      }
+      @keyframes revealUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .hero-line {
+        width: 1px;
+        height: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          var(--primary),
+          transparent
+        );
+        margin: 30px auto 0;
+        animation: lineDrop 1s var(--ease) 1.8s forwards;
+      }
+      @keyframes lineDrop {
+        to {
+          height: 50px;
+        }
+      }
+
+      /* ── FILTER ── */
+      .filter-bar {
+        position: sticky;
+        top: var(--nav-height);
+        z-index: 90;
+        background: var(--white);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        padding: 0 40px;
+        display: flex;
+        align-items: center;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .filter-bar::-webkit-scrollbar {
+        display: none;
+      }
+      .filter-btn {
+        padding: 20px 28px;
+        font-size: 0.65rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--text-muted);
+        background: none;
+        border: none;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+        transition: all 0.4s var(--ease);
+        white-space: nowrap;
+        font-family: var(--font-sans);
+        position: relative;
+        overflow: hidden;
+      }
+      .filter-btn::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: all 0.4s var(--ease);
+        transform: translateX(-50%);
+      }
+      .filter-btn:hover {
+        color: var(--primary);
+      }
+      .filter-btn:hover::before {
+        width: 80%;
+      }
+      .filter-btn.active {
+        color: var(--primary);
+      }
+      .filter-btn.active::before {
+        width: 100%;
+      }
+      .filter-btn.active {
+        border-bottom-color: transparent;
+      }
+      .filter-count {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+        background: var(--primary);
+        color: white;
+        border-radius: 50%;
+        font-size: 0.5rem;
+        margin-left: 6px;
+        font-weight: 700;
+        transition: transform 0.4s var(--ease-bounce);
+      }
+      .filter-btn:hover .filter-count,
+      .filter-btn.active .filter-count {
+        transform: scale(1.2) rotate(360deg);
+      }
+
+      /* mobile filter dropdown */
+      .filter-mobile-wrap {
+        display: none;
+        position: sticky;
+        top: 0;
+        z-index: 90;
+        padding: 12px 16px;
+        background: var(--white);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+      }
+      .filter-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 13px 18px;
+        background: var(--light);
+        border: 1.5px solid rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        cursor: pointer;
+        font-family: var(--font-sans);
+        transition: all 0.3s var(--ease);
+      }
+      .filter-trigger:active {
+        transform: scale(0.98);
+      }
+      .filter-trigger-wrap.open .filter-trigger {
+        border-color: var(--primary);
+        background: #fff5ef;
+      }
+      .filter-trigger-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .filter-trigger-icon {
+        width: 32px;
+        height: 32px;
+        background: var(--primary);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: transform 0.4s var(--ease);
+      }
+      .filter-trigger-wrap.open .filter-trigger-icon {
+        transform: rotate(180deg);
+      }
+      .filter-trigger-icon svg {
+        width: 14px;
+        height: 14px;
+        fill: none;
+        stroke: white;
+        stroke-width: 2.5;
+      }
+      .filter-trigger-label {
+        font-size: 0.62rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--text-muted);
+      }
+      .filter-trigger-value {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-top: 1px;
+      }
+      .filter-trigger-chevron {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        transition: transform 0.4s var(--ease);
+        color: var(--text-muted);
+      }
+      .filter-trigger-chevron svg {
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+      }
+      .filter-trigger-wrap.open .filter-trigger-chevron {
+        transform: rotate(180deg);
+        color: var(--primary);
+      }
+
+      .filter-dropdown {
+        display: none;
+        margin-top: 8px;
+        border: 1.5px solid rgba(0, 0, 0, 0.08);
+        border-radius: 10px;
+        overflow: hidden;
+        background: var(--white);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+      }
+      .filter-dropdown.open {
+        display: block;
+        animation: dropIn 0.35s var(--ease) both;
+      }
+      @keyframes dropIn {
+        from {
+          opacity: 0;
+          transform: translateY(-12px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .filter-option {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 18px;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.3s var(--ease);
+        font-family: var(--font-sans);
+        position: relative;
+        overflow: hidden;
+      }
+      .filter-option::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--primary);
+        transform: scaleY(0);
+        transition: transform 0.3s var(--ease);
+      }
+      .filter-option.active::before {
+        transform: scaleY(1);
+      }
+      .filter-option:last-child {
+        border-bottom: none;
+      }
+      .filter-option:hover {
+        background: var(--light);
+        padding-left: 24px;
+      }
+      .filter-option.active {
+        background: #fff5ef;
+      }
+      .filter-option-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .filter-option-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.12);
+        transition: all 0.3s var(--ease);
+        flex-shrink: 0;
+      }
+      .filter-option.active .filter-option-dot {
+        background: var(--primary);
+        box-shadow: 0 0 0 4px rgba(232, 114, 42, 0.15);
+      }
+      .filter-option-name {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--dark);
+        letter-spacing: 0.5px;
+      }
+      .filter-option.active .filter-option-name {
+        color: var(--primary);
+      }
+      .filter-option-count {
+        font-size: 0.6rem;
+        letter-spacing: 2px;
+        color: var(--text-muted);
+        font-weight: 700;
+      }
+      .filter-option-check {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(0, 0, 0, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: all 0.3s var(--ease-bounce);
+      }
+      .filter-option.active .filter-option-check {
+        background: var(--primary);
+        border-color: var(--primary);
+        transform: rotate(360deg);
+      }
+      .filter-option-check svg {
+        width: 10px;
+        height: 10px;
+        fill: none;
+        stroke: white;
+        stroke-width: 3;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      .filter-option.active .filter-option-check svg {
+        opacity: 1;
+      }
+
+      /* ── RESULTS COUNT ── */
+      .results-count {
+        padding: 14px 40px;
+        font-size: 0.65rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+        background: var(--light);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .results-count span {
+        color: var(--primary);
+        font-weight: 700;
+        display: inline-block;
+        min-width: 14px;
+        transition: transform 0.4s var(--ease-bounce);
+      }
+      .results-count.pulse span {
+        animation: countPulse 0.5s var(--ease-bounce);
+      }
+      @keyframes countPulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.5);
+          color: #d4621e;
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      .results-count-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--primary);
+        animation: dotPulse 2s ease-in-out infinite;
+      }
+      @keyframes dotPulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(1.4);
+        }
+      }
+
+      /* ── PORTFOLIO ── */
+      #portfolio-section {
+        background: var(--light);
+        overflow: hidden;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+      }
+      .card-grid.hidden {
+        display: none;
+      }
+      .project-card {
+        background: var(--white);
+        border-right: 1px solid rgba(0, 0, 0, 0.06);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition:
+          transform 0.5s var(--ease),
+          box-shadow 0.5s var(--ease);
+        position: relative;
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      .project-card.revealed {
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+          opacity 0.8s var(--ease),
+          transform 0.8s var(--ease),
+          box-shadow 0.5s var(--ease);
+      }
+      .project-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--primary),
+          #f5c99a,
+          var(--primary)
+        );
+        background-size: 200% 100%;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s var(--ease);
+        z-index: 3;
+      }
+      .project-card:hover::before {
+        transform: scaleX(1);
+        animation: shimmerBar 2s linear infinite;
+      }
+      @keyframes shimmerBar {
+        0% {
+          background-position: 0% 0%;
+        }
+        100% {
+          background-position: 200% 0%;
+        }
+      }
+      .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+        z-index: 2;
+      }
+      .project-card.fade-enter {
+        animation: cardFade 0.6s var(--ease) both;
+      }
+      @keyframes cardFade {
+        from {
+          opacity: 0;
+          transform: translateY(30px) scale(0.96);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .card-img {
+        position: relative;
+        overflow: hidden;
+        height: 230px;
+        background: #d0cbc5;
+        flex-shrink: 0;
+      }
+      .card-img::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 60%,
+          rgba(0, 0, 0, 0.3)
+        );
+        opacity: 0;
+        transition: opacity 0.5s var(--ease);
+        z-index: 1;
+      }
+      .project-card:hover .card-img::after {
+        opacity: 1;
+      }
+      .card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition:
+          transform 1.4s var(--ease),
+          filter 0.5s;
+      }
+      .project-card:hover .card-img img {
+        transform: scale(1.08);
+        filter: brightness(1.05);
+      }
+      .card-status {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        z-index: 2;
+        font-size: 0.52rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: 5px 12px;
+        border-radius: 2px;
+        font-family: var(--font-sans);
+        backdrop-filter: blur(4px);
+        transition: transform 0.4s var(--ease);
+      }
+      .project-card:hover .card-status {
+        transform: translateY(-2px) scale(1.05);
+      }
+      .status-ongoing {
+        background: rgba(232, 114, 42, 0.92);
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+      .status-ongoing::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        animation: statusShine 2.5s ease-in-out infinite;
+      }
+      @keyframes statusShine {
+        0% {
+          left: -100%;
+        }
+        50%,
+        100% {
+          left: 100%;
+        }
+      }
+      .status-sold {
+        background: rgba(18, 18, 18, 0.82);
+        color: rgba(255, 255, 255, 0.75);
+      }
+      .status-soon {
+        background: rgba(255, 255, 255, 0.18);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        backdrop-filter: blur(4px);
+      }
+      .card-num {
+        position: absolute;
+        bottom: 10px;
+        right: 14px;
+        font-family: var(--font-serif);
+        font-size: 3.5rem;
+        color: rgba(255, 255, 255, 0.12);
+        line-height: 1;
+        pointer-events: none;
+        transition: all 0.5s var(--ease);
+        z-index: 2;
+      }
+      .project-card:hover .card-num {
+        color: rgba(255, 255, 255, 0.35);
+        transform: scale(1.15) translateY(-4px);
+      }
+      .card-body {
+        padding: 24px 24px 20px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        position: relative;
+      }
+      .card-tag {
+        font-size: 0.57rem;
+        letter-spacing: 3px;
+        color: var(--primary);
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 8px;
+        transition: letter-spacing 0.4s var(--ease);
+      }
+      .project-card:hover .card-tag {
+        letter-spacing: 4px;
+      }
+      .card-accent {
+        width: 28px;
+        height: 2px;
+        background: var(--primary);
+        margin-bottom: 12px;
+        transition: width 0.5s var(--ease);
+      }
+      .project-card:hover .card-accent {
+        width: 60px;
+      }
+      .card-body h3 {
+        font-family: var(--font-serif);
+        font-size: 1.6rem;
+        font-weight: 400;
+        color: var(--dark);
+        line-height: 1.15;
+        margin-bottom: 8px;
+        transition: color 0.4s;
+      }
+      .project-card:hover .card-body h3 {
+        color: var(--primary);
+      }
+      .card-body p {
+        font-size: 0.76rem;
+        color: var(--text-muted);
+        line-height: 1.75;
+        margin-bottom: 12px;
+      }
+      .card-meta {
+        margin-bottom: 16px;
+      }
+      .card-meta-item {
+        display: flex;
+        gap: 6px;
+        font-size: 0.7rem;
+        margin-bottom: 3px;
+        align-items: baseline;
+      }
+      .card-meta-label {
+        color: var(--primary);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-size: 0.57rem;
+        min-width: 58px;
+        flex-shrink: 0;
+      }
+      .card-meta-val {
+        color: var(--text-muted);
+        font-size: 0.72rem;
+      }
+      .card-actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-top: auto;
+        padding-top: 4px;
+      }
+      .card-link {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.6rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(232, 114, 42, 0.3);
+        padding-bottom: 3px;
+        transition: all 0.4s var(--ease);
+        margin-right: auto;
+        white-space: nowrap;
+        position: relative;
+      }
+      .card-link::after {
+        content: "→";
+        display: inline-block;
+        margin-left: 4px;
+        transition: transform 0.4s var(--ease);
+      }
+      .card-link:hover {
+        border-bottom-color: var(--primary);
+      }
+      .card-link:hover::after {
+        transform: translateX(6px);
+      }
+      .card-enquire {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 8px 12px;
+        background: var(--primary);
+        color: white;
+        font-size: 0.57rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-family: var(--font-sans);
+        border: none;
+        cursor: pointer;
+        transition: all 0.4s var(--ease);
+        border-radius: 1px;
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+        isolation: isolate; /* NEW — creates stacking context */
+        z-index: 0; /* NEW */
+      }
+      .card-enquire::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: #d4621e;
+        transform: translateY(100%);
+        transition: transform 0.4s var(--ease);
+        z-index: -1; /* CHANGED from 0 to -1 — sits behind button content */
+      }
+      .card-enquire:hover::before {
+        transform: translateY(0);
+      }
+      .card-enquire:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(232, 114, 42, 0.35);
+      }
+
+      .card-enquire svg,
+      .card-call svg {
+        width: 10px;
+        height: 10px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        flex-shrink: 0;
+      }
+      .card-call {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 8px 12px;
+        background: transparent;
+        color: var(--text-main);
+        font-size: 0.57rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-family: var(--font-sans);
+        border: 1px solid rgba(0, 0, 0, 0.18);
+        cursor: pointer;
+        transition: all 0.4s var(--ease);
+        border-radius: 1px;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      .card-call:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        transform: translateY(-2px);
+      }
+      .card-call:hover svg {
+        animation: phoneRing 0.5s ease;
+      }
+      @keyframes phoneRing {
+        0%,
+        100% {
+          transform: rotate(0);
+        }
+        20% {
+          transform: rotate(-15deg);
+        }
+        40% {
+          transform: rotate(15deg);
+        }
+        60% {
+          transform: rotate(-10deg);
+        }
+        80% {
+          transform: rotate(10deg);
+        }
+      }
+
+      /* ── ZIGZAG ── */
+      .portfolio-zigzag {
+        display: flex;
+        flex-direction: column;
+      }
+      .portfolio-zigzag.hidden {
+        display: none;
+      }
+      .pz-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 520px;
+        overflow: hidden;
+        position: relative;
+      }
+      .pz-row.hidden {
+        display: none;
+      }
+      .pz-row.fade-enter {
+        animation: rowFadeIn 0.8s var(--ease) both;
+      }
+      @keyframes rowFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .pz-row:nth-child(even) .pz-img-panel {
+        order: 2;
+      }
+      .pz-row:nth-child(even) .pz-text-panel {
+        order: 1;
+      }
+      .pz-img-panel {
+        position: relative;
+        overflow: hidden;
+        background: #d0cbc5;
+      }
+      .pz-img-panel img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition:
+          transform 1.8s var(--ease),
+          filter 0.6s;
+      }
+      .pz-row:hover .pz-img-panel img {
+        transform: scale(1.08);
+        filter: brightness(1.08) contrast(1.05);
+      }
+      .pz-img-panel::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to right,
+          rgba(18, 18, 18, 0.4) 0%,
+          transparent 55%
+        );
+        z-index: 1;
+        transition: opacity 0.5s;
+      }
+      .pz-row:nth-child(even) .pz-img-panel::after {
+        background: linear-gradient(
+          to left,
+          rgba(18, 18, 18, 0.4) 0%,
+          transparent 55%
+        );
+      }
+      .pz-num-overlay {
+        position: absolute;
+        bottom: 20px;
+        left: 24px;
+        font-family: var(--font-serif);
+        font-size: 5rem;
+        color: rgba(255, 255, 255, 0.15);
+        z-index: 2;
+        pointer-events: none;
+        line-height: 1;
+        transition: all 0.6s var(--ease);
+      }
+      .pz-row:hover .pz-num-overlay {
+        color: rgba(255, 255, 255, 0.4);
+        transform: scale(1.15);
+      }
+      .pz-row:nth-child(even) .pz-num-overlay {
+        left: auto;
+        right: 24px;
+      }
+      .pz-status-badge {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        z-index: 3;
+        font-size: 0.55rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: 6px 14px;
+        border-radius: 2px;
+        font-family: var(--font-sans);
+        transition: transform 0.4s var(--ease);
+      }
+      .pz-row:hover .pz-status-badge {
+        transform: translateY(-3px) scale(1.05);
+      }
+      .pz-row:nth-child(even) .pz-status-badge {
+        right: auto;
+        left: 24px;
+      }
+      .pz-text-panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 64px 60px;
+        background: white;
+        transition: background 0.5s var(--ease);
+        position: relative;
+        overflow: hidden;
+      }
+      .pz-text-panel::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 0;
+        background: var(--primary);
+        transition: height 0.6s var(--ease);
+      }
+      .pz-row:hover .pz-text-panel::before {
+        height: 100%;
+      }
+      .pz-row:nth-child(even) .pz-text-panel::before {
+        left: auto;
+        right: 0;
+      }
+      .pz-row:nth-child(even) .pz-text-panel {
+        background: #f2ede7;
+      }
+      .pz-row:hover .pz-text-panel {
+        background: #fdf8f4;
+      }
+      .pz-tag {
+        font-size: 0.62rem;
+        letter-spacing: 4px;
+        color: var(--primary);
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 14px;
+        display: block;
+        transition: letter-spacing 0.5s var(--ease);
+      }
+      .pz-row:hover .pz-tag {
+        letter-spacing: 6px;
+      }
+      .pz-accent-bar {
+        width: 40px;
+        height: 2px;
+        background: var(--primary);
+        margin-bottom: 22px;
+        transition: width 0.6s var(--ease);
+      }
+      .pz-row:hover .pz-accent-bar {
+        width: 100px;
+      }
+      .pz-text-panel h3 {
+        font-family: var(--font-serif);
+        font-size: 2.6rem;
+        color: var(--dark);
+        font-weight: 400;
+        margin-bottom: 18px;
+        line-height: 1.1;
+        position: relative;
+        display: inline-block;
+        transition: color 0.5s;
+      }
+      .pz-row:hover .pz-text-panel h3 {
+        color: var(--primary);
+      }
+      .pz-text-panel h3::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: width 0.5s var(--ease);
+      }
+      .pz-row:hover .pz-text-panel h3::after {
+        width: 100%;
+      }
+      .pz-text-panel p {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        line-height: 1.85;
+        margin-bottom: 16px;
+        max-width: 400px;
+      }
+      .pz-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 28px;
+      }
+      .pz-meta-row {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        transition: transform 0.4s var(--ease);
+      }
+      .pz-row:hover .pz-meta-row {
+        transform: translateX(4px);
+      }
+      .pz-row:hover .pz-meta-row:nth-child(2) {
+        transition-delay: 0.05s;
+      }
+      .pz-row:hover .pz-meta-row:nth-child(3) {
+        transition-delay: 0.1s;
+      }
+      .pz-meta-label {
+        color: var(--primary);
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-size: 0.6rem;
+        min-width: 70px;
+      }
+      .pz-meta-val {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+      }
+      .pz-actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .project-link {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.68rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(232, 114, 42, 0.35);
+        padding-bottom: 4px;
+        transition: all 0.4s var(--ease);
+        position: relative;
+      }
+      .project-link::after {
+        content: "→";
+        display: inline-block;
+        margin-left: 4px;
+        transition: transform 0.4s var(--ease);
+      }
+      .project-link:hover {
+        border-bottom-color: var(--primary);
+      }
+      .project-link:hover::after {
+        transform: translateX(8px);
+      }
+      .enquiry-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 20px;
+        background: var(--primary);
+        color: white;
+        font-size: 0.62rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-family: var(--font-sans);
+        border: none;
+        cursor: pointer;
+        transition: all 0.4s var(--ease);
+        border-radius: 1px;
+        position: relative;
+        overflow: hidden;
+      }
+      .enquiry-btn::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: #d4621e;
+        transform: translateY(100%);
+        transition: transform 0.4s var(--ease);
+        z-index: 0;
+      }
+      .enquiry-btn:hover::before {
+        transform: translateY(0);
+      }
+      .enquiry-btn > * {
+        position: relative;
+        z-index: 1;
+      }
+      .enquiry-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 28px rgba(232, 114, 42, 0.35);
+      }
+      .enquiry-btn svg,
+      .call-btn svg {
+        width: 12px;
+        height: 12px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+      }
+      .call-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 20px;
+        background: transparent;
+        color: var(--text-main);
+        text-decoration: none;
+        font-size: 0.62rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-family: var(--font-sans);
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: all 0.4s var(--ease);
+        border-radius: 1px;
+      }
+      .call-btn:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        transform: translateY(-3px);
+      }
+      .call-btn:hover svg {
+        animation: phoneRing 0.5s ease;
+      }
+      .pz-row + .pz-row {
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      /* ── NO RESULTS ── */
+      .no-results {
+        text-align: center;
+        padding: 80px 40px;
+        display: none;
+      }
+      .no-results.show {
+        display: block;
+        animation: revealUp 0.6s var(--ease) both;
+      }
+      .no-results h3 {
+        font-family: var(--font-serif);
+        font-size: 2rem;
+        color: var(--text-muted);
+        font-weight: 300;
+        margin-bottom: 10px;
+      }
+      .no-results p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
+
+      /* ── MODAL ── */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(18, 18, 18, 0.72);
+        backdrop-filter: blur(8px);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.4s var(--ease),
+          backdrop-filter 0.4s;
+        padding: 20px;
+      }
+      .modal-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .modal-box {
+        background: white;
+        width: min(520px, 100%);
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 48px 44px;
+        position: relative;
+        transform: translateY(40px) scale(0.95);
+        opacity: 0;
+        transition: all 0.5s var(--ease);
+      }
+      .modal-overlay.open .modal-box {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      .modal-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--primary),
+          #f5c99a,
+          var(--primary)
+        );
+        background-size: 200% 100%;
+        animation: shimmerBar 3s linear infinite;
+      }
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        color: var(--text-muted);
+        padding: 6px;
+        transition: all 0.4s var(--ease);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-close:hover {
+        color: white;
+        background: var(--dark);
+        transform: rotate(90deg);
+      }
+      .modal-eyebrow {
+        font-size: 0.6rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--primary);
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .modal-title {
+        font-family: var(--font-serif);
+        font-size: 2.2rem;
+        font-weight: 400;
+        color: var(--dark);
+        margin-bottom: 6px;
+        line-height: 1.1;
+      }
+      .modal-sub {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-bottom: 32px;
+      }
+      .modal-divider {
+        width: 40px;
+        height: 2px;
+        background: var(--primary);
+        margin-bottom: 28px;
+        transition: width 0.5s var(--ease);
+      }
+      .modal-overlay.open .modal-divider {
+        width: 80px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+        position: relative;
+      }
+      .form-group label {
+        display: block;
+        font-size: 0.62rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--text-muted);
+        margin-bottom: 8px;
+        transition: color 0.3s;
+      }
+      .form-group:focus-within label {
+        color: var(--primary);
+      }
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 0;
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        font-family: var(--font-sans);
+        font-size: 0.88rem;
+        color: var(--text-main);
+        background: transparent;
+        outline: none;
+        transition: border-color 0.4s var(--ease);
+        resize: none;
+      }
+      .form-group::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: width 0.4s var(--ease);
+      }
+      .form-group:focus-within::after {
+        width: 100%;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .form-submit {
+        width: 100%;
+        padding: 16px;
+        background: var(--primary);
+        color: white;
+        border: none;
+        font-family: var(--font-sans);
+        font-size: 0.7rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-weight: 700;
+        cursor: pointer;
+        margin-top: 8px;
+        transition: all 0.4s var(--ease);
+        position: relative;
+        overflow: hidden;
+      }
+      .form-submit::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, #d4621e, var(--primary));
+        transform: translateX(-100%);
+        transition: transform 0.5s var(--ease);
+      }
+      .form-submit:hover::before {
+        transform: translateX(0);
+      }
+      .form-submit:hover {
+        box-shadow: 0 12px 28px rgba(232, 114, 42, 0.4);
+        transform: translateY(-2px);
+      }
+      .form-submit span {
+        position: relative;
+        z-index: 1;
+      }
+      .modal-call-alt {
+        text-align: center;
+        margin-top: 18px;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+      .modal-call-alt a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 700;
+        transition: all 0.3s;
+      }
+      .modal-call-alt a:hover {
+        letter-spacing: 1px;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--footer-bg);
+        padding: 56px 40px 48px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(232, 114, 42, 0.5),
+          transparent
+        );
+      }
+      .footer-logo img {
+        height: 54px;
+        width: auto;
+        object-fit: contain;
+        display: block;
+        transition: transform 0.5s var(--ease);
+      }
+      .footer-logo:hover img {
+        transform: scale(1.08);
+      }
+      .footer-divider {
+        width: 44px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .footer-copy {
+        font-size: 0.6rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.28);
+        text-align: center;
+        line-height: 2;
+      }
+
+      /* ═══════════════════════════════ RESPONSIVE ═══════════════════════════════ */
+      @media (max-width: 1100px) {
+        .card-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-desktop {
+          display: none;
+        }
+        .nav-mobile {
+          display: flex;
+        }
+        .projects-hero {
+          padding: 40px 20px;
+        }
+        .projects-hero h1 {
+          font-size: 2.5rem;
+        }
+        .filter-bar {
+          display: none;
+        }
+        .filter-mobile-wrap {
+          display: block;
+        }
+        .results-count {
+          padding: 10px 16px;
+          font-size: 0.58rem;
+        }
+        .card-grid {
+          grid-template-columns: 1fr;
+        }
+        .card-img {
+          height: 210px;
+        }
+        .card-body {
+          padding: 20px 18px 18px;
+        }
+        .card-body h3 {
+          font-size: 1.45rem;
+        }
+        .pz-row {
+          grid-template-columns: 1fr;
+          min-height: auto;
+        }
+        .pz-row:nth-child(even) .pz-img-panel {
+          order: 0;
+        }
+        .pz-row:nth-child(even) .pz-text-panel {
+          order: 1;
+        }
+        .pz-img-panel {
+          height: 260px;
+        }
+        .pz-text-panel {
+          padding: 30px 20px;
+        }
+        .pz-text-panel h3 {
+          font-size: 1.9rem;
+        }
+        .pz-text-panel p {
+          max-width: 100%;
+        }
+        .pz-actions {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+        .pz-status-badge {
+          top: 12px;
+          right: 12px;
+          font-size: 0.48rem;
+        }
+        .pz-row:nth-child(even) .pz-status-badge {
+          right: auto;
+          left: 12px;
+        }
+        .modal-box {
+          padding: 28px 20px;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        footer {
+          padding: 40px 20px 36px;
+        }
+        .footer-logo img {
+          height: 44px;
+        }
+        .footer-copy {
+          font-size: 0.55rem;
+          letter-spacing: 1.5px;
+        }
+      }
+
+      @media (min-width: 769px) and (max-width: 1000px) {
+        .pz-text-panel {
+          padding: 40px 36px;
+        }
+        .pz-text-panel h3 {
+          font-size: 2.1rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      /* ── HERO SLIDER ── */
+      .projects-hero {
+        display: block;
+      }
+      .slider-wrap {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+      }
+      .hero-track {
+        display: flex;
+        will-change: transform;
+        transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+        /* NO width set here — let it be natural */
+      }
+      .hero-slide {
+        flex: 0 0 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 280px;
+        align-items: center;
+        padding: 80px 0 0 40px;
+        background: linear-gradient(
+          135deg,
+          #1a1510 0%,
+          #1e1a14 40%,
+          #1c1812 100%
+        );
+        position: relative;
+        overflow: hidden;
+        min-height: 320px;
+        box-sizing: border-box;
+      }
+      .hero-slide::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(232, 114, 42, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(232, 114, 42, 0.04) 1px, transparent 1px);
+        background-size: 60px 60px;
+        mask-image: radial-gradient(
+          ellipse at 30% 50%,
+          black 20%,
+          transparent 70%
+        );
+        -webkit-mask-image: radial-gradient(
+          ellipse at 30% 50%,
+          black 20%,
+          transparent 70%
+        );
+        pointer-events: none;
+        z-index: 1;
+      }
+      .hslide-left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        position: relative;
+        z-index: 2;
+        padding-bottom: 50px;
+        min-width: 0;
+      }
+      .hslide-eyebrow {
+        font-size: 0.62rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--primary);
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+      .hslide-title {
+        font-family: var(--font-serif);
+        font-size: clamp(2.8rem, 6vw, 5.5rem);
+        font-weight: 300;
+        color: #ffffff;
+        line-height: 1.05;
+        margin-bottom: 16px;
+      }
+      .hslide-title em {
+        font-style: var(--font-serif);
+        color: #f0ece6;
+      }
+      .hslide-desc {
+        font-size: 0.88rem;
+        color: white;
+        font-weight: 300;
+        max-width: 440px;
+        letter-spacing: 0.4px;
+        line-height: 1.8;
+        margin-bottom: 24px;
+      }
+      .hslide-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 22px;
+        background: var(--primary);
+        color: #fff;
+        font-size: 0.6rem;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-family: var(--font-sans);
+        border: none;
+        cursor: pointer;
+        border-radius: 1px;
+        text-decoration: none;
+        transition: all 0.3s var(--ease);
+      }
+      .hslide-btn::after {
+        content: " →";
+        display: inline-block;
+        transition: transform 0.3s;
+      }
+      .hslide-btn:hover {
+        background: #d4621e;
+      }
+      .hslide-btn:hover::after {
+        transform: translateX(4px);
+      }
+      .hslide-right {
+        position: relative;
+        align-self: stretch;
+        overflow: hidden;
+        z-index: 2;
+      }
+      .hslide-right img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        filter: brightness(0.55) saturate(0.85);
+        transition:
+          transform 1.4s var(--ease),
+          filter 0.5s;
+      }
+      .hero-slide:hover .hslide-right img {
+        transform: scale(1.05);
+        filter: brightness(0.65) saturate(0.9);
+      }
+      .hslide-right::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to right,
+          #1c1812 0%,
+          rgba(28, 24, 18, 0.5) 35%,
+          transparent 70%
+        );
+        z-index: 2;
+        pointer-events: none;
+      }
+      .hslide-badge {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        z-index: 4;
+        font-size: 0.48rem;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 2px;
+        font-family: var(--font-sans);
+      }
+      .hslide-num {
+        position: absolute;
+        bottom: 10px;
+        right: 12px;
+        font-family: var(--font-serif);
+        font-size: 4rem;
+        color: rgba(255, 255, 255, 0.1);
+        z-index: 3;
+        pointer-events: none;
+        line-height: 1;
+        transition: color 0.5s var(--ease);
+      }
+      .hero-slide:hover .hslide-num {
+        color: rgba(255, 255, 255, 0.25);
+      }
+      .hslider-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 40px 16px;
+        background: linear-gradient(135deg, #1a1510 0%, #1e1a14 100%);
+        border-top: 1px solid rgba(232, 114, 42, 0.12);
+        position: relative;
+        z-index: 5;
+      }
+      .hctrl-btn {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: rgba(255, 255, 255, 0.7);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        transition: all 0.3s;
+        font-family: var(--font-sans);
+      }
+      .hctrl-btn:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: #fff;
+      }
+      .hdots {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
+      .hdot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.25);
+        cursor: pointer;
+        transition: all 0.35s var(--ease);
+      }
+      .hdot.active {
+        background: var(--primary);
+        width: 18px;
+        border-radius: 3px;
+      }
+      .hprogress {
+        height: 2px;
+        background: var(--primary);
+        width: 0%;
+        position: relative;
+        z-index: 5;
+        box-shadow: 0 0 6px rgba(232, 114, 42, 0.5);
+      }
+
+      /* ── MOBILE hero slider ── */
+      @media (max-width: 768px) {
+        .slider-wrap {
+          overflow: hidden;
+        }
+        .hero-track {
+          /* nothing special needed */
+        }
+        .hero-slide {
+          flex: 0 0 100%;
+          width: 100%;
+          grid-template-columns: 1fr;
+          padding: 0;
+          min-height: 360px;
+          height: 360px;
+        }
+        .hslide-right {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 0;
+        }
+        .hslide-right::before {
+          background: linear-gradient(
+            to top,
+            #1c1812 35%,
+            rgba(28, 24, 18, 0.7) 65%,
+            rgba(28, 24, 18, 0.25) 100%
+          );
+        }
+        .hslide-left {
+          position: relative;
+          z-index: 3;
+          padding: 0 20px 28px;
+          justify-content: flex-end;
+          height: 360px;
+          width: 100%;
+          box-sizing: border-box;
+        }
+        .hslide-title {
+          font-size: 2rem;
+        }
+        .hslide-desc {
+          font-size: 0.78rem;
+          max-width: 100%;
+          margin-bottom: 18px;
+        }
+        .hslide-eyebrow {
+          margin-bottom: 10px;
+        }
+        .hslide-badge {
+          top: 10px;
+          right: 10px;
+          font-size: 0.42rem;
+        }
+        .hslide-num {
+          display: none;
+        }
+        .hslider-controls {
+          padding: 12px 20px 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Custom cursor -->
+    <div class="cursor-ring"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Scroll progress -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- LOADER -->
+    <div id="ub-loader">
+      <div class="loader-text-wrap">
+        <div class="loader-welcome">Our Projects</div>
+        <div class="loader-sub">United Builders &amp; Since 1968</div>
+      </div>
+      <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+    </div>
+
+    <!-- DESKTOP NAV -->
+    <nav class="nav-desktop">
+      <a href="../index.html" class="nav-back">
+        <div class="nav-back-arrow">&#8592;</div>
+        <span>Back Home</span>
+      </a>
+      <div class="nav-logo">
+        <img src="../images/ubnewlogo.png" alt="United Builders" />
+      </div>
+      <div class="nav-right"></div>
+    </nav>
+    <!-- MOBILE NAV -->
+    <nav class="nav-mobile">
+      <a href="../index.html" class="nav-mobile-back">
+        <div class="nav-mobile-arrow">&#8592;</div>
+        <span>Back Home</span>
+      </a>
+    </nav>
+
+    <!-- HERO -->
+    <section
+      class="projects-hero"
+      style="
+        padding: 0;
+        background: #1a1510;
+        position: relative;
+        overflow: hidden;
+      "
+    >
+      <div class="slider-wrap" id="hero-slider">
+        <div class="hero-track" id="hero-track">
+          <div class="hero-slide">
+            <div class="hslide-left">
+              <span class="hslide-eyebrow">Residential · Premium</span>
+              <h1 class="hslide-title">United <em>Picasso</em></h1>
+              <p class="hslide-desc">
+                Where art meets architecture in Nashik's most discerning address
+                — along the Godavari Riverfront.
+              </p>
+              <a href="residential.html#picasso" class="hslide-btn"
+                >View Project</a
+              >
+            </div>
+            <div class="hslide-right">
+              <img
+                src="../images/picasso.png"
+                alt="United Picasso"
+                loading="lazy"
+              />
+              <span class="hslide-badge status-sold">Sold Out</span>
+              <div class="hslide-num">01</div>
+            </div>
+          </div>
+
+          <div class="hero-slide">
+            <div class="hslide-left">
+              <span class="hslide-eyebrow">Residential · Premium</span>
+              <h1 class="hslide-title">United <em>Courtyard</em></h1>
+              <p class="hslide-desc">
+                Home as the truest expression of self — considered living at
+                every turn, behind INOX off Pune Highway.
+              </p>
+              <a href="residential.html#courtyard" class="hslide-btn"
+                >View Project</a
+              >
+            </div>
+            <div class="hslide-right">
+              <img
+                src="../images/courtyard/courtyard4.jpg"
+                alt="United Courtyard"
+                loading="lazy"
+              />
+              <span class="hslide-badge status-sold">Sold Out</span>
+              <div class="hslide-num">02</div>
+            </div>
+          </div>
+
+          <div class="hero-slide">
+            <div class="hslide-left">
+              <span class="hslide-eyebrow"
+                >Commercial · Retail &amp; Office</span
+              >
+              <h1 class="hslide-title">United <em>Shalimar</em></h1>
+              <p class="hslide-desc">
+                For businesses that demand presence — modern amenities, timeless
+                design in the heart of Nashik.
+              </p>
+              <a href="commercial.html#shalimar" class="hslide-btn"
+                >View Project</a
+              >
+            </div>
+            <div class="hslide-right">
+              <img
+                src="../images/unitedshalimar.jpg"
+                alt="United Shalimar"
+                loading="lazy"
+              />
+              <span class="hslide-badge status-ongoing">Ongoing</span>
+              <div class="hslide-num">03</div>
+            </div>
+          </div>
+
+          <div class="hero-slide">
+            <div class="hslide-left">
+              <span class="hslide-eyebrow">Villas · Luxury</span>
+              <h1 class="hslide-title">Istana <em>Santai</em></h1>
+              <p class="hslide-desc">
+                A gated community of Balinese villas — quiet grandeur at the
+                Gangapur Dam backwaters.
+              </p>
+              <a href="villas.html#istana" class="hslide-btn">View Project</a>
+            </div>
+            <div class="hslide-right">
+              <img
+                src="../images/istana.jpg"
+                alt="Istana Santai"
+                loading="lazy"
+              />
+              <span class="hslide-badge status-ongoing">Ongoing</span>
+              <div class="hslide-num">04</div>
+            </div>
+          </div>
+
+          <div class="hero-slide">
+            <div class="hslide-left">
+              <span class="hslide-eyebrow">Villas · Ultra Premium</span>
+              <h1 class="hslide-title">United <em>Infinity</em></h1>
+              <p class="hslide-desc">
+                No horizon. No ceiling. The next chapter in ultra-premium villa
+                living, adjacent to Sula Vineyards.
+              </p>
+              <a href="villas.html#unityInfinity" class="hslide-btn"
+                >View Project</a
+              >
+            </div>
+            <div class="hslide-right">
+              <img
+                src="../images/infinity.jpg"
+                alt="United Infinity"
+                loading="lazy"
+              />
+              <span class="hslide-badge status-soon">Coming Soon</span>
+              <div class="hslide-num">05</div>
+            </div>
+          </div>
+
+          <div class="hero-slide">
+            <div class="hslide-left">
+              <span class="hslide-eyebrow">Plots · NA Plots</span>
+              <h1 class="hslide-title">Earth <em>One</em></h1>
+              <p class="hslide-desc">
+                Land that grows in value by design — sustainable living among
+                the Igatpuri Hills.
+              </p>
+              <a
+                href="https://earthdevelopers.in"
+                target="_blank"
+                class="hslide-btn"
+                >View Project</a
+              >
+            </div>
+            <div class="hslide-right">
+              <img
+                src="../images/maingate.jpeg"
+                alt="Earth One"
+                loading="lazy"
+              />
+              <span class="hslide-badge status-ongoing">Ongoing</span>
+              <div class="hslide-num">06</div>
+            </div>
+          </div>
+        </div>
+        <div class="hslider-controls">
+          <button class="hctrl-btn" id="hprev">&#8592;</button>
+          <div class="hdots" id="hdots"></div>
+          <button class="hctrl-btn" id="hnext">&#8594;</button>
+        </div>
+        <div class="hprogress" id="hprogress"></div>
+      </div>
+    </section>
+    <!-- DESKTOP FILTER TABS -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">
+        All Projects <span class="filter-count">6</span>
+      </button>
+      <button class="filter-btn" data-filter="residential">
+        Residential <span class="filter-count">2</span>
+      </button>
+      <button class="filter-btn" data-filter="commercial">
+        Commercial <span class="filter-count">1</span>
+      </button>
+      <button class="filter-btn" data-filter="villas">
+        Villas <span class="filter-count">2</span>
+      </button>
+      <button class="filter-btn" data-filter="plots">
+        Plots <span class="filter-count">1</span>
+      </button>
+    </div>
+
+    <!-- MOBILE FILTER DROPDOWN -->
+    <div class="filter-mobile-wrap">
+      <div class="filter-trigger-wrap" id="filter-trigger-wrap">
+        <div
+          class="filter-trigger"
+          id="filter-trigger"
+          onclick="toggleDropdown()"
+        >
+          <div class="filter-trigger-left">
+            <div class="filter-trigger-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 6h16M7 12h10M10 18h4"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="filter-trigger-label">Filter by type</div>
+              <div class="filter-trigger-value" id="trigger-value">
+                All Projects
+              </div>
+            </div>
+          </div>
+          <div class="filter-trigger-chevron">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+          </div>
+        </div>
+        <div class="filter-dropdown" id="filter-dropdown">
+          <div
+            class="filter-option active"
+            data-filter="all"
+            onclick="selectMobileFilter(this)"
+          >
+            <div class="filter-option-left">
+              <div class="filter-option-dot"></div>
+              <span class="filter-option-name">All Projects</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px">
+              <span class="filter-option-count">6 projects</span>
+              <div class="filter-option-check">
+                <svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            class="filter-option"
+            data-filter="residential"
+            onclick="selectMobileFilter(this)"
+          >
+            <div class="filter-option-left">
+              <div class="filter-option-dot"></div>
+              <span class="filter-option-name">Residential</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px">
+              <span class="filter-option-count">2 projects</span>
+              <div class="filter-option-check">
+                <svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            class="filter-option"
+            data-filter="villas"
+            onclick="selectMobileFilter(this)"
+          >
+            <div class="filter-option-left">
+              <div class="filter-option-dot"></div>
+              <span class="filter-option-name">Villas</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px">
+              <span class="filter-option-count">2 projects</span>
+              <div class="filter-option-check">
+                <svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            class="filter-option"
+            data-filter="commercial"
+            onclick="selectMobileFilter(this)"
+          >
+            <div class="filter-option-left">
+              <div class="filter-option-dot"></div>
+              <span class="filter-option-name">Commercial</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px">
+              <span class="filter-option-count">1 project</span>
+              <div class="filter-option-check">
+                <svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            class="filter-option"
+            data-filter="plots"
+            onclick="selectMobileFilter(this)"
+          >
+            <div class="filter-option-left">
+              <div class="filter-option-dot"></div>
+              <span class="filter-option-name">Plots</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px">
+              <span class="filter-option-count">1 project</span>
+              <div class="filter-option-check">
+                <svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="results-count" id="results-count">
+      <div class="results-count-dot"></div>
+      <span id="visible-count">6</span> projects showcase
+    </div>
+
+    <section id="portfolio-section">
+      <!-- CARD GRID -->
+      <div class="card-grid" id="card-grid">
+        <div class="project-card" data-reveal>
+          <div class="card-img">
+            <img
+              src="../images/picasso.png"
+              alt="United Picasso"
+              loading="lazy"
+            />
+            <span class="card-status status-sold">Sold Out</span>
+            <div class="card-num">01</div>
+          </div>
+          <div class="card-body">
+            <span class="card-tag">Residential &middot; Premium</span>
+            <div class="card-accent"></div>
+            <h3>United Picasso</h3>
+            <p>
+              Where art meets architecture in Nashik's most discerning address.
+            </p>
+            <div class="card-meta">
+              <div class="card-meta-item">
+                <span class="card-meta-label">Location</span
+                ><span class="card-meta-val">Godavari Riverfront, Nashik</span>
+              </div>
+              <div class="card-meta-item">
+                <span class="card-meta-label">Status</span
+                ><span class="card-meta-val">Sold Out</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a href="residential.html#picasso" class="card-link"
+                >View Project</a
+              >
+              <button
+                class="card-enquire"
+                onclick="
+                  openModal(
+                    'United Picasso',
+                    'Residential · Premium',
+                    '+919767393939',
+                  )
+                "
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                  ></path></svg
+                >Enquire
+              </button>
+              <a href="tel:+919767393939" class="card-call"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path></svg
+                >Call</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card" data-reveal>
+          <div class="card-img">
+            <img
+              src="../images/courtyard/courtyard4.jpg"
+              alt="United Courtyard"
+              loading="lazy"
+            />
+            <span class="card-status status-sold">Sold Out</span>
+            <div class="card-num">02</div>
+          </div>
+          <div class="card-body">
+            <span class="card-tag">Residential &middot; Premium</span>
+            <div class="card-accent"></div>
+            <h3>United Courtyard</h3>
+            <p>
+              Home as the truest expression of self — considered living at every
+              turn.
+            </p>
+            <div class="card-meta">
+              <div class="card-meta-item">
+                <span class="card-meta-label">Location</span
+                ><span class="card-meta-val"
+                  >Behind INOX, Off Pune Highway</span
+                >
+              </div>
+              <div class="card-meta-item">
+                <span class="card-meta-label">Status</span
+                ><span class="card-meta-val">Sold Out</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a href="residential.html#courtyard" class="card-link"
+                >View Project</a
+              >
+              <button
+                class="card-enquire"
+                onclick="
+                  openModal(
+                    'United Courtyard',
+                    'Residential · Premium',
+                    '+919767393939',
+                  )
+                "
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                  ></path></svg
+                >Enquire
+              </button>
+              <a href="tel:+919767393939" class="card-call"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path></svg
+                >Call</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card" data-reveal>
+          <div class="card-img">
+            <img
+              src="../images/unitedshalimar.jpg"
+              alt="United Shalimar"
+              loading="lazy"
+            />
+            <span class="card-status status-ongoing">Ongoing</span>
+            <div class="card-num">03</div>
+          </div>
+          <div class="card-body">
+            <span class="card-tag"
+              >Commercial &middot; Retail &amp; Office</span
+            >
+            <div class="card-accent"></div>
+            <h3>United Shalimar</h3>
+            <p>
+              For businesses that demand presence — modern amenities, timeless
+              design.
+            </p>
+            <div class="card-meta">
+              <div class="card-meta-item">
+                <span class="card-meta-label">Location</span
+                ><span class="card-meta-val">Nashik, Maharashtra</span>
+              </div>
+              <div class="card-meta-item">
+                <span class="card-meta-label">Status</span
+                ><span class="card-meta-val">Ongoing</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a href="commercial.html#shalimar" class="card-link"
+                >View Project</a
+              >
+              <button
+                class="card-enquire"
+                onclick="
+                  openModal(
+                    'United Shalimar',
+                    'Commercial · Retail & Office',
+                    '+918799919613',
+                  )
+                "
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                  ></path></svg
+                >Enquire
+              </button>
+              <a href="tel:+918799919613" class="card-call"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path></svg
+                >Call</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card" data-reveal>
+          <div class="card-img">
+            <img
+              src="../images/istana.jpg"
+              alt="Istana Santai"
+              loading="lazy"
+            />
+            <span class="card-status status-ongoing">Ongoing</span>
+            <div class="card-num">04</div>
+          </div>
+          <div class="card-body">
+            <span class="card-tag">Villas &middot; Luxury</span>
+            <div class="card-accent"></div>
+            <h3>Istana Santai</h3>
+            <p>
+              A gated community of Balinese villas — quiet grandeur at the
+              Gangapur backwaters.
+            </p>
+            <div class="card-meta">
+              <div class="card-meta-item">
+                <span class="card-meta-label">Location</span
+                ><span class="card-meta-val">Gangapur Dam Backwaters</span>
+              </div>
+              <div class="card-meta-item">
+                <span class="card-meta-label">Status</span
+                ><span class="card-meta-val">Ongoing</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a href="villas.html#istana" class="card-link">View Project</a>
+              <button
+                class="card-enquire"
+                onclick="
+                  openModal('Istana Santai', 'Villas · Luxury', '+917774877746')
+                "
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                  ></path></svg
+                >Enquire
+              </button>
+              <a href="tel:+917774877746" class="card-call"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path></svg
+                >Call</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card" data-reveal>
+          <div class="card-img">
+            <img
+              src="../images/infinity.jpg"
+              alt="United Infinity"
+              loading="lazy"
+            />
+            <span class="card-status status-soon">Coming Soon</span>
+            <div class="card-num">05</div>
+          </div>
+          <div class="card-body">
+            <span class="card-tag">Villas &middot; Ultra Premium</span>
+            <div class="card-accent"></div>
+            <h3>United Infinity</h3>
+            <p>
+              No horizon. No ceiling. The next chapter in ultra-premium villa
+              living.
+            </p>
+            <div class="card-meta">
+              <div class="card-meta-item">
+                <span class="card-meta-label">Location</span
+                ><span class="card-meta-val">Adjacent to Sula Vineyards</span>
+              </div>
+              <div class="card-meta-item">
+                <span class="card-meta-label">Status</span
+                ><span class="card-meta-val">Coming Soon</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a href="villas.html#unityInfinity" class="card-link"
+                >View Project</a
+              >
+              <button
+                class="card-enquire"
+                onclick="
+                  openModal(
+                    'United Infinity',
+                    'Villas · Ultra Premium',
+                    '+918799919619',
+                  )
+                "
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                  ></path></svg
+                >Enquire
+              </button>
+              <a href="tel:+918799919619" class="card-call"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path></svg
+                >Call</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card" data-reveal>
+          <div class="card-img">
+            <img src="../images/maingate.jpeg" alt="Earth One" loading="lazy" />
+            <span class="card-status status-ongoing">Ongoing</span>
+            <div class="card-num">06</div>
+          </div>
+          <div class="card-body">
+            <span class="card-tag">Plots &middot; NA Plots</span>
+            <div class="card-accent"></div>
+            <h3>Earth One</h3>
+            <p>
+              Land that grows in value by design — sustainable living in
+              Igatpuri Hills.
+            </p>
+            <div class="card-meta">
+              <div class="card-meta-item">
+                <span class="card-meta-label">Location</span
+                ><span class="card-meta-val">Igatpuri Hills</span>
+              </div>
+              <div class="card-meta-item">
+                <span class="card-meta-label">Status</span
+                ><span class="card-meta-val">Ongoing</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <a
+                href="https://earthdevelopers.in"
+                target="_blank"
+                class="card-link"
+                >View Project</a
+              >
+              <button
+                class="card-enquire"
+                onclick="
+                  openModal('Earth One', 'Plots · NA Plots', '+917775877756')
+                "
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                  ></path></svg
+                >Enquire
+              </button>
+              <a href="tel:+917775877756" class="card-call"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path></svg
+                >Call</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ZIGZAG -->
+      <div class="portfolio-zigzag hidden" id="zigzag">
+        <div class="pz-row fade-enter" data-category="residential">
+          <div class="pz-img-panel">
+            <img
+              src="../images/picasso.png"
+              alt="United Picasso"
+              loading="lazy"
+            />
+            <div class="pz-num-overlay">01</div>
+            <span class="pz-status-badge status-sold">Sold Out</span>
+          </div>
+          <div class="pz-text-panel">
+            <span class="pz-tag">Residential &middot; Premium</span>
+            <div class="pz-accent-bar"></div>
+            <h3>United Picasso</h3>
+            <p>
+              A canvas of contemporary living. Where art meets architecture in
+              Nashik's most discerning address.
+            </p>
+            <div class="pz-meta">
+              <div class="pz-meta-row">
+                <span class="pz-meta-label">Location</span
+                ><span class="pz-meta-val">Godavari Riverfront, Nashik</span>
+              </div>
+              <div class="pz-meta-row">
+                <span class="pz-meta-label">Type</span
+                ><span class="pz-meta-val">Residential &middot; Premium</span>
+              </div>
+              <div class="pz-meta-row">
+                <span class="pz-meta-label">Status</span
+                ><span class="pz-meta-val">Sold Out</span>
+              </div>
+            </div>
+            <div class="pz-actions">
+              <a href="residential.html#picasso" class="project-link"
+                >View Project</a
+              >
+              <button
+                class="enquiry-btn"
+                onclick="
+                  openModal(
+                    'United Picasso',
+                    'Residential · Premium',
+                    '+919767393939',
+                  )
+                "
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                  ></path></svg
+                >Enquire
+              </button>
+              <a href="tel:+919767393939" class="call-btn"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path></svg
+                >Call</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="pz-row fade-enter" data-category="residential">
+          <div class="pz-img-panel">
+            <img
+              src="../images/courtyard/courtyard4.jpg"
+              alt="United Courtyard"
+              loading="lazy"
+            />
+            <div class="pz-num-overlay">02</div>
+            <span class="pz-status-badge status-sold">Sold Out</span>
+          </div>
+          <div class="pz-text-panel">
+            <span class="pz-tag">Residential &middot; Premium</span>
+            <div class="pz-accent-bar"></div>
+            <h3>United Courtyard</h3>
+            <p>
+              Designed for those who believe home is the truest expression of
+              self. Every corner speaks of considered living.
+            </p>
+            <div class="pz-meta">
+              <div class="pz-meta-row">
+                <span class="pz-meta-label">Location</span
+                ><span class="pz-meta-val"
+                  >Behind INOX, Off Pune Highway, Nashik</span
+                >
+              </div>
+              <div class="pz-meta-row">
+                <span class="pz-meta-label">Type</span
+                ><span class="pz-meta-val">Residential &middot; Premium</span>
+              </div>
+              <div class="pz-meta-row">
+                <span class="pz-meta-label">Status</span
+                ><span class="pz-meta-val">Sold Out</span>
+              </div>
+            </div>
+            <div class="pz-actions">
+              <a href="residential.html#courtyard" class="project-link"
+                >View Project</a
+              >
+              <button
+                class="enquiry-btn"
+                onclick="
+                  openModal(
+                    'United Courtyard',
+                    'Residential · Premium',
+                    '+919767393939',
+                  )
+                "
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                  ></path></svg
+                >Enquire
+              </button>
+              <a href="tel:+919767393939" class="call-btn"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path></svg
+                >Call</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="pz-row fade-enter" data-category="commercial">
+          <div class="pz-img-panel">
+            <img
+              src="../images/unitedshalimar.jpg"
+              alt="United Shalimar"
+              loading="lazy"
+            />
+            <div class="pz-num-overlay">03</div>
+            <span class="pz-status-badge status-ongoing">Ongoing</span>
+          </div>
+          <div class="pz-text-panel">
+            <span class="pz-tag">Commercial &middot; Retail &amp; Office</span>
+            <div class="pz-accent-bar"></div>
+            <h3>United Shalimar</h3>
+            <p>
+              A premium commercial development designed for businesses that
+              demand presence. Prime Nashik location with modern amenities and
+              timeless design.
+            </p>
+            <div class="pz-meta">
+              <div class="pz-meta-row">
+                <span class="pz-meta-label">Location</span
+                ><span class="pz-meta-val">Nashik, Maharashtra</span>
+              </div>
+              <div class="pz-meta-row">
+                <span class="pz-meta-label">Type</span
+                ><span class="pz-meta-val"
+                  >Commercial &middot; Retail &amp; Office</span
+                >
+              </div>
+              <div class="pz-meta-row">
+                <span class="pz-meta-label">Status</span
+                ><span class="pz-meta-val">Ongoing</span>
+              </div>
+            </div>
+            <div class="pz-actions">
+              <a href="commercial.html#shalimar" class="project-link"
+                >View Project</a
+              >
+              <button
+                class="enquiry-btn"
+                onclick="
+                  openModal(
+                    'United Shalimar',
+                    'Commercial · Retail & Office',
+                    '+918799919613',
+                  )
+                "
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                  ></path></svg
+                >Enquire
+              </button>
+              <a href="tel:+918799919613" class="call-btn"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path></svg
+                >Call</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="pz-row fade-enter" data-category="villas">
+          <div class="pz-img-panel">
+            <img
+              src="../images/istana.jpg"
+              alt="Istana Santai"
+              loading="lazy"
+            />
+            <div class="pz-num-overlay">04</div>
+            <span class="pz-status-badge status-ongoing">Ongoing</span>
+          </div>
+          <div class="pz-text-panel">
+            <span class="pz-tag">Villas &middot; Luxury</span>
+            <div class="pz-accent-bar"></div>
+            <h3>Istana Santai</h3>
+            <p>
+              Istana — meaning palace in Malay — is a residence of quiet
+              grandeur. Premium finishes, considered spaces, and an address that
+              commands respect.
+            </p>
+            <div class="pz-meta">
+              <div class="pz-meta-row">
+                <span class="pz-meta-label">Location</span
+                ><span class="pz-meta-val">Gangapur Dam Backwaters</span>
+              </div>
+              <div class="pz-meta-row">
+                <span class="pz-meta-label">Type</span
+                ><span class="pz-meta-val">Gated Balinese Villas</span>
+              </div>
+              <div class="pz-meta-row">
+                <span class="pz-meta-label">Status</span
+                ><span class="pz-meta-val">Ongoing</span>
+              </div>
+            </div>
+            <div class="pz-actions">
+              <a href="villas.html#istana" class="project-link">View Project</a>
+              <button
+                class="enquiry-btn"
+                onclick="
+                  openModal('Istana Santai', 'Villas · Luxury', '+917774877746')
+                "
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                  ></path></svg
+                >Enquire
+              </button>
+              <a href="tel:+917774877746" class="call-btn"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path></svg
+                >Call</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="pz-row fade-enter" data-category="villas">
+          <div class="pz-img-panel">
+            <img
+              src="../images/infinity.jpg"
+              alt="United Infinity"
+              loading="lazy"
+            />
+            <div class="pz-num-overlay">05</div>
+            <span class="pz-status-badge status-soon">Coming Soon</span>
+          </div>
+          <div class="pz-text-panel">
+            <span class="pz-tag">Villas &middot; Ultra Premium</span>
+            <div class="pz-accent-bar"></div>
+            <h3>United Infinity</h3>
+            <p>
+              No horizon. No ceiling. An elevation of the premium residential
+              standard — designed for buyers who understand that the finest
+              investment is built to last.
+            </p>
+            <div class="pz-meta">
+              <div class="pz-meta-row">
+                <span class="pz-meta-label">Location</span
+                ><span class="pz-meta-val"
+                  >Adjacent to Sula Vineyards, Nashik</span
+                >
+              </div>
+              <div class="pz-meta-row">
+                <span class="pz-meta-label">Type</span
+                ><span class="pz-meta-val">Ultra Premium Villas</span>
+              </div>
+              <div class="pz-meta-row">
+                <span class="pz-meta-label">Status</span
+                ><span class="pz-meta-val">Coming Soon</span>
+              </div>
+            </div>
+            <div class="pz-actions">
+              <a href="villas.html#unityInfinity" class="project-link"
+                >View Project</a
+              >
+              <button
+                class="enquiry-btn"
+                onclick="
+                  openModal(
+                    'United Infinity',
+                    'Villas · Ultra Premium',
+                    '+918799919619',
+                  )
+                "
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                  ></path></svg
+                >Enquire
+              </button>
+              <a href="tel:+918799919619" class="call-btn"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path></svg
+                >Call</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="pz-row fade-enter" data-category="plots">
+          <div class="pz-img-panel">
+            <img src="../images/maingate.jpeg" alt="Earth One" loading="lazy" />
+            <div class="pz-num-overlay">06</div>
+            <span class="pz-status-badge status-ongoing">Ongoing</span>
+          </div>
+          <div class="pz-text-panel">
+            <span class="pz-tag">Plots &middot; NA Plots</span>
+            <div class="pz-accent-bar"></div>
+            <h3>Earth One</h3>
+            <p>
+              A return to what matters. For those who seek not just a home, but
+              a harmony — where sustainable design, open spaces, and human scale
+              come together.
+            </p>
+            <div class="pz-meta">
+              <div class="pz-meta-row">
+                <span class="pz-meta-label">Location</span
+                ><span class="pz-meta-val">Igatpuri Hills</span>
+              </div>
+              <div class="pz-meta-row">
+                <span class="pz-meta-label">Type</span
+                ><span class="pz-meta-val">NA Plots</span>
+              </div>
+              <div class="pz-meta-row">
+                <span class="pz-meta-label">Status</span
+                ><span class="pz-meta-val">Ongoing</span>
+              </div>
+            </div>
+            <div class="pz-actions">
+              <a
+                href="https://earthdevelopers.in"
+                target="_blank"
+                class="project-link"
+                >View Project</a
+              >
+              <button
+                class="enquiry-btn"
+                onclick="
+                  openModal('Earth One', 'Plots · NA Plots', '+917775877756')
+                "
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                  ></path></svg
+                >Enquire
+              </button>
+              <a href="tel:+917775877756" class="call-btn"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.38 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path></svg
+                >Call</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="no-results" id="no-results">
+        <h3>No projects in this category</h3>
+        <p>Try a different filter above.</p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">
+        <img src="../images/UB-Logo-white.svg" alt="United Builders" />
+      </div>
+      <div class="footer-divider"></div>
+      <p class="footer-copy">
+        &copy;1968&ndash;2025 United Builders. All rights reserved.<br />Design
+        for Impact. Built to Last.
+      </p>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="enquiry-modal">
+      <div class="modal-box">
+        <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+        <div class="modal-eyebrow">Get In Touch</div>
+        <h2 class="modal-title" id="modal-project-name"></h2>
+        <p class="modal-sub" id="modal-project-tag"></p>
+        <div class="modal-divider"></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your name" id="f-name" />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+91 00000 00000" id="f-phone" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@example.com" id="f-email" />
+        </div>
+        <div class="form-group">
+          <label>Message (Optional)</label>
+          <textarea
+            rows="3"
+            placeholder="Any specific requirements or questions?"
+            id="f-message"
+          ></textarea>
+        </div>
+        <button class="form-submit" onclick="submitEnquiry()">
+          <span>Submit Enquiry</span>
+        </button>
+        <p class="modal-call-alt">
+          Prefer to talk?
+          <a id="modal-call-link" href="#">Call us directly &rarr;</a>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      /* ── LOADER ── */
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          var l = document.getElementById("ub-loader");
+          l.classList.add("exit");
+          setTimeout(function () {
+            l.style.display = "none";
+            initReveal();
+          }, 700);
+        }, 1800);
+      });
+
+      /* ── CUSTOM CURSOR ── */
+      (function () {
+        if (window.matchMedia("(pointer: coarse)").matches) return;
+        var dot = document.querySelector(".cursor-dot");
+        var ring = document.querySelector(".cursor-ring");
+        if (!dot || !ring) return;
+        var mx = 0,
+          my = 0,
+          rx = 0,
+          ry = 0;
+        document.addEventListener("mousemove", function (e) {
+          mx = e.clientX;
+          my = e.clientY;
+          dot.style.transform =
+            "translate(" + mx + "px," + my + "px) translate(-50%,-50%)";
+        });
+        function loop() {
+          rx += (mx - rx) * 0.15;
+          ry += (my - ry) * 0.15;
+          ring.style.transform =
+            "translate(" + rx + "px," + ry + "px) translate(-50%,-50%)";
+          requestAnimationFrame(loop);
+        }
+        loop();
+        var hoverSel =
+          "a, button, .project-card, .pz-row, .filter-btn, .filter-option";
+        document.querySelectorAll(hoverSel).forEach(function (el) {
+          el.addEventListener("mouseenter", function () {
+            ring.classList.add("hover");
+          });
+          el.addEventListener("mouseleave", function () {
+            ring.classList.remove("hover");
+          });
+        });
+      })();
+
+      /* ── SCROLL PROGRESS ── */
+      (function () {
+        var bar = document.getElementById("scroll-progress");
+        window.addEventListener(
+          "scroll",
+          function () {
+            var h = document.documentElement;
+            var scrolled =
+              (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+            bar.style.width = scrolled + "%";
+          },
+          { passive: true },
+        );
+      })();
+
+      /* ── INTERSECTION REVEAL ── */
+      function initReveal() {
+        var items = document.querySelectorAll("[data-reveal]");
+        if (!("IntersectionObserver" in window)) {
+          items.forEach(function (i) {
+            i.classList.add("revealed");
+          });
+          return;
+        }
+        var obs = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry, idx) {
+              if (entry.isIntersecting) {
+                var el = entry.target;
+                var siblings = Array.prototype.slice.call(
+                  el.parentElement.querySelectorAll("[data-reveal]"),
+                );
+                var i = siblings.indexOf(el);
+                setTimeout(
+                  function () {
+                    el.classList.add("revealed");
+                  },
+                  (i % 3) * 120,
+                );
+                obs.unobserve(el);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -50px 0px" },
+        );
+        items.forEach(function (i) {
+          obs.observe(i);
+        });
+      }
+
+      /* ── FILTER LOGIC ── */
+      var cardGrid = document.getElementById("card-grid");
+      var zigzag = document.getElementById("zigzag");
+      var noResults = document.getElementById("no-results");
+      var visibleCount = document.getElementById("visible-count");
+      var resultsCount = document.getElementById("results-count");
+
+      function pulseCount(n) {
+        visibleCount.textContent = n;
+        resultsCount.classList.remove("pulse");
+        void resultsCount.offsetWidth;
+        resultsCount.classList.add("pulse");
+      }
+
+      function applyFilter(f) {
+        document.querySelectorAll(".filter-btn").forEach(function (b) {
+          b.classList.toggle("active", b.dataset.filter === f);
+        });
+
+        if (f === "all") {
+          cardGrid.classList.remove("hidden");
+          zigzag.classList.add("hidden");
+          noResults.classList.remove("show");
+          cardGrid.querySelectorAll(".project-card").forEach(function (c, i) {
+            c.style.display = "flex";
+            c.classList.remove("fade-enter");
+            c.classList.remove("revealed");
+            void c.offsetWidth;
+            c.style.animationDelay = i * 0.08 + "s";
+            c.classList.add("fade-enter");
+            c.classList.add("revealed");
+          });
+          pulseCount(6);
+        } else {
+          cardGrid.classList.add("hidden");
+          zigzag.classList.remove("hidden");
+          var rows = zigzag.querySelectorAll(".pz-row");
+          var visible = 0;
+          rows.forEach(function (row) {
+            if (row.dataset.category === f) {
+              row.classList.remove("hidden");
+              row.classList.remove("fade-enter");
+              void row.offsetWidth;
+              row.style.animationDelay = visible * 0.1 + "s";
+              row.classList.add("fade-enter");
+              visible++;
+            } else {
+              row.classList.add("hidden");
+            }
+          });
+          pulseCount(visible);
+          noResults.classList.toggle("show", visible === 0);
+        }
+      }
+
+      document.querySelectorAll(".filter-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          applyFilter(btn.dataset.filter);
+        });
+      });
+
+      /* ── MOBILE DROPDOWN ── */
+      var dropdownOpen = false;
+      function toggleDropdown() {
+        dropdownOpen = !dropdownOpen;
+        var dd = document.getElementById("filter-dropdown");
+        var wrap = document.getElementById("filter-trigger-wrap");
+        if (dropdownOpen) {
+          dd.classList.add("open");
+          wrap.classList.add("open");
+        } else {
+          dd.classList.remove("open");
+          wrap.classList.remove("open");
+        }
+      }
+
+      function selectMobileFilter(el) {
+        var f = el.dataset.filter;
+        document.querySelectorAll(".filter-option").forEach(function (o) {
+          o.classList.remove("active");
+        });
+        el.classList.add("active");
+        document.getElementById("trigger-value").textContent = el.querySelector(
+          ".filter-option-name",
+        ).textContent;
+        document.getElementById("filter-dropdown").classList.remove("open");
+        document.getElementById("filter-trigger-wrap").classList.remove("open");
+        dropdownOpen = false;
+        applyFilter(f);
+      }
+
+      document.addEventListener("click", function (e) {
+        var wrap = document.getElementById("filter-trigger-wrap");
+        if (dropdownOpen && wrap && !wrap.contains(e.target)) {
+          document.getElementById("filter-dropdown").classList.remove("open");
+          wrap.classList.remove("open");
+          dropdownOpen = false;
+        }
+      });
+
+      /* ── MODAL ── */
+      function openModal(name, tag, phone) {
+        document.getElementById("modal-project-name").textContent = name;
+        document.getElementById("modal-project-tag").textContent = tag;
+        document.getElementById("modal-call-link").href = "tel:" + phone;
+        document.getElementById("enquiry-modal").classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function closeModal() {
+        document.getElementById("enquiry-modal").classList.remove("open");
+        document.body.style.overflow = "";
+      }
+      document
+        .getElementById("enquiry-modal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) closeModal();
+        });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeModal();
+      });
+      function submitEnquiry() {
+        var n = document.getElementById("f-name").value.trim();
+        var p = document.getElementById("f-phone").value.trim();
+        if (!n || !p) {
+          alert("Please enter your name and phone number.");
+          return;
+        }
+        alert("Thank you, " + n + "! Our team will reach out to you shortly.");
+        closeModal();
+        ["f-name", "f-phone", "f-email", "f-message"].forEach(function (id) {
+          document.getElementById(id).value = "";
+        });
+      }
+
+      /* ── PARALLAX on hero orb (subtle) ── */
+      (function () {
+        var hero = document.querySelector(".projects-hero");
+        if (!hero) return;
+        window.addEventListener(
+          "scroll",
+          function () {
+            var y = window.pageYOffset;
+            if (y < 600) {
+              hero.style.setProperty("--scroll-y", y + "px");
+            }
+          },
+          { passive: true },
+        );
+      })();
+      /* ── HERO SLIDER ── */
+      /* ── HERO SLIDER ── */
+      (function () {
+        var wrap = document.getElementById("hero-slider");
+        var track = document.getElementById("hero-track");
+        if (!track) return;
+        var dotsEl = document.getElementById("hdots");
+        var prog = document.getElementById("hprogress");
+        var slides = Array.prototype.slice.call(
+          track.querySelectorAll(".hero-slide"),
+        );
+        var total = slides.length;
+        var cur = 0,
+          raf = null,
+          startTs = null;
+        var DURATION = 4500;
+
+        /* build dots */
+        slides.forEach(function (_, i) {
+          var d = document.createElement("div");
+          d.className = "hdot" + (i === 0 ? " active" : "");
+          d.addEventListener("click", function () {
+            go(i);
+          });
+          dotsEl.appendChild(d);
+        });
+
+        function slideWidth() {
+          /* always read live — handles resize & orientation change */
+          return wrap.offsetWidth;
+        }
+
+        function updateDots() {
+          var dots = dotsEl.querySelectorAll(".hdot");
+          dots.forEach(function (d, i) {
+            d.classList.toggle("active", i === cur);
+          });
+        }
+
+        function go(n) {
+          cur = ((n % total) + total) % total;
+          track.style.transition =
+            "transform 0.75s cubic-bezier(0.16, 1, 0.3, 1)";
+          track.style.transform = "translateX(-" + cur * slideWidth() + "px)";
+          updateDots();
+          resetTimer();
+        }
+
+        function resetTimer() {
+          if (raf) cancelAnimationFrame(raf);
+          startTs = null;
+          prog.style.transition = "none";
+          prog.style.width = "0%";
+          requestAnimationFrame(startAnim);
+        }
+
+        function startAnim(ts) {
+          if (!startTs) startTs = ts;
+          var elapsed = ts - startTs;
+          prog.style.width = Math.min((elapsed / DURATION) * 100, 100) + "%";
+          if (elapsed < DURATION) {
+            raf = requestAnimationFrame(startAnim);
+          } else {
+            go(cur + 1);
+          }
+        }
+
+        document.getElementById("hprev").addEventListener("click", function () {
+          go(cur - 1);
+        });
+        document.getElementById("hnext").addEventListener("click", function () {
+          go(cur + 1);
+        });
+
+        /* on resize, snap instantly to correct position without animation */
+        window.addEventListener("resize", function () {
+          track.style.transition = "none";
+          track.style.transform = "translateX(-" + cur * slideWidth() + "px)";
+        });
+
+        /* init */
+        track.style.transform = "translateX(0)";
+        resetTimer();
+      })();
+    </script>
+  </body>
+</html>
