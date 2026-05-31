@@ -1645,6 +1645,23 @@
         font-family: var(--font-sans);
       }
 
+      .inquiry-form .project-field {
+        display: none;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        margin-bottom: 0;
+        transition:
+          opacity 0.35s ease,
+          max-height 0.35s ease,
+          margin 0.35s ease;
+      }
+      .inquiry-form .project-field.show {
+        display: block;
+        opacity: 1;
+        max-height: 80px;
+        margin-bottom: 18px;
+      }
       /* FADE IN */
       .fade-in-up {
         opacity: 0;
@@ -2625,11 +2642,19 @@
             placeholder="Mobile Number"
             required
           />
-          <select name="Reason" required>
+          <select name="Reason" id="reasonSelect" required>
             <option value="">Select Reason</option>
             <option>Project Inquiry</option>
             <option>Partnership</option>
             <option>General Support</option>
+          </select>
+          <select name="Project" id="projectSelect" class="project-field">
+            <option value="">Select Project</option>
+            <option>United Picasso</option>
+            <option>United Infinity</option>
+            <option>Istana</option>
+            <option>Earth One</option>
+            <option>United Shalimar</option>
           </select>
           <textarea
             name="Message"
@@ -2734,9 +2759,36 @@
           });
         document
           .getElementById("closeForm")
+
           .addEventListener("click", function () {
             formOverlay.classList.remove("active");
           });
+
+        var PROJECT_EMAILS = {
+          "United Picasso": "picasso@unitedbuilders.in", // TODO: replace
+          "United Infinity": "infinity@unitedbuilders.in", // TODO: replace
+          Istana: "istana@unitedbuilders.in", // TODO: replace
+          "Earth One": "earthone@unitedbuilders.in", // TODO: replace
+          "United Shalimar": "shalimar@unitedbuilders.in", // TODO: replace
+          _default: "hello@unitedbuilders.in", // fallback / non-project inquiries
+        };
+
+        /* ---- Conditional project field on "Project Inquiry" ---- */
+        var reasonSelect = document.getElementById("reasonSelect");
+        var projectSelect = document.getElementById("projectSelect");
+        if (reasonSelect && projectSelect) {
+          reasonSelect.addEventListener("change", function () {
+            var isProject = reasonSelect.value === "Project Inquiry";
+            projectSelect.classList.toggle("show", isProject);
+            if (isProject) {
+              projectSelect.setAttribute("required", "required");
+            } else {
+              projectSelect.removeAttribute("required");
+              projectSelect.value = "";
+            }
+          });
+        }
+
         window.addEventListener("click", function (e) {
           if (e.target === choiceOverlay)
             choiceOverlay.classList.remove("active");
