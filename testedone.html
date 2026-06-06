@@ -1749,7 +1749,7 @@
               rgba(0, 0, 0, 0.5) 50%,
               rgba(0, 0, 0, 0.2) 100%
             ),
-            url("images/ubmob3.png") !important;
+            url("images/nskHero.png") !important;
           background-attachment: fixed !important;
           background-position: center center !important;
           background-size: cover !important;
@@ -1885,6 +1885,7 @@
         }
         .portfolio-header {
           position: relative !important;
+          top: auto !important; /* Resets the downward shift causing the overlap */
           padding: 0 5% 36px !important;
           flex-direction: column !important;
           gap: 6px !important;
@@ -2095,13 +2096,17 @@
         <div class="nav-dropdown">
           <a href="#">Our Portfolio ▾</a>
           <div class="dropdown-menu">
-            <a href="projects/indexPcopy.html">All Projects</a>
-            <a href="projects/residential.html">Residential</a>
-            <a href="projects/commercial.html">Commercial</a>
-            <a href="projects/plots.html">Plots</a>
-            <a href="projects/villas.html">Villas</a>
+            <!-- <a href="../projects/indexPcopy.html">All Projects</a> -->
+            <!-- <a href="../projects/residential.html">Residential</a> -->
+            <!-- <a href="../projects/commercial.html">Commercial</a> -->
+            <!-- <a href="../projects/plots.html">Plots</a>
+            <a href="../projects/villas.html">Villas</a> -->
+            <a href="projects/residential.html#picasso">United Picasso</a>
+            <a href="projects/villas.html#unityInfinity">United Infinity</a>
           </div>
         </div>
+        <a href="about.html">Our Legacy</a>
+        <a href="about.html">Insights</a>
       </nav>
       <button class="inquiry-btn" id="openInquiry">Inquiry</button>
       <button
@@ -2124,12 +2129,14 @@
       </div>
       <div class="mm-links">
         <a href="index.html" class="mm-link">Home</a>
+        <a href="about.html" class="mm-link">Our Story</a>
+
         <button
           class="mm-accordion-btn"
           id="projectsAccBtn"
           aria-expanded="false"
         >
-          Projects
+          Our Portfolio
           <span class="mm-acc-arrow">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
               <path
@@ -2143,14 +2150,16 @@
           </span>
         </button>
         <div class="mm-sub" id="projectsSub">
-          <a href="projects/index.html">All Projects</a>
-          <a href="projects/residential.html">Residential</a>
-          <a href="projects/commercial.html">Commercial</a>
-          <a href="projects/plots.html">Plots</a>
-          <a href="projects/villas.html">Villas</a>
+          <!-- <a href="../projects/index.html">All Projects</a>
+          <a href="../projects/residential.html">Residential</a>
+          <a href="../projects/commercial.html">Commercial</a>
+          <a href="../projects/plots.html">Plots</a>
+          <a href="../projects/villas.html">Villas</a> -->
+          <a href="projects/residential.html#picasso">United Picasso</a>
+          <a href="projects/villas.html#unityInfinity">United Infinity</a>
         </div>
-        <a href="about.html" class="mm-link">About Us</a>
-        <a href="contact.html" class="mm-link">Contact</a>
+        <a href="about.html" class="mm-link">Our Legacy</a>
+        <a href="contact.html" class="mm-link">Insights</a>
       </div>
     </nav>
 
@@ -2295,6 +2304,26 @@
             <div class="portfolio-track" id="portfolioTrack">
               <div class="pf-card">
                 <div class="pf-card-img">
+                  <img src="images/infinity.jpg" alt="United Infinity" />
+                  <div class="pf-img-overlay"></div>
+                  <div class="pf-card-num">04</div>
+                  <span class="pf-card-badge">Ultra Premium</span>
+                </div>
+                <div class="pf-card-body">
+                  <h3>United Infinity</h3>
+                  <p>
+                    No horizon. No ceiling. United Infinity is an elevation of
+                    the premium residential standard.
+                  </p>
+                  <a
+                    href="projects/villas.html#unityInfinitys"
+                    class="pf-view-btn"
+                    >View Project &#8594;</a
+                  >
+                </div>
+              </div>
+              <div class="pf-card">
+                <div class="pf-card-img">
                   <img src="images/picasso.png" alt="United Picasso" />
                   <div class="pf-img-overlay"></div>
                   <div class="pf-card-num">01</div>
@@ -2326,7 +2355,7 @@
                     Istana — meaning palace in Malay — is a residence of quiet
                     grandeur. Premium finishes, considered spaces.
                   </p>
-                  <a href="projects/villas.html#istana" class="pf-view-btn"
+                  <a href="https://www.istana.co.in/" class="pf-view-btn"
                     >View Project &#8594;</a
                   >
                 </div>
@@ -2344,27 +2373,7 @@
                     A return to what matters. Earth One is for those who seek
                     harmony — sustainable design, open spaces, human scale.
                   </p>
-                  <a href="projects/plots.html#earthone" class="pf-view-btn"
-                    >View Project &#8594;</a
-                  >
-                </div>
-              </div>
-              <div class="pf-card">
-                <div class="pf-card-img">
-                  <img src="images/infinity.jpg" alt="United Infinity" />
-                  <div class="pf-img-overlay"></div>
-                  <div class="pf-card-num">04</div>
-                  <span class="pf-card-badge">Ultra Premium</span>
-                </div>
-                <div class="pf-card-body">
-                  <h3>United Infinity</h3>
-                  <p>
-                    No horizon. No ceiling. United Infinity is an elevation of
-                    the premium residential standard.
-                  </p>
-                  <a
-                    href="projects/villas.html#unityinfinity"
-                    class="pf-view-btn"
+                  <a href="https://www.earthdevelopers.in/" class="pf-view-btn"
                     >View Project &#8594;</a
                   >
                 </div>
@@ -2566,11 +2575,12 @@
         </div>
         <div class="footer-col">
           <h5>Navigate</h5>
-          <a href="content/careers.html">Careers</a>
+          <a href="#">Home</a>
           <a href="about.html">Our Story</a>
-          <a href="#">Projects</a>
+          <a href="#">Our Portfolio</a>
+
           <a href="#">The Legacy</a>
-          <a href="#">Media</a>
+          <a href="#">Insights</a>
           <a href="contact.html">Contact</a>
         </div>
         <div class="footer-col">
@@ -2581,22 +2591,23 @@
         </div>
         <div class="footer-col">
           <h5>Legal</h5>
-          <a href="#">RERA Registration</a>
+
           <a href="#">Privacy Policy</a>
           <a href="#">Terms &amp; Conditions</a>
           <a href="#">Disclaimer</a>
-          <a href="#">Cancellation Policy</a>
         </div>
         <div class="footer-col">
-          <h5>Get In Touch</h5>
-          <p>Parijat Nagar, Nashik<br />Maharashtra 422009</p>
-          <p style="margin-top: 14px">hello@unitedbuilders.in</p>
-          <p>+91 XXXXXXXXXX</p>
+          <h5>Address</h5>
+          <address>
+            <p>UB-HQ, Parijat Nagar, Nashik 422005 Maharashtra</p>
+          </address>
+          <p>Mon–Sat: 10:00 AM–7:00 PM IST</p>
+          <!-- <p style="margin-top: 14px">hello@unitedbuilders.in</p>
+          <p>+91 XXXXXXXXXX</p> -->
         </div>
       </div>
       <div class="footer-bottom">
-        &copy;1968-2025 United Builders. All rights reserved. Design for Impact.
-        Built to Last
+        &copy;United Builders. All rights reserved.
       </div>
     </footer>
 
@@ -3531,7 +3542,7 @@
                 { label: "Status", val: "Ongoing" },
                 { label: "Category", val: "Luxury" },
               ],
-              page: "#",
+              page: "https://istana.co.in/",
             },
             {
               id: "infinity",
@@ -3564,7 +3575,7 @@
                 { label: "Status", val: "Ongoing" },
                 { label: "Category", val: "NA Plots" },
               ],
-              page: "#",
+              page: "https://earthdevelopers.in/",
             },
           ],
         };
