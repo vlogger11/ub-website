@@ -1,0 +1,2177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Our Story — United Builders. Born in Nashik. Building Nashik. Since 1968. Three generations of trust, quality, and enduring real estate."
+    />
+    <title>Our Story | United Builders</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* ---- Design tokens (shared with home page) ---- */
+        --primary-orange: #e8722a;
+        --darker-orange: #d45f1f;
+        --active-orange: #b84a15;
+        --charcoal: #2c2c2c;
+        --light-grey: #7f7f7f;
+        --white: #ffffff;
+        --off-white: #f5f5f5;
+        --dark-grey: #3f3f3f;
+        --border-light: #e0e0e0;
+        --footer-text: #bfbfbf;
+        --font-headline: "Cormorant Garamond", serif;
+        --font-body: "Futura PT", "Neue Haas Grotesk", "Montserrat", sans-serif;
+        --section-v: 100px;
+        --section-h: 40px;
+        --gap-sm: 20px;
+        --gap-md: 40px;
+        --gap-lg: 60px;
+        --gap-xl: 80px;
+
+        /* Legacy aliases */
+        --primary: var(--primary-orange);
+        --dark: var(--charcoal);
+        --light: var(--off-white);
+        --text-main: var(--charcoal);
+        --text-muted: var(--light-grey);
+        --font-serif: var(--font-headline);
+        --font-sans: var(--font-body);
+        --nav-h: 80px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: #fff;
+        color: var(--text-main);
+        font-family: var(--font-sans);
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+
+      /* NAVIGATION */
+      #ub-topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: var(--nav-h);
+        padding: 0 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateY(0);
+        background: transparent;
+      }
+      #ub-topbar.scrolled {
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      }
+      .nav-logo img {
+        height: 40px;
+        transition: all 0.4s ease;
+        display: block;
+      }
+      #ub-nav {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+      }
+      #ub-nav a {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 500;
+        font-size: 0.72rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        position: relative;
+        transition: color 0.3s;
+      }
+      #ub-nav a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: width 0.3s ease;
+      }
+      #ub-nav a:hover::after {
+        width: 100%;
+      }
+      #ub-topbar:not(.scrolled) #ub-nav a {
+        color: var(--dark);
+      }
+      #ub-nav a:hover {
+        color: var(--primary);
+      }
+      #ub-topbar #ub-nav a:hover,
+      #ub-topbar:not(.scrolled) #ub-nav a:hover {
+        color: var(--primary);
+      }
+      .nav-dropdown {
+        position: relative;
+      }
+      .nav-dropdown > a {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .dropdown-menu {
+        position: absolute;
+        top: calc(100% + 14px);
+        left: 0;
+        background: #fff;
+        min-width: 200px;
+        padding: 12px 0;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        border-top: 2px solid var(--primary);
+      }
+      .nav-dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown-menu a {
+        display: block !important;
+        padding: 10px 22px !important;
+        color: var(--dark) !important;
+        font-size: 0.68rem !important;
+        letter-spacing: 1.5px;
+        font-weight: 500;
+        transition:
+          color 0.2s,
+          padding-left 0.2s;
+      }
+      .dropdown-menu a::after {
+        display: none !important;
+      }
+      .dropdown-menu a:hover {
+        color: var(--primary) !important;
+        padding-left: 28px !important;
+      }
+      .inquiry-btn {
+        background: var(--primary);
+        color: #fff;
+        padding: 11px 28px;
+        border: none;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: var(--font-sans);
+        white-space: nowrap;
+      }
+      .inquiry-btn:hover {
+        background: var(--dark);
+      }
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 2px;
+        z-index: 1100;
+      }
+      .hamburger span {
+        display: block;
+        height: 2px;
+        border-radius: 2px;
+        transition: all 0.35s ease;
+        background: #fff;
+      }
+      #ub-topbar.scrolled .hamburger span {
+        background: var(--dark);
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* MOBILE DRAWER */
+      #mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: min(320px, 85vw);
+        height: 100vh;
+        background: #000000;
+        z-index: 1050;
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        box-shadow: -8px 0 40px rgba(0, 0, 0, 0.12);
+      }
+      #mobile-menu.open {
+        right: 0;
+      }
+      .mm-header {
+        padding: 28px 24px 20px;
+        border-bottom: 1px solid #f0ede9;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .mm-header img {
+        height: 42px;
+      }
+      .mm-close {
+        background: none;
+        border: none;
+        font-size: 1.4rem;
+        cursor: pointer;
+        color: var(--dark);
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: background 0.2s;
+      }
+      .mm-close:hover {
+        background: #f0ede9;
+      }
+      .mm-links {
+        padding: 20px 0;
+        flex: 1;
+      }
+      .mm-link {
+        display: block;
+        padding: 14px 28px;
+        font-size: 0.78rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--dark);
+        text-decoration: none;
+        transition:
+          color 0.2s,
+          padding-left 0.25s;
+        border-bottom: 1px solid #f9f7f4;
+      }
+      .mm-link:hover {
+        color: var(--primary);
+        padding-left: 36px;
+      }
+      .mm-accordion-btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 28px;
+        font-size: 0.78rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--dark);
+        background: none;
+        border: none;
+        border-bottom: 1px solid #f9f7f4;
+        cursor: pointer;
+        font-family: var(--font-sans);
+        transition: color 0.2s;
+      }
+      .mm-accordion-btn:hover {
+        color: var(--primary);
+      }
+      .mm-acc-arrow {
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s;
+        flex-shrink: 0;
+      }
+      .mm-accordion-btn.active {
+        color: var(--primary);
+      }
+      .mm-accordion-btn.active .mm-acc-arrow {
+        transform: rotate(180deg);
+      }
+      .mm-sub {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+        background: #faf9f7;
+      }
+      .mm-sub.open {
+        max-height: 300px;
+      }
+      .mm-sub a {
+        display: block;
+        padding: 11px 28px 11px 40px;
+        font-size: 0.72rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 500;
+        color: var(--text-muted);
+        text-decoration: none;
+        transition:
+          color 0.2s,
+          padding-left 0.2s;
+        border-bottom: 1px solid #f0ede9;
+      }
+      .mm-sub a:last-child {
+        border-bottom: none;
+      }
+      .mm-sub a:hover {
+        color: var(--primary);
+        padding-left: 48px;
+      }
+      .mm-sub a::before {
+        content: "— ";
+        opacity: 0.4;
+      }
+      #menu-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1040;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s;
+      }
+      #menu-backdrop.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      /* SHARED */
+      section {
+        padding: var(--section-v) var(--section-h);
+        position: relative;
+      }
+      .section-tag {
+        font-size: 0.72rem;
+        letter-spacing: 4px;
+        color: var(--primary);
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        display: none;
+        font-weight: 700;
+      }
+      h2 {
+        font-family: var(--font-body);
+        font-size: clamp(2rem, 3vw, 2.4rem);
+        color: var(--charcoal); /* 1st word — black */
+        font-weight: 600; /* bold */
+        text-transform: uppercase; /* caps */
+        letter-spacing: 0.5px;
+        line-height: 1.15;
+        margin-bottom: 40px;
+        display: inline-block;
+        position: relative;
+      }
+      h2::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--primary);
+        transition: width 0.4s ease;
+      }
+      h2:hover::after {
+        width: 100%;
+      }
+
+      /* ============================================================
+         SECTION 1 — HERO (60vh)
+      ============================================================ */
+      #story-hero {
+        height: 60vh;
+        min-height: 420px;
+        width: 100%;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.55)),
+          url("../images/ubinner.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+        padding: 0 20px;
+      }
+      #story-hero .hero-eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--primary-orange);
+        font-weight: 700;
+        margin-bottom: 18px;
+      }
+      #story-hero h1 {
+        font-family: var(--font-headline);
+        font-size: clamp(3rem, 8vw, 5.5rem);
+        font-weight: 300;
+        line-height: 1.1;
+        letter-spacing: 0.02em;
+        margin-bottom: 18px;
+      }
+      #story-hero .hero-subheading {
+        font-family: var(--font-headline);
+        font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+        font-weight: 300;
+        font-style: italic;
+        letter-spacing: 1px;
+        opacity: 0.92;
+        max-width: 640px;
+      }
+
+      /* ============================================================
+         SECTION 2 — THE FOUNDING (image left · text right)
+      ============================================================ */
+      #founding-section {
+        background: var(--white);
+      }
+      .founding-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: var(--gap-xl);
+        align-items: center;
+      }
+      .founding-img {
+        position: relative;
+      }
+      .founding-img-frame {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        border-radius: 4px;
+      }
+      .founding-img-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .founding-img:hover .founding-img-frame img {
+        transform: scale(1.04);
+      }
+      .founding-img::before {
+        content: "";
+        position: absolute;
+        bottom: -16px;
+        left: -16px;
+        width: 70%;
+        height: 70%;
+        border: 2px solid var(--primary);
+        z-index: -1;
+        opacity: 0;
+        transform: translate(8px, -8px);
+        transition:
+          opacity 0.5s,
+          transform 0.5s;
+      }
+      .founding-img:hover::before {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+      .founding-text p {
+        font-size: 1.02rem;
+        line-height: 1.85;
+        color: var(--charcoal);
+        margin-bottom: 20px;
+        font-weight: 400;
+      }
+      .founding-text p:first-of-type {
+        font-style: normal;
+        color: var(--charcoal);
+      }
+      .founding-text p strong {
+        color: var(--primary);
+      }
+      .founding-emphasis {
+        font-family: var(--font-headline) !important;
+        font-size: 1.5rem !important;
+        font-style: normal;
+        color: var(--primary) !important;
+        line-height: 1.4 !important;
+      }
+
+      /* ============================================================
+         SECTION 3 — WHO WE ARE
+      ============================================================ */
+      #who-section {
+        background: var(--off-white);
+      }
+      .who-grid {
+        display: grid;
+        grid-template-columns: 1.35fr 0.65fr;
+        gap: var(--gap-xl);
+        align-items: center;
+      }
+      .who-inner {
+        max-width: 900px;
+      }
+      /* Right-side logo block */
+      .who-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .who-logo-frame {
+        position: relative;
+        width: 100%;
+        max-width: 360px;
+        aspect-ratio: 16 / 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        padding: 44px;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      /* top-left corner bracket */
+      .who-logo-frame::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 46px;
+        height: 46px;
+        border-top: 2px solid var(--primary-orange);
+        border-left: 2px solid var(--primary-orange);
+        pointer-events: none;
+        transition:
+          width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+          height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      /* bottom-right corner bracket */
+      .who-logo-frame::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 46px;
+        height: 46px;
+        border-bottom: 2px solid var(--primary-orange);
+        border-right: 2px solid var(--primary-orange);
+        pointer-events: none;
+        transition:
+          width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+          height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .who-logo-frame:hover::before,
+      .who-logo-frame:hover::after {
+        width: 64px;
+        height: 64px;
+      }
+      .who-logo-frame img {
+        width: 100%;
+        height: auto;
+        max-height: 120px;
+        object-fit: contain;
+        display: block;
+        position: relative;
+        z-index: 1;
+      }
+      .who-inner h2 span {
+        color: var(--primary);
+      }
+      .who-inner p {
+        font-size: 1.05rem;
+        line-height: 1.9;
+        color: var(--charcoal);
+        margin-bottom: 24px;
+        font-weight: 400;
+      }
+      .who-inner p:first-of-type {
+        font-family: var(--font-headline);
+        font-size: 1.5rem;
+        font-style: normal;
+        line-height: 1.5;
+        color: var(--charcoal);
+      }
+
+      /* ============================================================
+         SECTION 4 — THE LEADERSHIP (zigzag rows)
+      ============================================================ */
+      #leadership-section {
+        background: var(--white);
+      }
+      .leadership-head {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+      .leadership-head .section-tag {
+        display: none;
+      }
+      .leadership-head h2 {
+        display: inline-block;
+      }
+      .leadership-head h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .leaders-zigzag {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+      .lz-row {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: var(--gap-lg);
+        align-items: center;
+        background: var(--white);
+        border: 1px solid var(--border-light);
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 10px 40px rgba(44, 44, 44, 0.05);
+        transition:
+          box-shadow 0.4s ease,
+          transform 0.4s ease;
+      }
+      .lz-row:hover {
+        box-shadow: 0 24px 60px rgba(44, 44, 44, 0.1);
+        transform: translateY(-4px);
+      }
+      .lz-row:nth-child(even) {
+        grid-template-columns: 1.15fr 1fr;
+      }
+      /* alternate: even rows put photo on the right */
+      .lz-row:nth-child(even) .lz-photo {
+        order: 2;
+      }
+      .lz-row:nth-child(even) .lz-content {
+        order: 1;
+      }
+
+      .lz-photo {
+        position: relative;
+      }
+      .lz-photo-frame {
+        width: 100%;
+        aspect-ratio: 1/1;
+        overflow: hidden;
+        border-radius: 6px;
+        position: relative;
+        z-index: 1;
+      }
+      .lz-photo-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+        display: block;
+        transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .lz-row:hover .lz-photo-frame img {
+        transform: scale(1.04);
+      }
+      /* offset accent frame */
+      .lz-photo::before {
+        content: "";
+        position: absolute;
+        bottom: -18px;
+        right: -18px;
+        width: 72%;
+        height: 72%;
+        border: 2px solid var(--primary);
+        z-index: 0;
+        opacity: 0;
+        transform: translate(10px, -10px);
+        transition:
+          opacity 0.5s,
+          transform 0.5s;
+      }
+      .lz-row:nth-child(even) .lz-photo::before {
+        right: auto;
+        left: -18px;
+      }
+      .lz-row:hover .lz-photo::before {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+      /* big faint index number */
+      .lz-index {
+        position: absolute;
+        top: -38px;
+        left: -10px;
+        font-family: var(--font-headline);
+        font-size: 6rem;
+        font-weight: 600;
+        line-height: 1;
+        color: rgba(232, 114, 42, 0.12);
+        z-index: 2;
+        pointer-events: none;
+        user-select: none;
+      }
+      .lz-row:nth-child(even) .lz-index {
+        left: auto;
+        right: -10px;
+      }
+
+      .lz-content {
+        max-width: 600px;
+      }
+      .lz-name {
+        font-family: var(--font-headline);
+        font-size: clamp(2rem, 3.2vw, 2.8rem);
+        font-weight: 400;
+        line-height: 1.15;
+        color: var(--charcoal);
+        margin: 0 0 16px;
+        letter-spacing: -0.01em;
+      }
+      .lz-bar {
+        width: 44px;
+        height: 2px;
+        background: var(--primary-orange);
+        margin-bottom: 24px;
+        transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .lz-row:hover .lz-bar {
+        width: 80px;
+      }
+      .lz-lead {
+        font-family: var(--font-headline);
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.5;
+        color: var(--charcoal);
+        margin: 0;
+      }
+      .lz-full {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition:
+          max-height 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          opacity 0.5s ease,
+          margin 0.5s ease;
+        margin-top: 0;
+      }
+      .lz-row.expanded .lz-full {
+        max-height: min(260px, 45vh);
+        opacity: 1;
+        margin-top: 22px;
+        overflow-y: auto;
+        /* keep the wheel/touch scroll inside the box; only chain to the
+           page once the box hits its top/bottom edge */
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        padding-right: 14px;
+      }
+      /* Subtle themed scrollbar for the bio box */
+      .lz-row.expanded .lz-full::-webkit-scrollbar {
+        width: 6px;
+      }
+      .lz-row.expanded .lz-full::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 3px;
+      }
+      .lz-row.expanded .lz-full::-webkit-scrollbar-thumb {
+        background: var(--primary-orange);
+        border-radius: 3px;
+      }
+      .lz-row.expanded .lz-full::-webkit-scrollbar-thumb:hover {
+        background: var(--darker-orange);
+      }
+      .lz-row.expanded .lz-full {
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary-orange) rgba(0, 0, 0, 0.05);
+      }
+      .lz-full p {
+        font-size: 1.05rem;
+        line-height: 1.9;
+        color: var(--charcoal);
+        margin: 0 0 24px;
+      }
+      .lz-full p:last-child {
+        margin-bottom: 0;
+      }
+      .lz-toggle {
+        margin-top: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: var(--font-body);
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--primary-orange);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0;
+        transition:
+          gap 0.3s ease,
+          color 0.25s ease;
+      }
+      .lz-toggle:hover {
+        color: var(--darker-orange);
+        gap: 14px;
+      }
+      .lz-toggle-sign {
+        font-size: 1.1rem;
+        line-height: 1;
+        transition: transform 0.3s ease;
+      }
+      .lz-row.expanded .lz-toggle-sign {
+        transform: rotate(180deg);
+      }
+
+      /* ============================================================
+         SECTION 5 — OUR VISION
+      ============================================================ */
+      #vision-section {
+        background: var(--charcoal);
+        color: #fff;
+        text-align: center;
+      }
+      #vision-section .section-tag {
+        color: var(--primary-orange);
+      }
+      #vision-section h2 {
+        color: #fff;
+        display: inline-block;
+      }
+      .vision-inner {
+        max-width: 820px;
+        margin: 0 auto;
+      }
+      .vision-inner p {
+        font-family: var(--font-headline);
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.82);
+        margin-bottom: 28px;
+        font-style: normal;
+      }
+      .vision-closing {
+        color: var(--primary-orange) !important;
+        font-weight: 500 !important;
+        font-style: italic;
+        margin-top: 12px !important;
+      }
+
+      /* ============================================================
+         SECTION 6 — OUR CONVICTION
+      ============================================================ */
+      #conviction-section {
+        background: var(--off-white);
+        padding: 130px var(--section-h);
+        position: relative;
+        overflow: hidden;
+      }
+      .conviction-watermark {
+        position: absolute;
+        top: 50%;
+        right: -2%;
+        transform: translateY(-50%);
+        font-family: var(--font-headline);
+        font-size: clamp(12rem, 34vw, 34rem);
+        font-weight: 600;
+        line-height: 1;
+        color: var(--charcoal);
+        opacity: 0.035;
+        pointer-events: none;
+        user-select: none;
+        letter-spacing: -0.04em;
+      }
+      .conviction-inner {
+        max-width: 820px;
+        position: relative;
+        z-index: 1;
+      }
+      .conviction-inner .section-tag {
+        margin-bottom: 36px;
+      }
+
+      /* Opening pairing */
+      .conviction-opening {
+        margin-bottom: 56px;
+      }
+      .conviction-opening .co-line-1 {
+        font-family: var(--font-body);
+        font-size: clamp(2rem, 3vw, 2.4rem);
+        font-weight: 600;
+        font-style: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--dark);
+        line-height: 1.15;
+        margin-bottom: 6px;
+      }
+      .conviction-opening .co-line-2 {
+        font-family: var(--font-body);
+        font-size: clamp(2rem, 3vw, 2.4rem);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--dark);
+        line-height: 1.15;
+      }
+
+      /* Body rail */
+      .conviction-rail {
+        position: relative;
+        padding-left: 36px;
+        margin-bottom: 56px;
+      }
+      .conviction-rail::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 4px;
+        bottom: 4px;
+        width: 2px;
+        background: linear-gradient(
+          to bottom,
+          var(--primary-orange),
+          rgba(232, 114, 42, 0.15)
+        );
+      }
+      .conviction-rail p {
+        font-family: var(--font-headline);
+        font-size: 1.5rem;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 1.5;
+        color: var(--charcoal);
+        margin-bottom: 14px;
+        letter-spacing: 0;
+      }
+      .conviction-rail p:last-child {
+        margin-bottom: 0;
+      }
+      .conviction-rail p.dim {
+        color: var(--light-grey);
+        font-style: normal;
+        font-size: 1.5rem;
+      }
+      .conviction-rail p.accent {
+        color: var(--primary);
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      /* Closing */
+      .conviction-close {
+        padding-top: 40px;
+        border-top: 1px solid var(--border-light);
+      }
+      .conviction-close p {
+        font-family: var(--font-headline);
+        font-size: 1.5rem;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 1.5;
+        color: var(--charcoal);
+        margin-bottom: 8px;
+        letter-spacing: 0;
+      }
+      .conviction-close p.dim {
+        color: var(--light-grey);
+        font-style: normal;
+        font-size: 1.5rem;
+      }
+      .conviction-close p.accent {
+        color: var(--primary);
+        font-weight: 400;
+        font-style: normal;
+        font-size: 1.5rem;
+        margin-top: 8px;
+        margin-bottom: 0;
+      }
+
+      /* FOOTER SKYLINE */
+      .footer-skyline-wrap {
+        background: var(--off-white);
+        line-height: 0;
+        font-size: 0;
+        overflow: hidden;
+        margin-bottom: -1px;
+      }
+      .footer-skyline-wrap .skyline-desktop {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .footer-skyline-wrap .skyline-mobile {
+        display: none;
+      }
+
+      /* FOOTER */
+      #ub-footer {
+        background: #242323;
+        color: rgba(255, 255, 255, 0.6);
+        padding: 80px 10% 40px;
+        margin-top: 0;
+        position: relative;
+        z-index: 1;
+      }
+      .footer-inner {
+        display: grid;
+        grid-template-columns: 1.8fr 1fr 0.8fr 1fr 1.2fr;
+        gap: 36px;
+        margin-bottom: 72px;
+      }
+      .footer-col h5 {
+        color: white;
+        margin-bottom: 28px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+      }
+      .footer-col a {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+        margin-bottom: 13px;
+        font-size: 0.88rem;
+        transition: color 0.3s;
+      }
+      .footer-col a:hover {
+        color: var(--primary);
+      }
+      .footer-col p {
+        font-size: 0.88rem;
+        line-height: 1.8;
+        margin-bottom: 10px;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 36px;
+        text-align: center;
+        font-size: 0.68rem;
+        letter-spacing: 2px;
+      }
+
+      .footer-address {
+        font-style: normal; /* removes the default italic */
+      }
+      .footer-map-link {
+        display: inline-block;
+        font-size: 0.78rem;
+        color: var(--footer-text);
+        text-decoration: none;
+        margin-bottom: 10px;
+        transition: color 0.3s;
+      }
+      .footer-map-link:hover {
+        color: var(--primary);
+      }
+
+      /* INQUIRY OVERLAYS */
+      .overlay-bg {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(10px);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .overlay-bg.active {
+        display: flex;
+        opacity: 1;
+      }
+      .popup-box {
+        background: #fff;
+        width: 90%;
+        max-width: 500px;
+        padding: 50px;
+        position: relative;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+      }
+      .popup-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        border: none;
+        background: none;
+        font-size: 1.4rem;
+        cursor: pointer;
+        color: var(--dark);
+      }
+      .popup-box h3 {
+        font-family: var(--font-serif);
+        font-size: 2rem;
+        margin-bottom: 25px;
+        text-align: center;
+      }
+      .choice-btns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .choice-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 28px;
+        background: var(--light);
+        text-decoration: none;
+        color: var(--dark);
+        border: 1px solid transparent;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      .choice-card:hover {
+        border-color: var(--primary);
+        background: #fff;
+      }
+      .choice-icon {
+        font-size: 2rem;
+        margin-bottom: 8px;
+      }
+      .inquiry-form input,
+      .inquiry-form select,
+      .inquiry-form textarea {
+        width: 100%;
+        padding: 14px 0;
+        margin-bottom: 18px;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        font-family: var(--font-sans);
+        outline: none;
+        background: transparent;
+        font-size: 0.88rem;
+      }
+      .inquiry-form input:focus,
+      .inquiry-form select:focus,
+      .inquiry-form textarea:focus {
+        border-bottom-color: var(--primary);
+      }
+      .inquiry-form button {
+        width: 100%;
+        padding: 16px;
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        font-weight: 700;
+        letter-spacing: 2px;
+        cursor: pointer;
+        font-family: var(--font-sans);
+      }
+      .inquiry-form .project-field {
+        display: none;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        margin-bottom: 0;
+        transition:
+          opacity 0.35s ease,
+          max-height 0.35s ease,
+          margin 0.35s ease;
+      }
+      .inquiry-form .project-field.show {
+        display: block;
+        opacity: 1;
+        max-height: 80px;
+        margin-bottom: 18px;
+      }
+
+      /* FADE IN */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(36px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ============================================================
+         RESPONSIVE — TABLET (≤1024px)
+      ============================================================ */
+      @media (max-width: 1024px) {
+        section {
+          padding: 60px 30px;
+        }
+        #conviction-section {
+          padding: 60px 20px;
+        }
+        .conviction-rail {
+          padding-left: 22px;
+        }
+        .conviction-opening {
+          margin-bottom: 40px;
+        }
+        .conviction-rail,
+        .conviction-close {
+          margin-bottom: 40px;
+        }
+        .conviction-watermark {
+          font-size: 40vw;
+          right: -8%;
+        }
+        .founding-grid {
+          grid-template-columns: 1fr;
+          gap: 44px;
+        }
+        .who-grid {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+        .who-logo {
+          order: -1;
+        }
+        .who-logo-frame {
+          max-width: 280px;
+        }
+        .founding-img-frame {
+          max-width: 460px;
+          margin: 0 auto;
+          aspect-ratio: 16 / 11;
+        }
+        .leaders-zigzag {
+          gap: 64px;
+        }
+        .lz-row,
+        .lz-row:nth-child(even) {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .lz-row:nth-child(even) .lz-photo,
+        .lz-row:nth-child(even) .lz-content {
+          order: unset;
+        }
+        .lz-photo-frame {
+          max-width: 420px;
+          margin: 0 auto;
+          aspect-ratio: 3 / 2;
+        }
+        .lz-photo::before,
+        .lz-row:nth-child(even) .lz-photo::before {
+          display: none;
+        }
+        .lz-index {
+          top: -30px;
+          left: 0;
+        }
+        .lz-content {
+          max-width: 100%;
+        }
+        .footer-inner {
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+        }
+      }
+
+      /* ============================================================
+         RESPONSIVE — MOBILE (≤768px)
+      ============================================================ */
+      @media (max-width: 768px) {
+        #ub-nav {
+          display: none !important;
+        }
+        .inquiry-btn {
+          display: none !important;
+        }
+        .hamburger {
+          display: flex !important;
+        }
+        section {
+          padding: 40px 20px;
+        }
+        #conviction-section {
+          padding: 56px 20px;
+        }
+
+        /* Hero */
+        #story-hero {
+          height: 70vh;
+          background-attachment: scroll;
+          background-image:
+            linear-gradient(
+              to top,
+              rgba(0, 0, 0, 0.85) 0%,
+              rgba(0, 0, 0, 0.5) 50%,
+              rgba(0, 0, 0, 0.3) 100%
+            ),
+            url("../images/storyHero.png");
+        }
+
+        /* Founding */
+        .founding-img-frame {
+          max-width: 100%;
+          aspect-ratio: 4 / 3;
+        }
+        .founding-img::before {
+          display: none;
+        }
+        .founding-text p {
+          font-size: 0.95rem;
+          line-height: 1.8;
+        }
+        .founding-emphasis {
+          font-size: 1.3rem !important;
+        }
+
+        /* Who */
+        .who-inner p:first-of-type {
+          font-size: 1.25rem;
+        }
+        .who-inner p {
+          font-size: 0.96rem;
+        }
+
+        /* Leadership */
+        .leadership-head {
+          margin-bottom: 48px;
+        }
+        .leaders-zigzag {
+          gap: 56px;
+        }
+        .lz-photo-frame {
+          max-width: 100%;
+          aspect-ratio: 4 / 3;
+        }
+        .lz-name {
+          font-size: 1.7rem;
+        }
+        .lz-row {
+          padding: 24px;
+        }
+        .lz-lead {
+          font-size: 1.05rem;
+        }
+        .lz-full p {
+          font-size: 0.9rem;
+          line-height: 1.75;
+        }
+
+        /* Vision */
+        .vision-inner p {
+          font-size: 1.15rem;
+        }
+
+        /* Footer */
+        #ub-footer {
+          padding: 56px 5% 28px;
+        }
+        .footer-inner {
+          grid-template-columns: 1fr 1fr;
+          gap: 32px 24px;
+          margin-bottom: 44px;
+        }
+        .footer-bottom {
+          font-size: 0.6rem;
+          letter-spacing: 1px;
+        }
+        .footer-inner .footer-col:first-child {
+          grid-column: 1 / -1;
+        }
+        .popup-box {
+          padding: 36px 24px;
+          width: 94%;
+        }
+        .choice-btns {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        .footer-skyline-wrap .skyline-desktop {
+          display: none;
+        }
+        .footer-skyline-wrap .skyline-mobile {
+          display: block;
+          width: 100%;
+          height: 90px;
+          object-fit: cover;
+          object-position: bottom;
+          filter: brightness(0.55) sepia(0.1);
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .leaders-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- BACKDROP -->
+    <div id="menu-backdrop"></div>
+
+    <!-- HEADER -->
+    <header id="ub-topbar">
+      <div class="nav-logo">
+        <a href="../index.html"
+          ><img src="../images/UB-Logo-Black.svg" alt="United Builders"
+        /></a>
+      </div>
+      <nav id="ub-nav">
+        <a href="../index.html">Home</a>
+        <a href="content/our-story.html">Our Story</a>
+        <div class="nav-dropdown">
+          <a href="#">Our Portfolio ▾</a>
+          <div class="dropdown-menu">
+            <!-- <a href="../projects/indexPcopy.html">All Projects</a> -->
+            <!-- <a href="../projects/residential.html">Residential</a> -->
+            <!-- <a href="../projects/commercial.html">Commercial</a> -->
+            <!-- <a href="../projects/plots.html">Plots</a>
+            <a href="../projects/villas.html">Villas</a> -->
+            <a href="projects/residential.html#picasso">United Picasso</a>
+            <a href="projects/villas.html#unityInfinity">United Infinity</a>
+          </div>
+        </div>
+        <a href="content/the-legacy.html">Our Legacy</a>
+        <a href="content/insights.html">Insights</a>
+      </nav>
+      <button class="inquiry-btn" id="openInquiry">Inquiry</button>
+      <button
+        class="hamburger"
+        id="hamburgerBtn"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <nav id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <div class="mm-header">
+        <img src="../images/UB-LOGO-GRAY.svg" alt="United Builders" />
+        <button class="mm-close" id="menuClose" aria-label="Close menu">
+          ✕
+        </button>
+      </div>
+      <div class="mm-links">
+        <a href="../index.html" class="mm-link">Home</a>
+        <a href="../content/our-story.html" class="mm-link">Our Story</a>
+        <button
+          class="mm-accordion-btn"
+          id="projectsAccBtn"
+          aria-expanded="false"
+        >
+          Projects
+          <span class="mm-acc-arrow">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path
+                d="M2 4l4 4 4-4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+        </button>
+        <div class="mm-sub" id="projectsSub">
+          <a href="../projects/index.html">All Projects</a>
+          <a href="../projects/residential.html">Residential</a>
+          <a href="../projects/commercial.html">Commercial</a>
+          <a href="../projects/plots.html">Plots</a>
+          <a href="../projects/villas.html">Villas</a>
+        </div>
+        <a href="contact.html" class="mm-link">Contact</a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- ============================================================
+           SECTION 1 — HERO
+      ============================================================ -->
+
+      <!-- ============================================================
+           SECTION 2 — THE FOUNDING
+      ============================================================ -->
+      <section id="founding-section">
+        <div class="founding-grid">
+          <div class="founding-img fade-in-up">
+            <div class="founding-img-frame">
+              <img src="../images/ubmid.jpg" alt="United Builders — 1968" />
+            </div>
+          </div>
+          <div class="founding-text">
+            <span class="section-tag fade-in-up">The Founding</span>
+            <h2 class="fade-in-up">1968: Where It All Began</h2>
+            <p class="fade-in-up">
+              Late Mr. Asan Daryani founded United Builders in Nashik with a
+              single conviction: <br />
+              real estate is not a product. It is a legacy.
+            </p>
+            <p class="fade-in-up">
+              Mr. Asan Daryani chose a path defined by conviction. He built
+              homes that grew in value. <br />He delivered on his word. He
+              treated customers as lifelong relationships, not one-time
+              transactions.
+            </p>
+            <p class="founding-emphasis fade-in-up">
+              That principle has never changed.
+            </p>
+            <p class="fade-in-up">
+              Today, United Builders stands as Nashik's most trusted developer —
+              not through loud marketing, but through five decades of quiet,
+              consistent delivery.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 3 — WHO WE ARE
+      ============================================================ -->
+      <section id="who-section">
+        <div class="who-grid">
+          <div class="who-inner">
+            <span class="section-tag fade-in-up">Who We Are</span>
+            <h2 class="fade-in-up">Who We Are</h2>
+            <p class="fade-in-up">
+              There are companies that build buildings; there are families that
+              build cities. <br />
+              United Builders has been doing the latter since 1968.
+            </p>
+            <p class="fade-in-up">
+              Over five decades and more than 100 delivered projects, the firm's
+              work has shaped Nashik's skyline across residential, commercial,
+              and community developments.
+            </p>
+            <p class="fade-in-up">
+              Today, the firm's focus has moved, with intention, toward real
+              estate of a different order — developments conceived not for
+              volume, but for permanence. Sites chosen for their
+              irreplaceability. <br />
+              Designs drawn for the life of the asset.
+            </p>
+            <p class="fade-in-up">
+              United Builders is led by second and third generation
+              entrepreneurs. The founding principles travel intact. The
+              discipline of full transparency, the practice of selling only what
+              is delivered, the refusal to compromise on what endures — these
+              are not policies. They are the character of the institution.
+            </p>
+          </div>
+          <div class="who-logo fade-in-up">
+            <div class="who-logo-frame">
+              <img src="../images/UB-LOGO-GRAY.svg" alt="United Builders" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 4 — THE LEADERSHIP
+      ============================================================ -->
+      <section id="leadership-section">
+        <div class="leadership-head">
+          <span class="section-tag fade-in-up">The Leadership</span>
+          <h2 class="fade-in-up">The Leadership</h2>
+        </div>
+
+        <div class="leaders-zigzag">
+          <!-- RAJAN -->
+          <article class="lz-row fade-in-up">
+            <div class="lz-photo">
+              <div class="lz-photo-frame">
+                <img src="../images/rajanDaryani.jpg" alt="Mr. Rajan Daryani" />
+              </div>
+              <span class="lz-index">01</span>
+            </div>
+            <div class="lz-content">
+              <h3 class="lz-name">Mr. Rajan Daryani</h3>
+              <div class="lz-bar"></div>
+              <p class="lz-lead">
+                Mr. Rajan Daryani, a name synonymous with trust and progressive
+                real estate development in Nashik, <br />
+                leads United Builders.
+              </p>
+              <div class="lz-full">
+                <p>
+                  An engineer by education, Mr. Rajan Daryani has a Bachelors in
+                  Computer Engineering from Bangalore to his credit. He later
+                  pursued his MBA in Finance from Nashik while simultaneously
+                  embarking on his first real estate project in the city. This
+                  rare blend of technical knowledge, management acumen, and
+                  hands-on execution shaped the foundation of United Builders'
+                  disciplined growth.
+                </p>
+                <p>
+                  For over four decades, he has consistently driven new
+                  developments across residential, commercial, and plotted
+                  projects, contributing significantly to Nashik's evolving
+                  urban landscape.
+                </p>
+                <p>
+                  Renowned for his financial discipline, methodical planning,
+                  and meticulous attention to detail, Mr. Rajan Daryani brings
+                  an organised and structured approach to every project with his
+                  vast experience across decades. <br />
+                  His passion for development is reflected in his insistence on
+                  thoughtful design — ensuring that every square foot is
+                  purposefully planned and optimally utilised.
+                </p>
+                <p>
+                  Under his leadership, United Builders has earned enduring
+                  goodwill by delivering projects that balance vision,
+                  functionality, and long-term value, making him a leading name
+                  in Nashik's real estate legacy.
+                </p>
+              </div>
+              <button class="lz-toggle" aria-expanded="false">
+                Read More <span class="lz-toggle-sign">+</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- PRAMOD -->
+          <article class="lz-row fade-in-up">
+            <div class="lz-photo">
+              <div class="lz-photo-frame">
+                <img
+                  src="../images/PramodDaryani.jpg"
+                  alt="Mr. Pramod Daryani"
+                />
+              </div>
+              <span class="lz-index">02</span>
+            </div>
+            <div class="lz-content">
+              <h3 class="lz-name">Mr. Pramod Daryani</h3>
+              <div class="lz-bar"></div>
+              <p class="lz-lead">
+                Mr. Pramod Daryani is a key second-generation leader at United
+                Builders, playing an integral role in strengthening the
+                organisation's execution capabilities while upholding its legacy
+                of trust and quality.
+              </p>
+              <div class="lz-full">
+                <p>
+                  A Civil Engineer by education, Mr. Pramod Daryani brings a
+                  strong technical foundation combined with a progressive
+                  mindset. He is deeply involved in exploring new construction
+                  materials, contemporary design approaches, and evolving
+                  development practices, ensuring that every project remains
+                  relevant, efficient, and future-ready.
+                </p>
+                <p>
+                  With a hands-on approach to operations, his strong control
+                  over project timelines and delivery frameworks ensures smooth
+                  coordination across departments and the timely completion of
+                  developments.
+                </p>
+                <p>
+                  Driven by precision and performance, Mr. Pramod Daryani
+                  ensures that each project reflects thoughtful planning,
+                  operational discipline, and execution excellence, seamlessly
+                  complementing the legacy and vision established by the
+                  founding leadership.
+                </p>
+              </div>
+              <button class="lz-toggle" aria-expanded="false">
+                Read More <span class="lz-toggle-sign">+</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- KARAN -->
+          <article class="lz-row fade-in-up">
+            <div class="lz-photo">
+              <div class="lz-photo-frame">
+                <img src="../images/KaranDaryani.jpg" alt="Mr. Karan Daryani" />
+              </div>
+              <span class="lz-index">03</span>
+            </div>
+            <div class="lz-content">
+              <h3 class="lz-name">Mr. Karan Daryani</h3>
+              <div class="lz-bar"></div>
+              <p class="lz-lead">
+                Mr. Karan Daryani represents the third generation at United
+                Builders, bringing a global perspective and future-forward
+                vision to add value to the organisation's enduring legacy.
+              </p>
+              <div class="lz-full">
+                <p>
+                  Academically grounded in design, planning, and management, he
+                  holds a degree in Architecture Engineering & Design Management
+                  from Loughborough University, UK, followed by a Masters degree
+                  in Project & Enterprise Management from University College
+                  London (UCL), UK. This international exposure has shaped his
+                  holistic approach to real estate — blending design thinking,
+                  structured execution, and lifestyle-centric planning.
+                </p>
+                <p>
+                  He is actively involved in introducing new concepts,
+                  innovative formats, and contemporary ideas, carefully
+                  integrating them across projects to enhance functionality,
+                  aesthetics, and long-term relevance.
+                </p>
+                <p>
+                  Focusing on creating signature real estate communities with a
+                  firm commitment to legal compliance, regulatory discipline,
+                  and meticulous planning, he ensures that every square foot is
+                  thoughtfully designed, responsibly developed, and
+                  future-ready.
+                </p>
+                <p>
+                  Carrying forward the values of trust and discipline while
+                  steering the brand towards innovation and lifestyle-led
+                  growth, Mr. Karan Daryani embodies the next generation of
+                  United Builders.
+                </p>
+              </div>
+              <button class="lz-toggle" aria-expanded="false">
+                Read More <span class="lz-toggle-sign">+</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- RIYA -->
+          <article class="lz-row fade-in-up">
+            <div class="lz-photo">
+              <div class="lz-photo-frame">
+                <img
+                  src="../images/Riya-Shah-Daryani.jpeg"
+                  alt="Mrs. Riya Daryani"
+                />
+              </div>
+              <span class="lz-index">04</span>
+            </div>
+            <div class="lz-content">
+              <h3 class="lz-name">Mrs. Riya Daryani</h3>
+              <div class="lz-bar"></div>
+              <p class="lz-lead">
+                Brands are not built by committees. They are built by people
+                with the conviction to see what an organisation could become —
+                and the discipline to close the distance between that vision and
+                the way it presents itself to the world. Mrs. Riya Daryani
+                brought exactly that conviction to United Builders.
+              </p>
+              <div class="lz-full">
+                <p>
+                  Educated in business administration and international business
+                  — her academic formation spanning India and New York — she
+                  joined the family institution with a perspective that was both
+                  global and deeply rooted.
+                </p>
+                <p>
+                  As Marketing Head, she has been the decisive force behind a
+                  fundamental shift in how the brand is perceived in the market.
+                  The evolution from a conventional developer of long standing
+                  to a firm associated with niche, design-forward, lifestyle-led
+                  real estate brand.
+                </p>
+                <p>
+                  She plays a formative role in the interior design and styling
+                  across United Builders' projects — ensuring that the aesthetic
+                  sensibility expressed in the brand's external communication is
+                  carried through, without compromise, into every room, finish,
+                  and detail that a buyer will eventually inhabit. The result is
+                  a coherence between what is promised and what is delivered
+                  that few developers in any segment achieve.
+                </p>
+              </div>
+              <button class="lz-toggle" aria-expanded="false">
+                Read More <span class="lz-toggle-sign">+</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- ============================================================
+           SECTION 5 — OUR VISION
+      ============================================================ -->
+      <section id="vision-section">
+        <div class="vision-inner">
+          <span class="section-tag fade-in-up">Our Vision</span>
+          <h2 class="fade-in-up">Our Vision</h2>
+          <p class="fade-in-up">
+            To be the most trusted name in Indian real estate — not through
+            scale, <br />
+            but through the enduring worth of what we create.
+          </p>
+          <p class="fade-in-up">
+            To build, generation after generation, developments that are worthy
+            of the land they stand on, the families they shelter, and the city
+            they help define.
+          </p>
+          <p class="fade-in-up">
+            To hold ourselves, always, to a standard that has no deadline —
+            where the only measure of any decision is not what it delivers
+            today, but what it leaves behind.
+          </p>
+          <p class="vision-closing fade-in-up">
+            Let our developments speak long after we are gone.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 6 — OUR CONVICTION
+      ============================================================ -->
+      <!-- ============================================================
+           SECTION 6 — OUR CONVICTION
+      ============================================================ -->
+      <section id="conviction-section">
+        <span class="conviction-watermark" aria-hidden="true">1968</span>
+        <div class="conviction-inner">
+          <span class="section-tag fade-in-up">Our Conviction</span>
+
+          <!-- Opening manifesto pairing -->
+          <div class="conviction-opening fade-in-up">
+            <p class="co-line-1">Some things are built to sell.</p>
+            <p class="co-line-2">Others are built to last.</p>
+          </div>
+
+          <!-- Body, grouped along an accent rail -->
+          <div class="conviction-rail">
+            <p class="fade-in-up">We have been building Nashik since 1968.</p>
+            <p class="dim fade-in-up">Not loudly. Not aggressively.</p>
+            <p class="dim fade-in-up">Steadily. Honestly. With care.</p>
+            <p class="fade-in-up">We have watched markets rise and correct.</p>
+            <p class="fade-in-up">We have seen trends arrive and disappear.</p>
+            <p class="dim fade-in-up">
+              Our response, each time, has been the same:
+            </p>
+            <p class="accent fade-in-up">Let our work speak for itself.</p>
+          </div>
+
+          <!-- Closing statement -->
+          <div class="conviction-close fade-in-up">
+            <p>Every project we have built has grown in value.</p>
+            <p class="dim">Not because we promised it would.</p>
+            <p class="accent">Because we designed it to.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER SKYLINE -->
+    <div class="footer-skyline-wrap">
+      <img
+        class="skyline-desktop"
+        src="../images/try1.svg"
+        alt="Nashik Skyline"
+      />
+      <img
+        class="skyline-mobile"
+        src="../images/ft1.png"
+        alt="Nashik Skyline"
+      />
+    </div>
+
+    <footer id="ub-footer">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <img
+            src="../images/UB-Logo-white.svg"
+            style="height: 46px; margin-bottom: 28px"
+            alt="United Builders"
+          />
+          <p>Building Nashik since 1968. Three generations. One standard.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigate</h5>
+          <a href="index.html">Home</a>
+          <a href="content/our-story.html">Our Story</a>
+          <a href="content/our-portfolio.html">Our Portfolio</a>
+
+          <a href="content/the-legacy.html">The Legacy</a>
+          <a href="content/insights.html">Insights</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h5>Follow Us</h5>
+          <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="#" target="_blank" rel="noopener">Instagram</a>
+          <a href="#" target="_blank" rel="noopener">YouTube</a>
+          <a href="#" target="_blank" rel="noopener">Facebook</a>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Disclaimer</a>
+        </div>
+        <div class="footer-col">
+          <h5>Address</h5>
+          <address class="footer-address">
+            <p>UB-HQ, Parijat Nagar, Nashik 422005 Maharashtra</p>
+          </address>
+          <a
+            href="https://maps.app.goo.gl/ebm13eYn5kr5riMJ8"
+            target="_blank"
+            rel="noopener"
+            class="footer-map-link"
+            >View on Map →</a
+          >
+          <p>Mon–Sat: 10:00 AM–7:00 PM IST</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy;United Builders. All rights reserved.
+      </div>
+    </footer>
+    <!-- INQUIRY OVERLAYS -->
+    <div id="choice-overlay" class="overlay-bg">
+      <div class="popup-box">
+        <button class="popup-close" id="closeChoice">✕</button>
+        <h3>Connect With Us</h3>
+        <div class="choice-btns">
+          <a href="tel:+91XXXXXXXXXX" class="choice-card">
+            <span class="choice-icon">📞</span>
+            <span style="font-weight: 600; letter-spacing: 1px">Call Us</span>
+          </a>
+          <div class="choice-card" id="showFormTrigger">
+            <span class="choice-icon">✉</span>
+            <span style="font-weight: 600; letter-spacing: 1px"
+              >Inquiry Form</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="form-overlay" class="overlay-bg">
+      <div class="popup-box">
+        <button class="popup-close" id="closeForm">✕</button>
+        <h3>Send an Inquiry</h3>
+        <form
+          class="inquiry-form"
+          action="https://formsubmit.co/hello@unitedbuilders.in"
+          method="POST"
+        >
+          <input name="Full Name" placeholder="Full Name" required />
+          <input
+            name="Email"
+            type="email"
+            placeholder="Email Address"
+            required
+          />
+          <input
+            name="Mobile"
+            type="tel"
+            placeholder="Mobile Number"
+            required
+          />
+          <select name="Reason" id="reasonSelect" required>
+            <option value="">Select Reason</option>
+            <option>Project Inquiry</option>
+            <option>Partnership</option>
+            <option>General Support</option>
+          </select>
+          <select name="Project" id="projectSelect" class="project-field">
+            <option value="">Select Project</option>
+            <option>United Picasso</option>
+            <option>United Infinity</option>
+            <option>Istana</option>
+            <option>Earth One</option>
+            <option>United Shalimar</option>
+          </select>
+          <textarea
+            name="Message"
+            placeholder="How can we help?"
+            rows="3"
+            required
+          ></textarea>
+          <button type="submit">SUBMIT INQUIRY</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        "use strict";
+
+        /* ---- Navbar (page has no full-screen hero, so show solid after a small scroll) ---- */
+        var header = document.getElementById("ub-topbar");
+        var heroEl = document.getElementById("story-hero");
+        function onScroll() {
+          var heroH = heroEl ? heroEl.offsetHeight : window.innerHeight;
+          var past = window.scrollY > heroH * 0.6;
+          header.classList.toggle("scrolled", past);
+        }
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+
+        /* ---- Mobile menu ---- */
+        var hamburger = document.getElementById("hamburgerBtn");
+        var mobileMenu = document.getElementById("mobile-menu");
+        var backdrop = document.getElementById("menu-backdrop");
+        var menuClose = document.getElementById("menuClose");
+        function openMenu() {
+          mobileMenu.classList.add("open");
+          backdrop.classList.add("active");
+          hamburger.classList.add("open");
+          hamburger.setAttribute("aria-expanded", "true");
+          document.body.style.overflow = "hidden";
+        }
+        function closeMenu() {
+          mobileMenu.classList.remove("open");
+          backdrop.classList.remove("active");
+          hamburger.classList.remove("open");
+          hamburger.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        }
+        hamburger.addEventListener("click", function () {
+          mobileMenu.classList.contains("open") ? closeMenu() : openMenu();
+        });
+        menuClose.addEventListener("click", closeMenu);
+        backdrop.addEventListener("click", closeMenu);
+
+        /* ---- Projects accordion ---- */
+        var accBtn = document.getElementById("projectsAccBtn");
+        var accSub = document.getElementById("projectsSub");
+        if (accBtn && accSub) {
+          accBtn.addEventListener("click", function () {
+            var isOpen = accSub.classList.contains("open");
+            accSub.classList.toggle("open", !isOpen);
+            accBtn.classList.toggle("active", !isOpen);
+            accBtn.setAttribute("aria-expanded", String(!isOpen));
+          });
+        }
+
+        /* ---- Inquiry overlays ---- */
+        var choiceOverlay = document.getElementById("choice-overlay");
+        var formOverlay = document.getElementById("form-overlay");
+        function openInquiry() {
+          closeMenu();
+          choiceOverlay.classList.add("active");
+        }
+        document
+          .getElementById("openInquiry")
+          .addEventListener("click", openInquiry);
+        document
+          .getElementById("closeChoice")
+          .addEventListener("click", function () {
+            choiceOverlay.classList.remove("active");
+          });
+        document
+          .getElementById("showFormTrigger")
+          .addEventListener("click", function () {
+            choiceOverlay.classList.remove("active");
+            formOverlay.classList.add("active");
+          });
+        document
+          .getElementById("closeForm")
+          .addEventListener("click", function () {
+            formOverlay.classList.remove("active");
+          });
+        window.addEventListener("click", function (e) {
+          if (e.target === choiceOverlay)
+            choiceOverlay.classList.remove("active");
+          if (e.target === formOverlay) formOverlay.classList.remove("active");
+        });
+
+        /* ============================================================
+           PER-PROJECT INQUIRY EMAIL MAP
+           NOTE: FormSubmit only sends to the address in the form's
+           `action`. Recipient routing must be done SERVER-SIDE on
+           BigRock — a handler reads the `Project` field and picks the
+           recipient from this map. Replace placeholders with real
+           per-project inboxes when known.
+           ============================================================ */
+        var PROJECT_EMAILS = {
+          "United Picasso": "picasso@unitedbuilders.in", // TODO: replace
+          "United Infinity": "infinity@unitedbuilders.in", // TODO: replace
+          Istana: "istana@unitedbuilders.in", // TODO: replace
+          "Earth One": "earthone@unitedbuilders.in", // TODO: replace
+          "United Shalimar": "shalimar@unitedbuilders.in", // TODO: replace
+          _default: "hello@unitedbuilders.in", // fallback / non-project inquiries
+        };
+
+        /* ---- Conditional project field on "Project Inquiry" ---- */
+        var reasonSelect = document.getElementById("reasonSelect");
+        var projectSelect = document.getElementById("projectSelect");
+        if (reasonSelect && projectSelect) {
+          reasonSelect.addEventListener("change", function () {
+            var isProject = reasonSelect.value === "Project Inquiry";
+            projectSelect.classList.toggle("show", isProject);
+            if (isProject) {
+              projectSelect.setAttribute("required", "required");
+            } else {
+              projectSelect.removeAttribute("required");
+              projectSelect.value = "";
+            }
+          });
+        }
+
+        /* ---- Scroll fade-in ---- */
+        var fadeEls = document.querySelectorAll(".fade-in-up");
+        var fadeObs = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("visible");
+                fadeObs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
+        fadeEls.forEach(function (el) {
+          fadeObs.observe(el);
+        });
+
+        /* ---- Leadership bio expand/collapse (zigzag rows) ---- */
+        document.querySelectorAll(".lz-toggle").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var row = btn.closest(".lz-row");
+            var open = row.classList.toggle("expanded");
+            btn.setAttribute("aria-expanded", String(open));
+            btn.firstChild.textContent = open ? "Read Less " : "Read More ";
+            btn.querySelector(".lz-toggle-sign").textContent = open ? "−" : "+";
+          });
+        });
+
+        /* ---- Escape closes overlays/menu ---- */
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            choiceOverlay.classList.remove("active");
+            formOverlay.classList.remove("active");
+            closeMenu();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

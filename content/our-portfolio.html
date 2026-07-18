@@ -1,0 +1,1433 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Our Portfolio — United Builders. A curated collection of Nashik's most considered developments. United Picasso, Istana, Earth One, United Infinity."
+    />
+    <title>Our Portfolio | United Builders</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* ---- Design tokens (shared with home / our-story) ---- */
+        --primary-orange: #e8722a;
+        --darker-orange: #d45f1f;
+        --active-orange: #b84a15;
+        --charcoal: #2c2c2c;
+        --light-grey: #7f7f7f;
+        --white: #ffffff;
+        --off-white: #f5f5f5;
+        --dark-grey: #3f3f3f;
+        --border-light: #e0e0e0;
+        --footer-text: #bfbfbf;
+        --font-headline: "Cormorant Garamond", serif;
+        --font-body: "Futura PT", "Neue Haas Grotesk", "Montserrat", sans-serif;
+        --section-v: 100px;
+        --section-h: 40px;
+        --gap-sm: 20px;
+        --gap-md: 40px;
+        --gap-lg: 60px;
+        --gap-xl: 80px;
+
+        /* Legacy aliases */
+        --primary: var(--primary-orange);
+        --dark: var(--charcoal);
+        --light: var(--off-white);
+        --text-main: var(--charcoal);
+        --text-muted: var(--light-grey);
+        --font-serif: var(--font-headline);
+        --font-sans: var(--font-body);
+        --nav-h: 80px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: #fff;
+        color: var(--text-main);
+        font-family: var(--font-sans);
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+
+      /* NAVIGATION */
+      #ub-topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: var(--nav-h);
+        padding: 0 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateY(0);
+        background: transparent;
+      }
+      #ub-topbar.scrolled {
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      }
+      .nav-logo img {
+        height: 40px;
+        transition: all 0.4s ease;
+        display: block;
+      }
+      #ub-nav {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+      }
+      #ub-nav a {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 500;
+        font-size: 0.72rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        position: relative;
+        transition: color 0.3s;
+      }
+      #ub-nav a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: width 0.3s ease;
+      }
+      #ub-nav a:hover::after {
+        width: 100%;
+      }
+      #ub-topbar:not(.scrolled) #ub-nav a {
+        color: var(--white);
+      }
+      #ub-nav a:hover {
+        color: var(--primary);
+      }
+      .nav-dropdown {
+        position: relative;
+      }
+      .nav-dropdown > a {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .dropdown-menu {
+        position: absolute;
+        top: calc(100% + 14px);
+        left: 0;
+        background: #fff;
+        min-width: 200px;
+        padding: 12px 0;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        border-top: 2px solid var(--primary);
+      }
+      .nav-dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown-menu a {
+        display: block !important;
+        padding: 10px 22px !important;
+        color: var(--dark) !important;
+        font-size: 0.68rem !important;
+        letter-spacing: 1.5px;
+        font-weight: 500;
+        transition:
+          color 0.2s,
+          padding-left 0.2s;
+      }
+      .dropdown-menu a::after {
+        display: none !important;
+      }
+      .dropdown-menu a:hover {
+        color: var(--primary) !important;
+        padding-left: 28px !important;
+      }
+      .inquiry-btn {
+        background: var(--primary);
+        color: #fff;
+        padding: 11px 28px;
+        border: none;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: var(--font-sans);
+        white-space: nowrap;
+      }
+      .inquiry-btn:hover {
+        background: var(--dark);
+      }
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 2px;
+        z-index: 1100;
+      }
+      .hamburger span {
+        display: block;
+        height: 2px;
+        border-radius: 2px;
+        transition: all 0.35s ease;
+        background: #fff;
+      }
+      #ub-topbar.scrolled .hamburger span {
+        background: var(--dark);
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* MOBILE DRAWER */
+      #mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: min(320px, 85vw);
+        height: 100vh;
+        background: #fff;
+        z-index: 1050;
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        box-shadow: -8px 0 40px rgba(0, 0, 0, 0.12);
+      }
+      #mobile-menu.open {
+        right: 0;
+      }
+      .mm-header {
+        padding: 28px 24px 20px;
+        border-bottom: 1px solid #f0ede9;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .mm-header img {
+        height: 42px;
+      }
+      .mm-close {
+        background: none;
+        border: none;
+        font-size: 1.4rem;
+        cursor: pointer;
+        color: var(--dark);
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: background 0.2s;
+      }
+      .mm-close:hover {
+        background: #f0ede9;
+      }
+      .mm-links {
+        padding: 20px 0;
+        flex: 1;
+      }
+      .mm-link {
+        display: block;
+        padding: 14px 28px;
+        font-size: 0.78rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--dark);
+        text-decoration: none;
+        transition:
+          color 0.2s,
+          padding-left 0.25s;
+        border-bottom: 1px solid #f9f7f4;
+      }
+      .mm-link:hover {
+        color: var(--primary);
+        padding-left: 36px;
+      }
+      .mm-accordion-btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 28px;
+        font-size: 0.78rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--dark);
+        background: none;
+        border: none;
+        border-bottom: 1px solid #f9f7f4;
+        cursor: pointer;
+        font-family: var(--font-sans);
+        transition: color 0.2s;
+      }
+      .mm-accordion-btn:hover {
+        color: var(--primary);
+      }
+      .mm-acc-arrow {
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s;
+        flex-shrink: 0;
+      }
+      .mm-accordion-btn.active {
+        color: var(--primary);
+      }
+      .mm-accordion-btn.active .mm-acc-arrow {
+        transform: rotate(180deg);
+      }
+      .mm-sub {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+        background: #faf9f7;
+      }
+      .mm-sub.open {
+        max-height: 300px;
+      }
+      .mm-sub a {
+        display: block;
+        padding: 11px 28px 11px 40px;
+        font-size: 0.72rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 500;
+        color: var(--text-muted);
+        text-decoration: none;
+        transition:
+          color 0.2s,
+          padding-left 0.2s;
+        border-bottom: 1px solid #f0ede9;
+      }
+      .mm-sub a:last-child {
+        border-bottom: none;
+      }
+      .mm-sub a:hover {
+        color: var(--primary);
+        padding-left: 48px;
+      }
+      .mm-sub a::before {
+        content: "— ";
+        opacity: 0.4;
+      }
+      #menu-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1040;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s;
+      }
+      #menu-backdrop.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      /* SHARED */
+      section {
+        padding: var(--section-v) var(--section-h);
+        position: relative;
+      }
+      .section-tag {
+        font-size: 0.72rem;
+        letter-spacing: 4px;
+        color: var(--primary);
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        display: block;
+        font-weight: 700;
+      }
+      h2 {
+        font-family: var(--font-serif);
+        font-size: clamp(2.2rem, 4.5vw, 4rem);
+        color: var(--dark);
+        font-weight: 400;
+        line-height: 1.1;
+        margin-bottom: 40px;
+        display: inline-block;
+        position: relative;
+      }
+      h2::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--primary);
+        transition: width 0.4s ease;
+      }
+      h2:hover::after {
+        width: 100%;
+      }
+
+      /* ============================================================
+         SECTION 1 — HERO (full-bleed)
+      ============================================================ */
+      #portfolio-hero {
+        height: 70vh;
+        min-height: 460px;
+        width: 100%;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)),
+          url("../images/portfolioHero.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+        padding: 0 20px;
+      }
+      #portfolio-hero .hero-eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--primary-orange);
+        font-weight: 700;
+        margin-bottom: 18px;
+      }
+      #portfolio-hero h1 {
+        font-family: var(--font-headline);
+        font-size: clamp(3rem, 8vw, 5.5rem);
+        font-weight: 300;
+        line-height: 1.1;
+        letter-spacing: 0.02em;
+      }
+
+      /* ============================================================
+         SECTION 2 — ONGOING PROJECTS (image-led cards)
+      ============================================================ */
+      #projects-section {
+        background: var(--white);
+      }
+      .projects-head {
+        text-align: center;
+        margin-bottom: 70px;
+      }
+      .projects-head .section-tag {
+        display: block;
+      }
+      .projects-head h2 {
+        display: inline-block;
+      }
+      .projects-head h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--gap-md);
+      }
+      .project-card {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        aspect-ratio: 4 / 3;
+        display: flex;
+        align-items: flex-end;
+        text-decoration: none;
+        background: var(--charcoal);
+        transition:
+          transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 28px 60px rgba(44, 44, 44, 0.28);
+      }
+      .project-card-img {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+      }
+      .project-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .project-card:hover .project-card-img img {
+        transform: scale(1.07);
+      }
+      .project-card-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.85) 0%,
+          rgba(0, 0, 0, 0.35) 45%,
+          rgba(0, 0, 0, 0.05) 75%,
+          transparent 100%
+        );
+      }
+      .project-card-body {
+        position: relative;
+        z-index: 2;
+        padding: 38px 40px 40px;
+        width: 100%;
+      }
+      .project-location {
+        font-size: 0.62rem;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--primary-orange);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+      .project-location::before {
+        content: "";
+        width: 18px;
+        height: 1px;
+        background: var(--primary-orange);
+      }
+      .project-card h3 {
+        font-family: var(--font-headline);
+        font-size: clamp(2rem, 3.4vw, 2.8rem);
+        font-weight: 400;
+        color: #fff;
+        line-height: 1.05;
+        margin: 0 0 10px;
+        letter-spacing: -0.01em;
+      }
+      .project-tagline {
+        font-family: var(--font-headline);
+        font-size: 1.1rem;
+        font-style: italic;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.78);
+        line-height: 1.4;
+        margin: 0 0 22px;
+        max-width: 90%;
+      }
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-body);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        padding-bottom: 5px;
+        transition:
+          gap 0.3s ease,
+          color 0.3s ease,
+          border-color 0.3s ease;
+      }
+      .project-card:hover .project-link {
+        color: var(--primary-orange);
+        border-color: var(--primary-orange);
+        gap: 14px;
+      }
+      .project-badge {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        z-index: 3;
+        font-size: 0.58rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--primary-orange);
+        background: rgba(232, 114, 42, 0.12);
+        border: 1px solid rgba(232, 114, 42, 0.4);
+        padding: 6px 14px;
+        border-radius: 20px;
+        backdrop-filter: blur(4px);
+      }
+
+      /* ============================================================
+         SECTION 3 — CTA
+      ============================================================ */
+      #portfolio-cta {
+        background: var(--charcoal);
+        color: #fff;
+        text-align: center;
+        padding: 100px var(--section-h);
+      }
+      .cta-inner {
+        max-width: 680px;
+        margin: 0 auto;
+      }
+      #portfolio-cta h2 {
+        color: #fff;
+        font-style: italic;
+        font-weight: 300;
+        display: inline-block;
+        margin-bottom: 36px;
+      }
+      #portfolio-cta h2::after {
+        display: none;
+      }
+      .cta-btn {
+        background: var(--primary-orange);
+        color: #fff;
+        border: none;
+        padding: 16px 44px;
+        border-radius: 2px;
+        font-family: var(--font-body);
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition:
+          background 0.3s ease,
+          transform 0.3s ease;
+      }
+      .cta-btn:hover {
+        background: var(--darker-orange);
+        transform: translateY(-3px);
+      }
+      .cta-btn:active {
+        background: var(--active-orange);
+        transform: translateY(0);
+      }
+
+      /* FOOTER SKYLINE */
+      .footer-skyline-wrap {
+        background: var(--charcoal);
+        line-height: 0;
+        font-size: 0;
+        overflow: hidden;
+        margin-bottom: -1px;
+      }
+      .footer-skyline-wrap .skyline-desktop {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .footer-skyline-wrap .skyline-mobile {
+        display: none;
+      }
+
+      /* FOOTER */
+      #ub-footer {
+        background: #242323;
+        color: rgba(255, 255, 255, 0.6);
+        padding: 80px 10% 40px;
+        margin-top: 0;
+        position: relative;
+        z-index: 1;
+      }
+      .footer-inner {
+        display: grid;
+        grid-template-columns: 1.8fr 1fr 0.8fr 1fr 1.2fr;
+        gap: 36px;
+        margin-bottom: 72px;
+      }
+      .footer-col h5 {
+        color: white;
+        margin-bottom: 28px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+      }
+      .footer-col a {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+        margin-bottom: 13px;
+        font-size: 0.88rem;
+        transition: color 0.3s;
+      }
+      .footer-col a:hover {
+        color: var(--primary);
+      }
+      .footer-col p {
+        font-size: 0.88rem;
+        line-height: 1.8;
+        margin-bottom: 10px;
+      }
+      .footer-col address {
+        font-style: normal;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 36px;
+        text-align: center;
+        font-size: 0.68rem;
+        letter-spacing: 2px;
+      }
+
+      /* INQUIRY OVERLAYS */
+      .overlay-bg {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(10px);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .overlay-bg.active {
+        display: flex;
+        opacity: 1;
+      }
+      .popup-box {
+        background: #fff;
+        width: 90%;
+        max-width: 500px;
+        padding: 50px;
+        position: relative;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+      }
+      .popup-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        border: none;
+        background: none;
+        font-size: 1.4rem;
+        cursor: pointer;
+        color: var(--dark);
+      }
+      .popup-box h3 {
+        font-family: var(--font-serif);
+        font-size: 2rem;
+        margin-bottom: 25px;
+        text-align: center;
+      }
+      .choice-btns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .choice-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 28px;
+        background: var(--light);
+        text-decoration: none;
+        color: var(--dark);
+        border: 1px solid transparent;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      .choice-card:hover {
+        border-color: var(--primary);
+        background: #fff;
+      }
+      .choice-icon {
+        font-size: 2rem;
+        margin-bottom: 8px;
+      }
+      .inquiry-form input,
+      .inquiry-form select,
+      .inquiry-form textarea {
+        width: 100%;
+        padding: 14px 0;
+        margin-bottom: 18px;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        font-family: var(--font-sans);
+        outline: none;
+        background: transparent;
+        font-size: 0.88rem;
+      }
+      .inquiry-form input:focus,
+      .inquiry-form select:focus,
+      .inquiry-form textarea:focus {
+        border-bottom-color: var(--primary);
+      }
+      .inquiry-form button {
+        width: 100%;
+        padding: 16px;
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        font-weight: 700;
+        letter-spacing: 2px;
+        cursor: pointer;
+        font-family: var(--font-sans);
+      }
+      .inquiry-form .project-field {
+        display: none;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        margin-bottom: 0;
+        transition:
+          opacity 0.35s ease,
+          max-height 0.35s ease,
+          margin 0.35s ease;
+      }
+      .inquiry-form .project-field.show {
+        display: block;
+        opacity: 1;
+        max-height: 80px;
+        margin-bottom: 18px;
+      }
+
+      /* FADE IN */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(36px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ============================================================
+         RESPONSIVE — TABLET (≤1024px)
+      ============================================================ */
+      @media (max-width: 1024px) {
+        section {
+          padding: 60px 30px;
+        }
+        #portfolio-cta {
+          padding: 80px 30px;
+        }
+        .footer-inner {
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+        }
+        .project-card-body {
+          padding: 30px 32px 32px;
+        }
+      }
+
+      /* ============================================================
+         RESPONSIVE — MOBILE (≤768px)
+      ============================================================ */
+      @media (max-width: 768px) {
+        #ub-nav {
+          display: none !important;
+        }
+        .inquiry-btn {
+          display: none !important;
+        }
+        .hamburger {
+          display: flex !important;
+        }
+        section {
+          padding: 40px 20px;
+        }
+        #portfolio-cta {
+          padding: 60px 20px;
+        }
+
+        /* Hero */
+        #portfolio-hero {
+          height: 60vh;
+          background-attachment: scroll;
+          background-image:
+            linear-gradient(
+              to top,
+              rgba(0, 0, 0, 0.8) 0%,
+              rgba(0, 0, 0, 0.45) 55%,
+              rgba(0, 0, 0, 0.3) 100%
+            ),
+            url("../images/portfolioHero.png");
+        }
+
+        /* Projects */
+        .projects-head {
+          margin-bottom: 40px;
+        }
+        .projects-grid {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+        .project-card {
+          aspect-ratio: 3 / 4;
+        }
+        .project-card-body {
+          padding: 24px 22px 26px;
+        }
+        .project-tagline {
+          font-size: 1rem;
+          max-width: 100%;
+        }
+
+        /* Footer */
+        #ub-footer {
+          padding: 56px 5% 28px;
+        }
+        .footer-inner {
+          grid-template-columns: 1fr 1fr;
+          gap: 32px 24px;
+          margin-bottom: 44px;
+        }
+        .footer-bottom {
+          font-size: 0.6rem;
+          letter-spacing: 1px;
+        }
+        .footer-inner .footer-col:first-child {
+          grid-column: 1 / -1;
+        }
+        .popup-box {
+          padding: 36px 24px;
+          width: 94%;
+        }
+        .choice-btns {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        .footer-skyline-wrap .skyline-desktop {
+          display: none;
+        }
+        .footer-skyline-wrap .skyline-mobile {
+          display: block;
+          width: 100%;
+          height: 90px;
+          object-fit: cover;
+          object-position: bottom;
+          filter: brightness(0.55) sepia(0.1);
+          margin: 0;
+          padding: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- BACKDROP -->
+    <div id="menu-backdrop"></div>
+
+    <!-- HEADER -->
+    <header id="ub-topbar">
+      <div class="nav-logo">
+        <a href="index.html"
+          ><img src="../images/UB-Logo-Black.svg" alt="United Builders"
+        /></a>
+      </div>
+      <nav id="ub-nav">
+        <a href="index.html">Home</a>
+        <a href="our-story.html">Our Story</a>
+        <div class="nav-dropdown">
+          <a href="our-portfolio.html">Our Portfolio ▾</a>
+          <div class="dropdown-menu">
+            <a href="projects/residential.html#picasso">United Picasso</a>
+            <a href="https://www.istana.co.in" target="_blank" rel="noopener"
+              >Istana</a
+            >
+            <a
+              href="https://www.earthdevelopers.in"
+              target="_blank"
+              rel="noopener"
+              >Earth One</a
+            >
+            <a href="projects/villas.html#unityInfinity">United Infinity</a>
+          </div>
+        </div>
+      </nav>
+      <button class="inquiry-btn" id="openInquiry">Inquiry</button>
+      <button
+        class="hamburger"
+        id="hamburgerBtn"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <nav id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <div class="mm-header">
+        <img src="../images/UB-LOGO-GRAY.svg" alt="United Builders" />
+        <button class="mm-close" id="menuClose" aria-label="Close menu">
+          ✕
+        </button>
+      </div>
+      <div class="mm-links">
+        <a href="index.html" class="mm-link">Home</a>
+        <a href="our-story.html" class="mm-link">Our Story</a>
+        <button
+          class="mm-accordion-btn"
+          id="projectsAccBtn"
+          aria-expanded="false"
+        >
+          Our Portfolio
+          <span class="mm-acc-arrow">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path
+                d="M2 4l4 4 4-4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+        </button>
+        <div class="mm-sub" id="projectsSub">
+          <a href="projects/residential.html#picasso">United Picasso</a>
+          <a href="https://www.istana.co.in" target="_blank" rel="noopener"
+            >Istana</a
+          >
+          <a
+            href="https://www.earthdevelopers.in"
+            target="_blank"
+            rel="noopener"
+            >Earth One</a
+          >
+          <a href="projects/villas.html#unityInfinity">United Infinity</a>
+        </div>
+        <a href="contact.html" class="mm-link">Contact</a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- ============================================================
+           SECTION 1 — HERO
+      ============================================================ -->
+      <section id="portfolio-hero">
+        <span class="hero-eyebrow">United Builders · Est. 1968</span>
+        <h1>Our Portfolio</h1>
+      </section>
+
+      <!-- ============================================================
+           SECTION 2 — ONGOING PROJECTS
+      ============================================================ -->
+      <section id="projects-section">
+        <div class="projects-head">
+          <span class="section-tag fade-in-up">The Collection</span>
+          <h2 class="fade-in-up">Ongoing Projects</h2>
+        </div>
+
+        <div class="projects-grid">
+          <!-- UNITED PICASSO (internal) -->
+          <!-- TODO: confirm internal page path -->
+          <a
+            href="projects/residential.html#picasso"
+            class="project-card fade-in-up"
+          >
+            <div class="project-card-img">
+              <img src="../images/picasso.png" alt="United Picasso" />
+            </div>
+            <div class="project-card-overlay"></div>
+            <div class="project-card-body">
+              <span class="project-location">Gangapur Road, Nashik</span>
+              <h3>United Picasso</h3>
+              <p class="project-tagline">
+                Nashik's most valuable residential address.
+              </p>
+              <span class="project-link">View Project &#8594;</span>
+            </div>
+          </a>
+
+          <!-- ISTANA (external, new tab) -->
+          <a
+            href="https://www.istana.co.in"
+            target="_blank"
+            rel="noopener"
+            class="project-card fade-in-up"
+          >
+            <div class="project-card-img">
+              <img src="../images/istana.jpg" alt="Istana" />
+            </div>
+            <div class="project-card-overlay"></div>
+            <div class="project-card-body">
+              <span class="project-location">Gangapur Dam Backwaters</span>
+              <h3>Istana</h3>
+              <p class="project-tagline">
+                A gated community of Balinese villas.
+              </p>
+              <span class="project-link">View Project &#8594;</span>
+            </div>
+          </a>
+
+          <!-- EARTH ONE (external, new tab) -->
+          <a
+            href="https://www.earthdevelopers.in"
+            target="_blank"
+            rel="noopener"
+            class="project-card fade-in-up"
+          >
+            <div class="project-card-img">
+              <img src="../images/maingate.jpeg" alt="Earth One" />
+            </div>
+            <div class="project-card-overlay"></div>
+            <div class="project-card-body">
+              <span class="project-location">Igatpuri Hills</span>
+              <h3>Earth One</h3>
+              <p class="project-tagline">
+                Land that grows in value. By design.
+              </p>
+              <span class="project-link">View Project &#8594;</span>
+            </div>
+          </a>
+
+          <!-- UNITED INFINITY (register interest → inquiry overlay) -->
+          <a href="#" class="project-card fade-in-up" id="infinityCard">
+            <div class="project-card-img">
+              <img src="../images/infinity.jpg" alt="United Infinity" />
+            </div>
+            <div class="project-card-overlay"></div>
+            <span class="project-badge">Coming Soon</span>
+            <div class="project-card-body">
+              <span class="project-location"
+                >Adjoining Sula Vineyards, Nashik</span
+              >
+              <h3>United Infinity</h3>
+              <p class="project-tagline">The next chapter. Coming soon.</p>
+              <span class="project-link">Register Interest &#8594;</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 3 — CTA
+      ============================================================ -->
+      <section id="portfolio-cta">
+        <div class="cta-inner">
+          <h2 class="fade-in-up">Interested in one of our projects?</h2>
+          <br />
+          <button class="cta-btn fade-in-up" id="ctaEnquire">
+            Enquire Now
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER SKYLINE -->
+    <div class="footer-skyline-wrap">
+      <img
+        class="skyline-desktop"
+        src="../images/try1.svg"
+        alt="Nashik Skyline"
+      />
+      <img
+        class="skyline-mobile"
+        src="../images/ft1.png"
+        alt="Nashik Skyline"
+      />
+    </div>
+
+    <footer id="ub-footer">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <img
+            src="../images/UB-Logo-white.svg"
+            style="height: 46px; margin-bottom: 28px"
+            alt="United Builders"
+          />
+          <p>Building Nashik since 1968. Three generations. One standard.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigate</h5>
+          <a href="content/careers.html">Careers</a>
+          <a href="our-story.html">Our Story</a>
+          <a href="our-portfolio.html">Our Portfolio</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h5>Follow Us</h5>
+          <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="#" target="_blank" rel="noopener">Instagram</a>
+          <a href="#" target="_blank" rel="noopener">YouTube</a>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <a href="#">RERA Registration</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Disclaimer</a>
+        </div>
+        <div class="footer-col">
+          <h5>Get In Touch</h5>
+          <p>Parijat Nagar, Nashik<br />Maharashtra 422009</p>
+          <p style="margin-top: 14px">hello@unitedbuilders.in</p>
+          <p>+91 XXXXXXXXXX</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy;1968-2025 United Builders. All rights reserved. Design for Impact.
+        Built to Last
+      </div>
+    </footer>
+
+    <!-- INQUIRY OVERLAYS -->
+    <div id="choice-overlay" class="overlay-bg">
+      <div class="popup-box">
+        <button class="popup-close" id="closeChoice">✕</button>
+        <h3>Connect With Us</h3>
+        <div class="choice-btns">
+          <a href="tel:+91XXXXXXXXXX" class="choice-card">
+            <span class="choice-icon">📞</span>
+            <span style="font-weight: 600; letter-spacing: 1px">Call Us</span>
+          </a>
+          <div class="choice-card" id="showFormTrigger">
+            <span class="choice-icon">✉</span>
+            <span style="font-weight: 600; letter-spacing: 1px"
+              >Inquiry Form</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="form-overlay" class="overlay-bg">
+      <div class="popup-box">
+        <button class="popup-close" id="closeForm">✕</button>
+        <h3>Send an Inquiry</h3>
+        <form
+          class="inquiry-form"
+          action="https://formsubmit.co/hello@unitedbuilders.in"
+          method="POST"
+        >
+          <input name="Full Name" placeholder="Full Name" required />
+          <input
+            name="Email"
+            type="email"
+            placeholder="Email Address"
+            required
+          />
+          <input
+            name="Mobile"
+            type="tel"
+            placeholder="Mobile Number"
+            required
+          />
+          <select name="Reason" id="reasonSelect" required>
+            <option value="">Select Reason</option>
+            <option>Project Inquiry</option>
+            <option>Partnership</option>
+            <option>General Support</option>
+          </select>
+          <select name="Project" id="projectSelect" class="project-field">
+            <option value="">Select Project</option>
+            <option>United Picasso</option>
+            <option>United Infinity</option>
+            <option>Istana</option>
+            <option>Earth One</option>
+            <option>United Shalimar</option>
+          </select>
+          <textarea
+            name="Message"
+            placeholder="How can we help?"
+            rows="3"
+            required
+          ></textarea>
+          <button type="submit">SUBMIT INQUIRY</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        "use strict";
+
+        /* ---- Navbar (page has no full-screen hero, so show solid after a small scroll) ---- */
+        var header = document.getElementById("ub-topbar");
+        var heroEl = document.getElementById("portfolio-hero");
+        function onScroll() {
+          var heroH = heroEl ? heroEl.offsetHeight : window.innerHeight;
+          var past = window.scrollY > heroH * 0.6;
+          header.classList.toggle("scrolled", past);
+        }
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+
+        /* ---- Mobile menu ---- */
+        var hamburger = document.getElementById("hamburgerBtn");
+        var mobileMenu = document.getElementById("mobile-menu");
+        var backdrop = document.getElementById("menu-backdrop");
+        var menuClose = document.getElementById("menuClose");
+        function openMenu() {
+          mobileMenu.classList.add("open");
+          backdrop.classList.add("active");
+          hamburger.classList.add("open");
+          hamburger.setAttribute("aria-expanded", "true");
+          document.body.style.overflow = "hidden";
+        }
+        function closeMenu() {
+          mobileMenu.classList.remove("open");
+          backdrop.classList.remove("active");
+          hamburger.classList.remove("open");
+          hamburger.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        }
+        hamburger.addEventListener("click", function () {
+          mobileMenu.classList.contains("open") ? closeMenu() : openMenu();
+        });
+        menuClose.addEventListener("click", closeMenu);
+        backdrop.addEventListener("click", closeMenu);
+
+        /* ---- Projects accordion ---- */
+        var accBtn = document.getElementById("projectsAccBtn");
+        var accSub = document.getElementById("projectsSub");
+        if (accBtn && accSub) {
+          accBtn.addEventListener("click", function () {
+            var isOpen = accSub.classList.contains("open");
+            accSub.classList.toggle("open", !isOpen);
+            accBtn.classList.toggle("active", !isOpen);
+            accBtn.setAttribute("aria-expanded", String(!isOpen));
+          });
+        }
+
+        /* ---- Inquiry overlays ---- */
+        var choiceOverlay = document.getElementById("choice-overlay");
+        var formOverlay = document.getElementById("form-overlay");
+        function openInquiry() {
+          closeMenu();
+          choiceOverlay.classList.add("active");
+        }
+        document
+          .getElementById("openInquiry")
+          .addEventListener("click", openInquiry);
+        document
+          .getElementById("closeChoice")
+          .addEventListener("click", function () {
+            choiceOverlay.classList.remove("active");
+          });
+        document
+          .getElementById("showFormTrigger")
+          .addEventListener("click", function () {
+            choiceOverlay.classList.remove("active");
+            formOverlay.classList.add("active");
+          });
+        document
+          .getElementById("closeForm")
+          .addEventListener("click", function () {
+            formOverlay.classList.remove("active");
+          });
+        window.addEventListener("click", function (e) {
+          if (e.target === choiceOverlay)
+            choiceOverlay.classList.remove("active");
+          if (e.target === formOverlay) formOverlay.classList.remove("active");
+        });
+
+        /* ---- CTA "Enquire Now" opens inquiry ---- */
+        var ctaBtn = document.getElementById("ctaEnquire");
+        if (ctaBtn) ctaBtn.addEventListener("click", openInquiry);
+
+        /* ---- "Register Interest" (United Infinity) opens inquiry, pre-selects project ---- */
+        var infinityCard = document.getElementById("infinityCard");
+        if (infinityCard) {
+          infinityCard.addEventListener("click", function (e) {
+            e.preventDefault();
+            openInquiry();
+          });
+        }
+
+        /* ============================================================
+           PER-PROJECT INQUIRY EMAIL MAP
+           NOTE: FormSubmit only sends to the address in the form's
+           `action`. Recipient routing must be done SERVER-SIDE on
+           BigRock — a handler reads the `Project` field and picks the
+           recipient from this map. Replace placeholders with real
+           per-project inboxes when known.
+           ============================================================ */
+        var PROJECT_EMAILS = {
+          "United Picasso": "picasso@unitedbuilders.in", // TODO: replace
+          "United Infinity": "infinity@unitedbuilders.in", // TODO: replace
+          Istana: "istana@unitedbuilders.in", // TODO: replace
+          "Earth One": "earthone@unitedbuilders.in", // TODO: replace
+          "United Shalimar": "shalimar@unitedbuilders.in", // TODO: replace
+          _default: "hello@unitedbuilders.in", // fallback / non-project inquiries
+        };
+
+        /* ---- Conditional project field on "Project Inquiry" ---- */
+        var reasonSelect = document.getElementById("reasonSelect");
+        var projectSelect = document.getElementById("projectSelect");
+        if (reasonSelect && projectSelect) {
+          reasonSelect.addEventListener("change", function () {
+            var isProject = reasonSelect.value === "Project Inquiry";
+            projectSelect.classList.toggle("show", isProject);
+            if (isProject) {
+              projectSelect.setAttribute("required", "required");
+            } else {
+              projectSelect.removeAttribute("required");
+              projectSelect.value = "";
+            }
+          });
+        }
+
+        /* ---- Scroll fade-in ---- */
+        var fadeEls = document.querySelectorAll(".fade-in-up");
+        var fadeObs = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("visible");
+                fadeObs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
+        fadeEls.forEach(function (el) {
+          fadeObs.observe(el);
+        });
+
+        /* ---- Escape closes overlays/menu ---- */
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            choiceOverlay.classList.remove("active");
+            formOverlay.classList.remove("active");
+            closeMenu();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
