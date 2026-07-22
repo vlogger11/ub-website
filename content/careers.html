@@ -225,6 +225,7 @@
         right: -100%;
         width: min(320px, 85vw);
         height: 100vh;
+        height: 100dvh;
         background: #fff;
         z-index: 1050;
         transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -354,6 +355,24 @@
       .mm-sub a::before {
         content: "— ";
         opacity: 0.4;
+      }
+      .mm-inquiry {
+        margin: 20px 28px 8px;
+        padding: 14px 20px;
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background 0.3s;
+      }
+      .mm-inquiry:hover {
+        background: var(--dark);
       }
       #menu-backdrop {
         position: fixed;
@@ -1361,11 +1380,24 @@
           grid-template-columns: 1fr;
           gap: 12px;
         }
+        .footer-skyline-wrap .skyline-mobile {
+          display: block;
+          width: 100%;
+          height: 90px;
+          object-fit: cover;
+          object-position: bottom;
+          filter: brightness(0.55) sepia(0.1);
+          margin: 0;
+          padding: 0;
+        }
       }
       @media (max-width: 480px) {
         .footer-inner {
-          grid-template-columns: 1fr;
-          gap: 32px;
+          grid-template-columns: 1fr 1fr;
+          gap: 28px 20px;
+        }
+        .footer-inner .footer-col:first-child {
+          grid-column: 1 / -1;
         }
         .footer-skyline-wrap .skyline-desktop {
           display: none;
@@ -1373,6 +1405,16 @@
         .footer-skyline-wrap .skyline-mobile {
           display: block;
           width: 100%;
+        }
+        .footer-skyline-wrap .skyline-mobile {
+          display: block;
+          width: 100%;
+          height: 90px;
+          object-fit: cover;
+          object-position: bottom;
+          filter: brightness(0.55) sepia(0.1);
+          margin: 0;
+          padding: 0;
         }
       }
     </style>
@@ -1394,6 +1436,7 @@
         <div class="nav-dropdown">
           <a href="#">Our Portfolio ▾</a>
           <div class="dropdown-menu">
+            <a href="../projects/indexPcopy.html">All Projects</a>
             <a href="../projects/residential.html#picasso">United Picasso</a>
             <a href="../projects/villas.html#unityInfinity">United Infinity</a>
           </div>
@@ -1442,11 +1485,13 @@
           </span>
         </button>
         <div class="mm-sub" id="projectsSub">
+          <a href="../projects/indexPcopy.html">All Projects</a>
           <a href="../projects/residential.html#picasso">United Picasso</a>
           <a href="../projects/villas.html#unityInfinity">United Infinity</a>
         </div>
         <a href="../content/our-legacy.html" class="mm-link">Our Legacy</a>
         <a href="../content/insights.html" class="mm-link">Insights</a>
+        <button class="mm-inquiry" id="openInquiryMobile">Inquiry</button>
       </div>
     </nav>
 
@@ -1994,6 +2039,9 @@
         document
           .getElementById("openInquiry")
           .addEventListener("click", openInquiry);
+        var openInquiryMobileBtn = document.getElementById("openInquiryMobile");
+        if (openInquiryMobileBtn)
+          openInquiryMobileBtn.addEventListener("click", openInquiry);
         document
           .getElementById("closeChoice")
           .addEventListener("click", function () {
