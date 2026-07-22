@@ -1,0 +1,1517 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Insights — United Builders. Perspectives on real estate. Industry developments, market intelligence, press coverage, and original blogs. Updated regularly."
+    />
+    <title>Insights | United Builders</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* ---- Design tokens (shared with home / our-story / our-legacy) ---- */
+        --primary-orange: #e8722a;
+        --darker-orange: #d45f1f;
+        --active-orange: #b84a15;
+        --charcoal: #2c2c2c;
+        --light-grey: #7f7f7f;
+        --white: #ffffff;
+        --off-white: #f5f5f5;
+        --dark-grey: #3f3f3f;
+        --border-light: #e0e0e0;
+        --footer-text: #bfbfbf;
+        --font-headline: "Cormorant Garamond", serif;
+        --font-body: "Futura PT", "Neue Haas Grotesk", "Montserrat", sans-serif;
+        --section-v: 100px;
+        --section-h: 40px;
+        --gap-sm: 20px;
+        --gap-md: 40px;
+        --gap-lg: 60px;
+        --gap-xl: 80px;
+
+        /* Legacy aliases */
+        --primary: var(--primary-orange);
+        --dark: var(--charcoal);
+        --light: var(--off-white);
+        --text-main: var(--charcoal);
+        --text-muted: var(--light-grey);
+        --font-serif: var(--font-headline);
+        --font-sans: var(--font-body);
+        --nav-h: 80px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: #fff;
+        color: var(--text-main);
+        font-family: var(--font-sans);
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+
+      /* NAVIGATION */
+      #ub-topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: var(--nav-h);
+        padding: 0 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateY(0);
+        background: transparent;
+      }
+      #ub-topbar.scrolled {
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      }
+      .nav-logo img {
+        height: 40px;
+        transition: all 0.4s ease;
+        display: block;
+      }
+      #ub-nav {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+      }
+      #ub-nav a {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 500;
+        font-size: 0.72rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        position: relative;
+        transition: color 0.3s;
+      }
+      #ub-nav a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        transition: width 0.3s ease;
+      }
+      #ub-nav a:hover::after {
+        width: 100%;
+      }
+      #ub-topbar:not(.scrolled) #ub-nav a {
+        color: var(--dark);
+      }
+      #ub-nav a:hover {
+        color: var(--primary);
+      }
+      .nav-dropdown {
+        position: relative;
+      }
+      .nav-dropdown > a {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .dropdown-menu {
+        position: absolute;
+        top: calc(100% + 14px);
+        left: 0;
+        background: #fff;
+        min-width: 200px;
+        padding: 12px 0;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        border-top: 2px solid var(--primary);
+      }
+      .nav-dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown-menu a {
+        display: block !important;
+        padding: 10px 22px !important;
+        color: var(--dark) !important;
+        font-size: 0.68rem !important;
+        letter-spacing: 1.5px;
+        font-weight: 500;
+        transition:
+          color 0.2s,
+          padding-left 0.2s;
+      }
+      .dropdown-menu a::after {
+        display: none !important;
+      }
+      .dropdown-menu a:hover {
+        color: var(--primary) !important;
+        padding-left: 28px !important;
+      }
+      .inquiry-btn {
+        background: var(--primary);
+        color: #fff;
+        padding: 11px 28px;
+        border: none;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: var(--font-sans);
+        white-space: nowrap;
+      }
+      .inquiry-btn:hover {
+        background: var(--dark);
+      }
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 2px;
+        z-index: 1100;
+      }
+      .hamburger span {
+        display: block;
+        height: 2px;
+        border-radius: 2px;
+        transition: all 0.35s ease;
+        background: var(--dark);
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* MOBILE DRAWER */
+      #mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: min(320px, 85vw);
+        height: 100vh;
+        background: #fff;
+        z-index: 1050;
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        box-shadow: -8px 0 40px rgba(0, 0, 0, 0.12);
+      }
+      #mobile-menu.open {
+        right: 0;
+      }
+      .mm-header {
+        padding: 28px 24px 20px;
+        border-bottom: 1px solid #f0ede9;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .mm-header img {
+        height: 42px;
+      }
+      .mm-close {
+        background: none;
+        border: none;
+        font-size: 1.4rem;
+        cursor: pointer;
+        color: var(--dark);
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: background 0.2s;
+      }
+      .mm-close:hover {
+        background: #f0ede9;
+      }
+      .mm-links {
+        padding: 20px 0;
+        flex: 1;
+      }
+      .mm-link {
+        display: block;
+        padding: 14px 28px;
+        font-size: 0.78rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--dark);
+        text-decoration: none;
+        transition:
+          color 0.2s,
+          padding-left 0.25s;
+        border-bottom: 1px solid #f9f7f4;
+      }
+      .mm-link:hover {
+        color: var(--primary);
+        padding-left: 36px;
+      }
+      .mm-accordion-btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 28px;
+        font-size: 0.78rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--dark);
+        background: none;
+        border: none;
+        border-bottom: 1px solid #f9f7f4;
+        cursor: pointer;
+        font-family: var(--font-sans);
+        transition: color 0.2s;
+      }
+      .mm-accordion-btn:hover {
+        color: var(--primary);
+      }
+      .mm-acc-arrow {
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s;
+        flex-shrink: 0;
+      }
+      .mm-accordion-btn.active {
+        color: var(--primary);
+      }
+      .mm-accordion-btn.active .mm-acc-arrow {
+        transform: rotate(180deg);
+      }
+      .mm-sub {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+        background: #faf9f7;
+      }
+      .mm-sub.open {
+        max-height: 300px;
+      }
+      .mm-sub a {
+        display: block;
+        padding: 11px 28px 11px 40px;
+        font-size: 0.72rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 500;
+        color: var(--text-muted);
+        text-decoration: none;
+        transition:
+          color 0.2s,
+          padding-left 0.2s;
+        border-bottom: 1px solid #f0ede9;
+      }
+      .mm-sub a:last-child {
+        border-bottom: none;
+      }
+      .mm-sub a:hover {
+        color: var(--primary);
+        padding-left: 48px;
+      }
+      .mm-sub a::before {
+        content: "— ";
+        opacity: 0.4;
+      }
+      #menu-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1040;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s;
+      }
+      #menu-backdrop.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      /* SHARED */
+      section {
+        padding: var(--section-v) var(--section-h);
+        position: relative;
+      }
+      .section-tag {
+        font-size: 0.72rem;
+        letter-spacing: 4px;
+        color: var(--primary);
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        display: none;
+        font-weight: 700;
+      }
+      h2 {
+        font-family: var(--font-body);
+        font-size: clamp(2rem, 3vw, 2.4rem);
+        color: var(--charcoal);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        line-height: 1.15;
+        margin-bottom: 14px;
+        display: inline-block;
+        position: relative;
+      }
+      h2 span {
+        color: var(--primary-orange);
+      }
+      h2::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--primary);
+        transition: width 0.4s ease;
+      }
+      h2:hover::after {
+        width: 100%;
+      }
+      .section-subtitle {
+        font-family: var(--font-headline);
+        font-style: italic;
+        font-size: 1.15rem;
+        color: var(--light-grey);
+        margin-bottom: var(--gap-lg);
+        max-width: 640px;
+      }
+
+      /* ============================================================
+         SECTION 1 — HERO (editorial photograph)
+      ============================================================ */
+      #insights-hero {
+        height: 56vh;
+        min-height: 420px;
+        width: 100%;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.55)),
+          url("../images/ubinner.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+        padding: 0 20px;
+      }
+      #insights-hero .hero-eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--primary-orange);
+        font-weight: 700;
+        margin-bottom: 18px;
+      }
+      #insights-hero h1 {
+        font-family: var(--font-headline);
+        font-size: clamp(3rem, 8vw, 5.5rem);
+        font-weight: 300;
+        line-height: 1.1;
+        letter-spacing: 0.02em;
+        margin-bottom: 18px;
+      }
+      #insights-hero .hero-subheading {
+        font-family: var(--font-headline);
+        font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+        font-weight: 300;
+        font-style: italic;
+        letter-spacing: 1px;
+        opacity: 0.92;
+        max-width: 640px;
+      }
+
+      /* ============================================================
+         SHARED — ARTICLE CARD GRIDS
+      ============================================================ */
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+      }
+      .article-card {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        border: 1px solid var(--border-light);
+        border-radius: 10px;
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+        transition:
+          box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.45s ease;
+      }
+      .article-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-orange),
+          var(--darker-orange)
+        );
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 3;
+      }
+      .article-card:hover {
+        transform: translateY(-8px);
+        border-color: transparent;
+        box-shadow:
+          0 24px 60px rgba(44, 44, 44, 0.12),
+          0 8px 20px rgba(232, 114, 42, 0.08);
+      }
+      .article-card:hover::before {
+        transform: scaleX(1);
+      }
+      .ac-media {
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        background: var(--off-white);
+      }
+      .ac-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .article-card:hover .ac-media img {
+        transform: scale(1.05);
+      }
+      .ac-body {
+        padding: 26px 26px 28px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .ac-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 14px;
+      }
+      .ac-source,
+      .ac-category {
+        font-size: 0.62rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--primary);
+      }
+      .ac-dot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: var(--border-light);
+      }
+      .ac-date {
+        font-size: 0.62rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--light-grey);
+      }
+      .ac-headline {
+        font-family: var(--font-headline);
+        font-size: 1.42rem;
+        font-weight: 500;
+        line-height: 1.28;
+        color: var(--charcoal);
+        margin-bottom: 12px;
+        transition: color 0.3s ease;
+      }
+      .article-card:hover .ac-headline {
+        color: var(--primary);
+      }
+      .ac-summary {
+        font-size: 0.92rem;
+        line-height: 1.7;
+        color: var(--light-grey);
+        margin-bottom: 22px;
+      }
+      .ac-link {
+        margin-top: auto;
+        font-size: 0.68rem;
+        letter-spacing: 1.8px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--charcoal);
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        transition:
+          gap 0.3s ease,
+          color 0.3s ease;
+      }
+      .article-card:hover .ac-link {
+        color: var(--primary);
+        gap: 12px;
+      }
+
+      /* NEWSROOM section */
+      #newsroom-section {
+        background: var(--white);
+      }
+      /* BLOGS section */
+      #blogs-section {
+        background: var(--off-white);
+      }
+
+      /* FOOTER SKYLINE */
+      .footer-skyline-wrap {
+        background: #fdf8f4;
+        line-height: 0;
+        font-size: 0;
+        overflow: hidden;
+        margin-bottom: -1px;
+      }
+      .footer-skyline-wrap .skyline-desktop {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .footer-skyline-wrap .skyline-mobile {
+        display: none;
+      }
+
+      /* FOOTER */
+      #ub-footer {
+        background: #242323;
+        color: rgba(255, 255, 255, 0.6);
+        padding: 80px 10% 40px;
+        position: relative;
+        z-index: 1;
+      }
+      .footer-inner {
+        display: grid;
+        grid-template-columns: 1.8fr 1fr 0.8fr 1fr 1.2fr;
+        gap: 36px;
+        margin-bottom: 72px;
+      }
+      .footer-col h5 {
+        color: white;
+        margin-bottom: 28px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+      }
+      .footer-col a {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+        margin-bottom: 13px;
+        font-size: 0.88rem;
+        transition: color 0.3s;
+      }
+      .footer-col a:hover {
+        color: var(--primary);
+      }
+      .footer-col p {
+        font-size: 0.88rem;
+        line-height: 1.8;
+        margin-bottom: 10px;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 36px;
+        text-align: center;
+        font-size: 0.68rem;
+        letter-spacing: 2px;
+      }
+      .footer-address {
+        font-style: normal;
+      }
+      .footer-map-link {
+        display: inline-block;
+        font-size: 0.78rem;
+        color: var(--footer-text);
+        text-decoration: none;
+        margin-bottom: 10px;
+        transition: color 0.3s;
+      }
+      .footer-map-link:hover {
+        color: var(--primary);
+      }
+
+      /* INQUIRY OVERLAYS */
+      .overlay-bg {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(10px);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .overlay-bg.active {
+        display: flex;
+        opacity: 1;
+      }
+      .popup-box {
+        background: #fff;
+        width: 90%;
+        max-width: 500px;
+        padding: 50px;
+        position: relative;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+      }
+      .popup-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        border: none;
+        background: none;
+        font-size: 1.4rem;
+        cursor: pointer;
+        color: var(--dark);
+      }
+      .popup-box h3 {
+        font-family: var(--font-serif);
+        font-size: 2rem;
+        margin-bottom: 25px;
+        text-align: center;
+      }
+      .choice-btns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .choice-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 28px;
+        background: var(--light);
+        text-decoration: none;
+        color: var(--dark);
+        border: 1px solid transparent;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+      .choice-card:hover {
+        border-color: var(--primary);
+        background: #fff;
+      }
+      .choice-icon {
+        font-size: 2rem;
+        margin-bottom: 8px;
+      }
+      .inquiry-form input,
+      .inquiry-form select,
+      .inquiry-form textarea {
+        width: 100%;
+        padding: 14px 0;
+        margin-bottom: 18px;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        font-family: var(--font-sans);
+        outline: none;
+        background: transparent;
+        font-size: 0.88rem;
+      }
+      .inquiry-form input:focus,
+      .inquiry-form select:focus,
+      .inquiry-form textarea:focus {
+        border-bottom-color: var(--primary);
+      }
+      .inquiry-form button {
+        width: 100%;
+        padding: 16px;
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        font-weight: 700;
+        letter-spacing: 2px;
+        cursor: pointer;
+        font-family: var(--font-sans);
+      }
+      .inquiry-form .project-field {
+        display: none;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        margin-bottom: 0;
+        transition:
+          opacity 0.35s ease,
+          max-height 0.35s ease,
+          margin 0.35s ease;
+      }
+      .inquiry-form .project-field.show {
+        display: block;
+        opacity: 1;
+        max-height: 80px;
+        margin-bottom: 18px;
+      }
+
+      /* FADE IN */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(36px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          scroll-behavior: auto !important;
+        }
+        .fade-in-up {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        #insights-hero {
+          background-attachment: scroll;
+        }
+      }
+
+      /* ============================================================
+         RESPONSIVE — TABLET (≤1024px)
+      ============================================================ */
+      @media (max-width: 1024px) {
+        section {
+          padding: 60px 30px;
+        }
+        .card-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 22px;
+        }
+        .footer-inner {
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+        }
+      }
+
+      /* ============================================================
+         RESPONSIVE — MOBILE (≤768px)
+      ============================================================ */
+      @media (max-width: 768px) {
+        #ub-nav {
+          display: none !important;
+        }
+        .inquiry-btn {
+          display: none !important;
+        }
+        .hamburger {
+          display: flex !important;
+        }
+        section {
+          padding: 40px 20px;
+        }
+        #insights-hero {
+          height: 62vh;
+          background-attachment: scroll;
+        }
+        .card-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .footer-inner {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .choice-btns {
+          grid-template-columns: 1fr;
+        }
+        .popup-box {
+          padding: 36px 26px;
+        }
+        .footer-skyline-wrap .skyline-desktop {
+          display: none;
+        }
+        .footer-skyline-wrap .skyline-mobile {
+          display: block;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- BACKDROP -->
+    <div id="menu-backdrop"></div>
+
+    <!-- HEADER -->
+    <header id="ub-topbar">
+      <div class="nav-logo">
+        <a href="../index.html"
+          ><img src="../images/UB-Logo-Black.svg" alt="United Builders"
+        /></a>
+      </div>
+      <nav id="ub-nav">
+        <a href="../index.html">Home</a>
+        <a href="../content/our-story.html">Our Story</a>
+        <div class="nav-dropdown">
+          <a href="#">Our Portfolio ▾</a>
+          <div class="dropdown-menu">
+            <a href="../projects/residential.html#picasso">United Picasso</a>
+            <a href="../projects/villas.html#unityInfinity">United Infinity</a>
+          </div>
+        </div>
+        <a href="our-legacy.html">Our Legacy</a>
+        <a href="insights.html">Insights</a>
+      </nav>
+      <button class="inquiry-btn" id="openInquiry">Inquiry</button>
+      <button
+        class="hamburger"
+        id="hamburgerBtn"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <nav id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <div class="mm-header">
+        <img src="../images/UB-LOGO-GRAY.svg" alt="United Builders" />
+        <button class="mm-close" id="menuClose" aria-label="Close menu">
+          ✕
+        </button>
+      </div>
+      <div class="mm-links">
+        <a href="../index.html" class="mm-link">Home</a>
+        <a href="our-story.html" class="mm-link">Our Story</a>
+        <button
+          class="mm-accordion-btn"
+          id="projectsAccBtn"
+          aria-expanded="false"
+        >
+          Our Portfolio
+          <span class="mm-acc-arrow">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path
+                d="M2 4l4 4 4-4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+        </button>
+        <div class="mm-sub" id="projectsSub">
+          <a href="../projects/residential.html#picasso">United Picasso</a>
+          <a href="../projects/villas.html#unityInfinity">United Infinity</a>
+        </div>
+        <a href="our-legacy.html" class="mm-link">Our Legacy</a>
+        <a href="insights.html" class="mm-link">Insights</a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- ============================================================
+           SECTION 1 — HERO
+      ============================================================ -->
+      <section id="insights-hero">
+        <span class="hero-eyebrow">United Builders</span>
+        <h1>Insights</h1>
+        <p class="hero-subheading">
+          Perspectives on real estate. Updated regularly.
+        </p>
+      </section>
+
+      <!-- ============================================================
+           SECTION 2 — NEWSROOM
+      ============================================================ -->
+      <section id="newsroom-section">
+        <span class="section-tag fade-in-up">Newsroom</span>
+        <h2 class="fade-in-up">Newsroom</h2>
+        <p class="section-subtitle fade-in-up">
+          Industry developments, market intelligence, and what we are reading.
+        </p>
+
+        <div class="card-grid">
+          <!-- Industry news — external, opens in new tab -->
+          <a
+            href="https://www.tribuneindia.com/news/business/earth-one-at-igatpuri-hills-announces-dr-mickey-mehta-as-holistic-living-ambassador/"
+            target="_blank"
+            rel="noopener"
+            class="article-card fade-in-up"
+          >
+            <div class="ac-media">
+              <img src="../images/eomicky.png" alt="" />
+            </div>
+            <div class="ac-body">
+              <div class="ac-meta">
+                <span class="ac-source">www.tribuneindia.com</span>
+                <span class="ac-dot"></span>
+                <span class="ac-date">July 20, 2026</span>
+              </div>
+              <h3 class="ac-headline">
+                Earth One at Igatpuri Hills Announces Dr. Mickey Mehta as
+                Holistic Living Ambassador
+              </h3>
+              <p class="ac-summary">
+                Earth One at Igatpuri Hills, a premium 50-acre gated plotted
+                development nestled in the Western Ghats, has announced its
+                association with global leading holistic health guru, Dr. Mickey
+                Mehta as the Holistic Living Ambassador for the project.
+              </p>
+              <span class="ac-link" target="_blank" rel="noopener noreferrer">
+                Read at Source &#8599;
+              </span>
+            </div>
+          </a>
+
+          <!-- Press coverage — opens inline -->
+          <a href="#" class="article-card fade-in-up">
+            <div class="ac-media">
+              <img src="../images/picasso.png" alt="" />
+            </div>
+            <div class="ac-body">
+              <div class="ac-meta">
+                <span class="ac-source">Source / Publication</span>
+                <span class="ac-dot"></span>
+                <span class="ac-date">Month DD, YYYY</span>
+              </div>
+              <h3 class="ac-headline">
+                United Builders featured in press coverage headline.
+              </h3>
+              <p class="ac-summary">
+                A short summary of the coverage — what was said, where, and why
+                it matters.
+              </p>
+              <span class="ac-link">Read Article &#8594;</span>
+            </div>
+          </a>
+
+          <!-- Press release — opens inline -->
+          <a href="#" class="article-card fade-in-up">
+            <div class="ac-media">
+              <img src="../images/istana.jpg" alt="" />
+            </div>
+            <div class="ac-body">
+              <div class="ac-meta">
+                <span class="ac-source">Press Release</span>
+                <span class="ac-dot"></span>
+                <span class="ac-date">Month DD, YYYY</span>
+              </div>
+              <h3 class="ac-headline">
+                United Builders press release headline goes here.
+              </h3>
+              <p class="ac-summary">
+                A short summary of the announcement — the who, what, and when of
+                the release.
+              </p>
+              <span class="ac-link">Read Release &#8594;</span>
+            </div>
+          </a>
+
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener"
+            class="article-card fade-in-up"
+          >
+            <div class="ac-media">
+              <img src="../images/maingate.jpeg" alt="" />
+            </div>
+            <div class="ac-body">
+              <div class="ac-meta">
+                <span class="ac-source">Source / Publication</span>
+                <span class="ac-dot"></span>
+                <span class="ac-date">Month DD, YYYY</span>
+              </div>
+              <h3 class="ac-headline">
+                Headline of another industry news article goes here.
+              </h3>
+              <p class="ac-summary">
+                A one or two line summary of the article for the reader.
+              </p>
+              <span class="ac-link">Read at Source &#8599;</span>
+            </div>
+          </a>
+
+          <a href="#" class="article-card fade-in-up">
+            <div class="ac-media">
+              <img src="../images/ubmid.jpg" alt="" />
+            </div>
+            <div class="ac-body">
+              <div class="ac-meta">
+                <span class="ac-source">Source / Publication</span>
+                <span class="ac-dot"></span>
+                <span class="ac-date">Month DD, YYYY</span>
+              </div>
+              <h3 class="ac-headline">
+                Another United Builders coverage headline.
+              </h3>
+              <p class="ac-summary">
+                A short summary of the coverage for the reader.
+              </p>
+              <span class="ac-link">Read Article &#8594;</span>
+            </div>
+          </a>
+
+          <a href="#" class="article-card fade-in-up">
+            <div class="ac-media">
+              <img src="../images/ubinner.jpg" alt="" />
+            </div>
+            <div class="ac-body">
+              <div class="ac-meta">
+                <span class="ac-source">Press Release</span>
+                <span class="ac-dot"></span>
+                <span class="ac-date">Month DD, YYYY</span>
+              </div>
+              <h3 class="ac-headline">
+                Another United Builders press release headline.
+              </h3>
+              <p class="ac-summary">
+                A short summary of the announcement for the reader.
+              </p>
+              <span class="ac-link">Read Release &#8594;</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 3 — BLOGS
+      ============================================================ -->
+      <section id="blogs-section">
+        <span class="section-tag fade-in-up">Blogs</span>
+        <h2 class="fade-in-up">Blogs</h2>
+        <p class="section-subtitle fade-in-up">
+          Original perspectives from United Builders.
+        </p>
+
+        <div class="card-grid">
+          <a href="#" class="article-card fade-in-up">
+            <div class="ac-media">
+              <img src="../images/picasso.png" alt="" />
+            </div>
+            <div class="ac-body">
+              <div class="ac-meta">
+                <span class="ac-category">Category</span>
+                <span class="ac-dot"></span>
+                <span class="ac-date">Month DD, YYYY</span>
+              </div>
+              <h3 class="ac-headline">Blog article title goes here.</h3>
+              <p class="ac-summary">
+                A brief summary of the blog article to draw the reader in and
+                set up the perspective offered.
+              </p>
+              <span class="ac-link">Read Article &#8594;</span>
+            </div>
+          </a>
+
+          <a href="#" class="article-card fade-in-up">
+            <div class="ac-media">
+              <img src="../images/istana.jpg" alt="" />
+            </div>
+            <div class="ac-body">
+              <div class="ac-meta">
+                <span class="ac-category">Category</span>
+                <span class="ac-dot"></span>
+                <span class="ac-date">Month DD, YYYY</span>
+              </div>
+              <h3 class="ac-headline">Blog article title goes here.</h3>
+              <p class="ac-summary">
+                A brief summary of the blog article to draw the reader in.
+              </p>
+              <span class="ac-link">Read Article &#8594;</span>
+            </div>
+          </a>
+
+          <a href="#" class="article-card fade-in-up">
+            <div class="ac-media">
+              <img src="../images/maingate.jpeg" alt="" />
+            </div>
+            <div class="ac-body">
+              <div class="ac-meta">
+                <span class="ac-category">Category</span>
+                <span class="ac-dot"></span>
+                <span class="ac-date">Month DD, YYYY</span>
+              </div>
+              <h3 class="ac-headline">Blog article title goes here.</h3>
+              <p class="ac-summary">
+                A brief summary of the blog article to draw the reader in.
+              </p>
+              <span class="ac-link">Read Article &#8594;</span>
+            </div>
+          </a>
+
+          <a href="#" class="article-card fade-in-up">
+            <div class="ac-media">
+              <img src="../images/ubmid.jpg" alt="" />
+            </div>
+            <div class="ac-body">
+              <div class="ac-meta">
+                <span class="ac-category">Category</span>
+                <span class="ac-dot"></span>
+                <span class="ac-date">Month DD, YYYY</span>
+              </div>
+              <h3 class="ac-headline">Blog article title goes here.</h3>
+              <p class="ac-summary">
+                A brief summary of the blog article to draw the reader in.
+              </p>
+              <span class="ac-link">Read Article &#8594;</span>
+            </div>
+          </a>
+
+          <a href="#" class="article-card fade-in-up">
+            <div class="ac-media">
+              <img src="../images/ubinner.jpg" alt="" />
+            </div>
+            <div class="ac-body">
+              <div class="ac-meta">
+                <span class="ac-category">Category</span>
+                <span class="ac-dot"></span>
+                <span class="ac-date">Month DD, YYYY</span>
+              </div>
+              <h3 class="ac-headline">Blog article title goes here.</h3>
+              <p class="ac-summary">
+                A brief summary of the blog article to draw the reader in.
+              </p>
+              <span class="ac-link">Read Article &#8594;</span>
+            </div>
+          </a>
+
+          <a href="#" class="article-card fade-in-up">
+            <div class="ac-media">
+              <img src="../images/nskHero.png" alt="" />
+            </div>
+            <div class="ac-body">
+              <div class="ac-meta">
+                <span class="ac-category">Category</span>
+                <span class="ac-dot"></span>
+                <span class="ac-date">Month DD, YYYY</span>
+              </div>
+              <h3 class="ac-headline">Blog article title goes here.</h3>
+              <p class="ac-summary">
+                A brief summary of the blog article to draw the reader in.
+              </p>
+              <span class="ac-link" href="">Read Article &#8594;</span>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER SKYLINE -->
+    <div class="footer-skyline-wrap">
+      <img
+        class="skyline-desktop"
+        src="../images/try1.svg"
+        alt="Nashik Skyline"
+      />
+      <img
+        class="skyline-mobile"
+        src="../images/ft1.png"
+        alt="Nashik Skyline"
+      />
+    </div>
+
+    <footer id="ub-footer">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <img
+            src="../images/UB-Logo-white.svg"
+            style="height: 46px; margin-bottom: 28px"
+            alt="United Builders"
+          />
+          <p>Building Nashik since 1968. Three generations. One standard.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigate</h5>
+          <a href="../index.html">Home</a>
+          <a href="our-story.html">Our Story</a>
+          <a href="our-portfolio.html">Our Portfolio</a>
+          <a href="our-legacy.html">Our Legacy</a>
+          <a href="insights.html">Insights</a>
+          <a href="../contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h5>Follow Us</h5>
+          <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="#" target="_blank" rel="noopener">Instagram</a>
+          <a href="#" target="_blank" rel="noopener">YouTube</a>
+          <a href="#" target="_blank" rel="noopener">Facebook</a>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Disclaimer</a>
+        </div>
+        <div class="footer-col">
+          <h5>Address</h5>
+          <address class="footer-address">
+            <p>UB-HQ, Parijat Nagar, Nashik 422005 Maharashtra</p>
+          </address>
+          <a
+            href="https://maps.app.goo.gl/ebm13eYn5kr5riMJ8"
+            target="_blank"
+            rel="noopener"
+            class="footer-map-link"
+            >View on Map →</a
+          >
+          <p>Mon–Sat: 10:00 AM–7:00 PM IST</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy;United Builders. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- INQUIRY OVERLAYS -->
+    <div id="choice-overlay" class="overlay-bg">
+      <div class="popup-box">
+        <button class="popup-close" id="closeChoice">✕</button>
+        <h3>Connect With Us</h3>
+        <div class="choice-btns">
+          <a href="tel:+91XXXXXXXXXX" class="choice-card">
+            <span class="choice-icon">📞</span>
+            <span style="font-weight: 600; letter-spacing: 1px">Call Us</span>
+          </a>
+          <div class="choice-card" id="showFormTrigger">
+            <span class="choice-icon">✉</span>
+            <span style="font-weight: 600; letter-spacing: 1px"
+              >Inquiry Form</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="form-overlay" class="overlay-bg">
+      <div class="popup-box">
+        <button class="popup-close" id="closeForm">✕</button>
+        <h3>Send an Inquiry</h3>
+        <form
+          class="inquiry-form"
+          action="https://formsubmit.co/hello@unitedbuilders.in"
+          method="POST"
+        >
+          <input name="Full Name" placeholder="Full Name" required />
+          <input
+            name="Email"
+            type="email"
+            placeholder="Email Address"
+            required
+          />
+          <input
+            name="Mobile"
+            type="tel"
+            placeholder="Mobile Number"
+            required
+          />
+          <select name="Reason" id="reasonSelect" required>
+            <option value="">Select Reason</option>
+            <option>Project Inquiry</option>
+            <option>Partnership</option>
+            <option>General Support</option>
+          </select>
+          <select name="Project" id="projectSelect" class="project-field">
+            <option value="">Select Project</option>
+            <option>United Picasso</option>
+            <option>United Infinity</option>
+            <option>Istana</option>
+            <option>Earth One</option>
+            <option>United Shalimar</option>
+          </select>
+          <textarea
+            name="Message"
+            placeholder="How can we help?"
+            rows="3"
+            required
+          ></textarea>
+          <button type="submit">SUBMIT INQUIRY</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        "use strict";
+
+        /* ---- Navbar (short hero → solid after a small scroll) ---- */
+        var header = document.getElementById("ub-topbar");
+        var heroEl = document.getElementById("insights-hero");
+        function onScroll() {
+          var heroH = heroEl ? heroEl.offsetHeight : window.innerHeight;
+          header.classList.toggle("scrolled", window.scrollY > heroH * 0.6);
+        }
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+
+        /* ---- Mobile menu ---- */
+        var hamburger = document.getElementById("hamburgerBtn");
+        var mobileMenu = document.getElementById("mobile-menu");
+        var backdrop = document.getElementById("menu-backdrop");
+        var menuClose = document.getElementById("menuClose");
+        function openMenu() {
+          mobileMenu.classList.add("open");
+          backdrop.classList.add("active");
+          hamburger.classList.add("open");
+          hamburger.setAttribute("aria-expanded", "true");
+          document.body.style.overflow = "hidden";
+        }
+        function closeMenu() {
+          mobileMenu.classList.remove("open");
+          backdrop.classList.remove("active");
+          hamburger.classList.remove("open");
+          hamburger.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        }
+        hamburger.addEventListener("click", function () {
+          mobileMenu.classList.contains("open") ? closeMenu() : openMenu();
+        });
+        menuClose.addEventListener("click", closeMenu);
+        backdrop.addEventListener("click", closeMenu);
+
+        /* ---- Projects accordion ---- */
+        var accBtn = document.getElementById("projectsAccBtn");
+        var accSub = document.getElementById("projectsSub");
+        if (accBtn && accSub) {
+          accBtn.addEventListener("click", function () {
+            var isOpen = accSub.classList.contains("open");
+            accSub.classList.toggle("open", !isOpen);
+            accBtn.classList.toggle("active", !isOpen);
+            accBtn.setAttribute("aria-expanded", String(!isOpen));
+          });
+        }
+
+        /* ---- Inquiry overlays ---- */
+        var choiceOverlay = document.getElementById("choice-overlay");
+        var formOverlay = document.getElementById("form-overlay");
+        function openInquiry() {
+          closeMenu();
+          choiceOverlay.classList.add("active");
+        }
+        document
+          .getElementById("openInquiry")
+          .addEventListener("click", openInquiry);
+        document
+          .getElementById("closeChoice")
+          .addEventListener("click", function () {
+            choiceOverlay.classList.remove("active");
+          });
+        document
+          .getElementById("showFormTrigger")
+          .addEventListener("click", function () {
+            choiceOverlay.classList.remove("active");
+            formOverlay.classList.add("active");
+          });
+        document
+          .getElementById("closeForm")
+          .addEventListener("click", function () {
+            formOverlay.classList.remove("active");
+          });
+        window.addEventListener("click", function (e) {
+          if (e.target === choiceOverlay)
+            choiceOverlay.classList.remove("active");
+          if (e.target === formOverlay) formOverlay.classList.remove("active");
+        });
+
+        /* ---- Conditional project field on "Project Inquiry" ---- */
+        var reasonSelect = document.getElementById("reasonSelect");
+        var projectSelect = document.getElementById("projectSelect");
+        if (reasonSelect && projectSelect) {
+          reasonSelect.addEventListener("change", function () {
+            var isProject = reasonSelect.value === "Project Inquiry";
+            projectSelect.classList.toggle("show", isProject);
+            if (isProject) {
+              projectSelect.setAttribute("required", "required");
+            } else {
+              projectSelect.removeAttribute("required");
+              projectSelect.value = "";
+            }
+          });
+        }
+
+        /* ---- Scroll fade-in (stagger cards within each grid) ---- */
+        document.querySelectorAll(".card-grid").forEach(function (grid) {
+          grid.querySelectorAll(".fade-in-up").forEach(function (el, i) {
+            el.style.transitionDelay = (i % 3) * 0.08 + "s";
+          });
+        });
+        var fadeEls = document.querySelectorAll(".fade-in-up");
+        var fadeObs = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("visible");
+                fadeObs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
+        fadeEls.forEach(function (el) {
+          fadeObs.observe(el);
+        });
+
+        /* ---- Escape closes overlays/menu ---- */
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            choiceOverlay.classList.remove("active");
+            formOverlay.classList.remove("active");
+            closeMenu();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
