@@ -219,6 +219,7 @@
         right: -100%;
         width: min(320px, 85vw);
         height: 100vh;
+        height: 100dvh;
         background: #fff;
         z-index: 1050;
         transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -349,6 +350,31 @@
         content: "— ";
         opacity: 0.4;
       }
+      /* Hamburger visible over the dark hero at the top, dark once nav turns white */
+      #ub-topbar:not(.scrolled) .hamburger span {
+        background: #fff;
+      }
+      #ub-topbar.scrolled .hamburger span {
+        background: var(--charcoal);
+      }
+      .mm-inquiry {
+        margin: 20px 28px 8px;
+        padding: 14px 20px;
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background 0.3s;
+      }
+      .mm-inquiry:hover {
+        background: var(--dark);
+      }
       #menu-backdrop {
         position: fixed;
         inset: 0;
@@ -374,7 +400,7 @@
         color: var(--primary);
         text-transform: uppercase;
         margin-bottom: 16px;
-        display: none;
+        display: inline-block;
         font-weight: 700;
       }
       h2 {
@@ -947,8 +973,11 @@
 
       @media (max-width: 480px) {
         .footer-inner {
-          grid-template-columns: 1fr;
-          gap: 32px;
+          grid-template-columns: 1fr 1fr;
+          gap: 28px 20px;
+        }
+        .footer-inner .footer-col:first-child {
+          grid-column: 1 / -1;
         }
         .choice-btns {
           grid-template-columns: 1fr;
@@ -979,7 +1008,7 @@
       </div>
       <nav id="ub-nav">
         <a href="../index.html">Home</a>
-        <a href="../content/our-story.html">Our Story</a>
+        <a href="our-story.html">Our Story</a>
         <div class="nav-dropdown">
           <a href="#">Our Portfolio ▾</a>
           <div class="dropdown-menu">
@@ -1012,7 +1041,7 @@
       </div>
       <div class="mm-links">
         <a href="../index.html" class="mm-link">Home</a>
-        <a href="../content/our-story.html" class="mm-link">Our Story</a>
+        <a href="our-story.html" class="mm-link">Our Story</a>
         <button
           class="mm-accordion-btn"
           id="projectsAccBtn"
@@ -1038,6 +1067,7 @@
         </div>
         <a href="our-legacy.html" class="mm-link">Our Legacy</a>
         <a href="insights.html" class="mm-link">Insights</a>
+        <button class="mm-inquiry" id="openInquiryMobile">Inquiry</button>
       </div>
     </nav>
 
@@ -1097,9 +1127,7 @@
         <div class="landmark-inner">
           <div class="landmark-head">
             <span class="section-tag fade-in-up">The Portfolio</span>
-            <h2 class="fade-in-up">
-              Some of Our <span>Landmark Projects</span>
-            </h2>
+            <h2 class="fade-in-up">Some of Our <span>Landmark Projects</span></h2>
           </div>
           <ul class="landmark-list fade-in-up">
             <li class="landmark-row">
@@ -1136,24 +1164,14 @@
       ============================================================ -->
       <section id="legacy-cta">
         <h2 class="fade-in-up">Be part of our legacy.</h2>
-        <a href="#" class="cta-enquire fade-in-up" id="ctaEnquire"
-          >Enquire Now</a
-        >
+        <a href="#" class="cta-enquire fade-in-up" id="ctaEnquire">Enquire Now</a>
       </section>
     </main>
 
     <!-- FOOTER SKYLINE -->
     <div class="footer-skyline-wrap">
-      <img
-        class="skyline-desktop"
-        src="../images/try1.svg"
-        alt="Nashik Skyline"
-      />
-      <img
-        class="skyline-mobile"
-        src="../images/ft1.png"
-        alt="Nashik Skyline"
-      />
+      <img class="skyline-desktop" src="../images/try1.svg" alt="Nashik Skyline" />
+      <img class="skyline-mobile" src="../images/ft1.png" alt="Nashik Skyline" />
     </div>
 
     <footer id="ub-footer">
@@ -1168,7 +1186,7 @@
         </div>
         <div class="footer-col">
           <h5>Navigate</h5>
-          <a href="index.html">Home</a>
+          <a href="../index.html">Home</a>
           <a href="our-story.html">Our Story</a>
           <a href="our-portfolio.html">Our Portfolio</a>
           <a href="our-legacy.html">Our Legacy</a>
@@ -1336,6 +1354,9 @@
         document
           .getElementById("openInquiry")
           .addEventListener("click", openInquiry);
+        var openInquiryMobileBtn = document.getElementById("openInquiryMobile");
+        if (openInquiryMobileBtn)
+          openInquiryMobileBtn.addEventListener("click", openInquiry);
         document
           .getElementById("ctaEnquire")
           .addEventListener("click", function (e) {
