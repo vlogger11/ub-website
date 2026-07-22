@@ -219,6 +219,7 @@
         right: -100%;
         width: min(320px, 85vw);
         height: 100vh;
+        height: 100dvh;
         background: #fff;
         z-index: 1050;
         transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -348,6 +349,31 @@
       .mm-sub a::before {
         content: "— ";
         opacity: 0.4;
+      }
+      /* Hamburger visible over the dark hero at the top, dark once nav turns white */
+      #ub-topbar:not(.scrolled) .hamburger span {
+        background: #fff;
+      }
+      #ub-topbar.scrolled .hamburger span {
+        background: var(--charcoal);
+      }
+      .mm-inquiry {
+        margin: 20px 28px 8px;
+        padding: 14px 20px;
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background 0.3s;
+      }
+      .mm-inquiry:hover {
+        background: var(--dark);
       }
       #menu-backdrop {
         position: fixed;
@@ -868,8 +894,11 @@
 
       @media (max-width: 480px) {
         .footer-inner {
-          grid-template-columns: 1fr;
-          gap: 32px;
+          grid-template-columns: 1fr 1fr;
+          gap: 28px 20px;
+        }
+        .footer-inner .footer-col:first-child {
+          grid-column: 1 / -1;
         }
         .choice-btns {
           grid-template-columns: 1fr;
@@ -900,7 +929,7 @@
       </div>
       <nav id="ub-nav">
         <a href="../index.html">Home</a>
-        <a href="../content/our-story.html">Our Story</a>
+        <a href="our-story.html">Our Story</a>
         <div class="nav-dropdown">
           <a href="#">Our Portfolio ▾</a>
           <div class="dropdown-menu">
@@ -959,6 +988,7 @@
         </div>
         <a href="our-legacy.html" class="mm-link">Our Legacy</a>
         <a href="insights.html" class="mm-link">Insights</a>
+        <button class="mm-inquiry" id="openInquiryMobile">Inquiry</button>
       </div>
     </nav>
 
@@ -1038,93 +1068,6 @@
               <span class="ac-link">Read Article &#8594;</span>
             </div>
           </a>
-
-          <!-- Press release — opens inline -->
-          <a href="#" class="article-card fade-in-up">
-            <div class="ac-media">
-              <img src="../images/istana.jpg" alt="" />
-            </div>
-            <div class="ac-body">
-              <div class="ac-meta">
-                <span class="ac-source">Press Release</span>
-                <span class="ac-dot"></span>
-                <span class="ac-date">Month DD, YYYY</span>
-              </div>
-              <h3 class="ac-headline">
-                United Builders press release headline goes here.
-              </h3>
-              <p class="ac-summary">
-                A short summary of the announcement — the who, what, and when of
-                the release.
-              </p>
-              <span class="ac-link">Read Release &#8594;</span>
-            </div>
-          </a>
-
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener"
-            class="article-card fade-in-up"
-          >
-            <div class="ac-media">
-              <img src="../images/maingate.jpeg" alt="" />
-            </div>
-            <div class="ac-body">
-              <div class="ac-meta">
-                <span class="ac-source">Source / Publication</span>
-                <span class="ac-dot"></span>
-                <span class="ac-date">Month DD, YYYY</span>
-              </div>
-              <h3 class="ac-headline">
-                Headline of another industry news article goes here.
-              </h3>
-              <p class="ac-summary">
-                A one or two line summary of the article for the reader.
-              </p>
-              <span class="ac-link">Read at Source &#8599;</span>
-            </div>
-          </a>
-
-          <a href="#" class="article-card fade-in-up">
-            <div class="ac-media">
-              <img src="../images/ubmid.jpg" alt="" />
-            </div>
-            <div class="ac-body">
-              <div class="ac-meta">
-                <span class="ac-source">Source / Publication</span>
-                <span class="ac-dot"></span>
-                <span class="ac-date">Month DD, YYYY</span>
-              </div>
-              <h3 class="ac-headline">
-                Another United Builders coverage headline.
-              </h3>
-              <p class="ac-summary">
-                A short summary of the coverage for the reader.
-              </p>
-              <span class="ac-link">Read Article &#8594;</span>
-            </div>
-          </a>
-
-          <a href="#" class="article-card fade-in-up">
-            <div class="ac-media">
-              <img src="../images/ubinner.jpg" alt="" />
-            </div>
-            <div class="ac-body">
-              <div class="ac-meta">
-                <span class="ac-source">Press Release</span>
-                <span class="ac-dot"></span>
-                <span class="ac-date">Month DD, YYYY</span>
-              </div>
-              <h3 class="ac-headline">
-                Another United Builders press release headline.
-              </h3>
-              <p class="ac-summary">
-                A short summary of the announcement for the reader.
-              </p>
-              <span class="ac-link">Read Release &#8594;</span>
-            </div>
-          </a>
         </div>
       </section>
 
@@ -1160,60 +1103,6 @@
 
           <a href="#" class="article-card fade-in-up">
             <div class="ac-media">
-              <img src="../images/istana.jpg" alt="" />
-            </div>
-            <div class="ac-body">
-              <div class="ac-meta">
-                <span class="ac-category">Category</span>
-                <span class="ac-dot"></span>
-                <span class="ac-date">Month DD, YYYY</span>
-              </div>
-              <h3 class="ac-headline">Blog article title goes here.</h3>
-              <p class="ac-summary">
-                A brief summary of the blog article to draw the reader in.
-              </p>
-              <span class="ac-link">Read Article &#8594;</span>
-            </div>
-          </a>
-
-          <a href="#" class="article-card fade-in-up">
-            <div class="ac-media">
-              <img src="../images/maingate.jpeg" alt="" />
-            </div>
-            <div class="ac-body">
-              <div class="ac-meta">
-                <span class="ac-category">Category</span>
-                <span class="ac-dot"></span>
-                <span class="ac-date">Month DD, YYYY</span>
-              </div>
-              <h3 class="ac-headline">Blog article title goes here.</h3>
-              <p class="ac-summary">
-                A brief summary of the blog article to draw the reader in.
-              </p>
-              <span class="ac-link">Read Article &#8594;</span>
-            </div>
-          </a>
-
-          <a href="#" class="article-card fade-in-up">
-            <div class="ac-media">
-              <img src="../images/ubmid.jpg" alt="" />
-            </div>
-            <div class="ac-body">
-              <div class="ac-meta">
-                <span class="ac-category">Category</span>
-                <span class="ac-dot"></span>
-                <span class="ac-date">Month DD, YYYY</span>
-              </div>
-              <h3 class="ac-headline">Blog article title goes here.</h3>
-              <p class="ac-summary">
-                A brief summary of the blog article to draw the reader in.
-              </p>
-              <span class="ac-link">Read Article &#8594;</span>
-            </div>
-          </a>
-
-          <a href="#" class="article-card fade-in-up">
-            <div class="ac-media">
               <img src="../images/ubinner.jpg" alt="" />
             </div>
             <div class="ac-body">
@@ -1227,24 +1116,6 @@
                 A brief summary of the blog article to draw the reader in.
               </p>
               <span class="ac-link">Read Article &#8594;</span>
-            </div>
-          </a>
-
-          <a href="#" class="article-card fade-in-up">
-            <div class="ac-media">
-              <img src="../images/nskHero.png" alt="" />
-            </div>
-            <div class="ac-body">
-              <div class="ac-meta">
-                <span class="ac-category">Category</span>
-                <span class="ac-dot"></span>
-                <span class="ac-date">Month DD, YYYY</span>
-              </div>
-              <h3 class="ac-headline">Blog article title goes here.</h3>
-              <p class="ac-summary">
-                A brief summary of the blog article to draw the reader in.
-              </p>
-              <span class="ac-link" href="">Read Article &#8594;</span>
             </div>
           </a>
         </div>
@@ -1445,6 +1316,9 @@
         document
           .getElementById("openInquiry")
           .addEventListener("click", openInquiry);
+        var openInquiryMobileBtn = document.getElementById("openInquiryMobile");
+        if (openInquiryMobileBtn)
+          openInquiryMobileBtn.addEventListener("click", openInquiry);
         document
           .getElementById("closeChoice")
           .addEventListener("click", function () {
