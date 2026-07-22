@@ -400,7 +400,7 @@
         color: var(--primary);
         text-transform: uppercase;
         margin-bottom: 16px;
-        display: inline-block;
+        display: none;
         font-weight: 700;
       }
       h2 {
@@ -969,6 +969,16 @@
         .landmark-row:hover {
           padding-left: 18px;
         }
+        .footer-skyline-wrap .skyline-mobile {
+          display: block;
+          width: 100%;
+          height: 90px;
+          object-fit: cover;
+          object-position: bottom;
+          filter: brightness(0.55) sepia(0.1);
+          margin: 0;
+          padding: 0;
+        }
       }
 
       @media (max-width: 480px) {
@@ -991,6 +1001,12 @@
         .footer-skyline-wrap .skyline-mobile {
           display: block;
           width: 100%;
+          height: 90px;
+          object-fit: cover;
+          object-position: bottom;
+          filter: brightness(0.55) sepia(0.1);
+          margin: 0;
+          padding: 0;
         }
       }
     </style>
@@ -1127,7 +1143,9 @@
         <div class="landmark-inner">
           <div class="landmark-head">
             <span class="section-tag fade-in-up">The Portfolio</span>
-            <h2 class="fade-in-up">Some of Our <span>Landmark Projects</span></h2>
+            <h2 class="fade-in-up">
+              Some of Our <span>Landmark Projects</span>
+            </h2>
           </div>
           <ul class="landmark-list fade-in-up">
             <li class="landmark-row">
@@ -1164,14 +1182,24 @@
       ============================================================ -->
       <section id="legacy-cta">
         <h2 class="fade-in-up">Be part of our legacy.</h2>
-        <a href="#" class="cta-enquire fade-in-up" id="ctaEnquire">Enquire Now</a>
+        <a href="#" class="cta-enquire fade-in-up" id="ctaEnquire"
+          >Enquire Now</a
+        >
       </section>
     </main>
 
     <!-- FOOTER SKYLINE -->
     <div class="footer-skyline-wrap">
-      <img class="skyline-desktop" src="../images/try1.svg" alt="Nashik Skyline" />
-      <img class="skyline-mobile" src="../images/ft1.png" alt="Nashik Skyline" />
+      <img
+        class="skyline-desktop"
+        src="../images/try1.svg"
+        alt="Nashik Skyline"
+      />
+      <img
+        class="skyline-mobile"
+        src="../images/ft1.png"
+        alt="Nashik Skyline"
+      />
     </div>
 
     <footer id="ub-footer">
